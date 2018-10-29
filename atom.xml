@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://skrskr66.github.io/"/>
-  <updated>2018-10-26T16:03:17.461Z</updated>
+  <updated>2018-10-29T16:43:02.870Z</updated>
   <id>https://skrskr66.github.io/</id>
   
   <author>
@@ -17,16 +17,25 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>你好，hexo</title>
-    <link href="https://skrskr66.github.io/2018/10/27/%E4%BD%A0%E5%A5%BD%EF%BC%8Chexo/"/>
-    <id>https://skrskr66.github.io/2018/10/27/你好，hexo/</id>
-    <published>2018-10-26T16:03:17.000Z</published>
-    <updated>2018-10-26T16:03:17.461Z</updated>
+    <title>新的开始</title>
+    <link href="https://skrskr66.github.io/2018/10/29/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/"/>
+    <id>https://skrskr66.github.io/2018/10/29/新的开始/</id>
+    <published>2018-10-29T15:01:35.000Z</published>
+    <updated>2018-10-29T16:43:02.870Z</updated>
+    
+    <content type="html"><![CDATA[<p>  博客今日搭建初步完成，Markdown形式还不知道具体操作，会陆陆续续的进行完善。<br>  说实话，一直就想搭建一个属于自己的博客。就为了能有个属于自己的小天地。<br>  国内也有CSDN，博客园之类的。<br>  但我觉得自己动手的会更好。<br>  当我觉得自己足够强大时，会去尝试WordPress来搭建另外一种博客。<br>  加油！程序程！</p>]]></content>
     
     <summary type="html">
     
+      
+      
+        &lt;p&gt;  博客今日搭建初步完成，Markdown形式还不知道具体操作，会陆陆续续的进行完善。&lt;br&gt;  说实话，一直就想搭建一个属于自己的博客。就为了能有个属于自己的小天地。&lt;br&gt;  国内也有CSDN，博客园之类的。&lt;br&gt;  但我觉得自己动手的会更好。&lt;br&gt;  当我觉得自己
+      
+    
     </summary>
     
+    
+      <category term="程序人生" scheme="https://skrskr66.github.io/tags/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
     
   </entry>
   
