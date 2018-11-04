@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,13 @@
 <meta name="theme-color" content="#222">
 
 
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-simple.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -81,18 +88,18 @@
 
 
 
-<meta name="description" content="1.完成猜数字游戏。源文件内需执行的1234567891011121314151617181920int main()&amp;#123;	while (1)&amp;#123;		printf(&amp;quot;输入1，开始游戏\n&amp;quot;);		printf(&amp;quot;输入0，退出游戏\n&amp;quot;);		int i = 0;		scanf(&amp;quot;%d&amp;quot;, &amp;amp;i);		if (i =">
+<meta name="description" content="1.完成猜数字游戏。  源文件内需执行的1234567891011121314151617181920int main()&amp;#123;	while (1)&amp;#123;		printf(&quot;输入1，开始游戏\n&quot;);		printf(&quot;输入0，退出游戏\n&quot;);		int i = 0;		scanf(&quot;%d&quot;, &amp;amp;i);		if (i == 1)&amp;#123;			Game();		&amp;#125;">
 <meta name="keywords" content="C初阶">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初阶C-1101">
 <meta property="og:url" content="https://skrskr66.github.io/2018/11/04/初阶C-1101/index.html">
 <meta property="og:site_name" content="程序程">
-<meta property="og:description" content="1.完成猜数字游戏。源文件内需执行的1234567891011121314151617181920int main()&amp;#123;	while (1)&amp;#123;		printf(&amp;quot;输入1，开始游戏\n&amp;quot;);		printf(&amp;quot;输入0，退出游戏\n&amp;quot;);		int i = 0;		scanf(&amp;quot;%d&amp;quot;, &amp;amp;i);		if (i =">
+<meta property="og:description" content="1.完成猜数字游戏。  源文件内需执行的1234567891011121314151617181920int main()&amp;#123;	while (1)&amp;#123;		printf(&quot;输入1，开始游戏\n&quot;);		printf(&quot;输入0，退出游戏\n&quot;);		int i = 0;		scanf(&quot;%d&quot;, &amp;amp;i);		if (i == 1)&amp;#123;			Game();		&amp;#125;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-04T15:27:38.391Z">
+<meta property="og:updated_time" content="2018-11-04T15:31:06.242Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初阶C-1101">
-<meta name="twitter:description" content="1.完成猜数字游戏。源文件内需执行的1234567891011121314151617181920int main()&amp;#123;	while (1)&amp;#123;		printf(&amp;quot;输入1，开始游戏\n&amp;quot;);		printf(&amp;quot;输入0，退出游戏\n&amp;quot;);		int i = 0;		scanf(&amp;quot;%d&amp;quot;, &amp;amp;i);		if (i =">
+<meta name="twitter:description" content="1.完成猜数字游戏。  源文件内需执行的1234567891011121314151617181920int main()&amp;#123;	while (1)&amp;#123;		printf(&quot;输入1，开始游戏\n&quot;);		printf(&quot;输入0，退出游戏\n&quot;);		int i = 0;		scanf(&quot;%d&quot;, &amp;amp;i);		if (i == 1)&amp;#123;			Game();		&amp;#125;">
 
 
 
@@ -100,7 +107,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -314,11 +321,6 @@
           
 
           
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
-            </span>
-          
 
           
 
@@ -337,11 +339,12 @@
       
 
       
-        <p>1.完成猜数字游戏。<br>源文件内需执行的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">	while (1)&#123;</span><br><span class="line">		printf(&quot;输入1，开始游戏\n&quot;);</span><br><span class="line">		printf(&quot;输入0，退出游戏\n&quot;);</span><br><span class="line">		int i = 0;</span><br><span class="line">		scanf(&quot;%d&quot;, &amp;i);</span><br><span class="line">		if (i == 1)&#123;</span><br><span class="line">			Game();</span><br><span class="line">		&#125;</span><br><span class="line">		else if(i == 0)&#123;</span><br><span class="line">			printf(&quot;goodbye!\n&quot;);</span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line">		else&#123;</span><br><span class="line">			printf(&quot;请重新输入！\n&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	system(&quot;pause&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>头文件.h<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#define  _CRT_SECURE_NO_WARNINGS</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">#include&lt;math.h&gt;</span><br><span class="line">#include&lt;time.h&gt;</span><br><span class="line">#include&lt;windows.h&gt;</span><br><span class="line">void Game()&#123;</span><br><span class="line">	int num = 0;</span><br><span class="line">	int result = 0;</span><br><span class="line">	srand((unsigned int)time(NULL));</span><br><span class="line">	result = rand() % 100 + 1;</span><br><span class="line">	do&#123;</span><br><span class="line">		printf(&quot;请输入一个数:&quot;);</span><br><span class="line">		scanf(&quot;%d&quot;, &amp;num);</span><br><span class="line">		if (num &lt; result)&#123;</span><br><span class="line">			printf(&quot;lower\n&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		else if(num &gt; result)&#123;</span><br><span class="line">			printf(&quot;higher\n&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; while (num != result);</span><br><span class="line">	printf(&quot;congratulations!\n&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>2.写代码可以在整型有序数组中查找想要的数字，<br>找到了返回下标，找不到返回-1.（折半查找）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">void find()&#123;</span><br><span class="line">	int arr[] = &#123; 11, 12, 13, 14, 15, 16, 17, 18, 19 &#125;;</span><br><span class="line">	int left = 0;</span><br><span class="line">	int right = sizeof(arr) / sizeof(arr[0]) - 1;//减一是因为数组下标规则</span><br><span class="line">	int i = 0;</span><br><span class="line">	int mid = (left + right) / 2;</span><br><span class="line">	printf(&quot;输入一个数字进行查找：&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;i);</span><br><span class="line">	while (left &lt;= right)&#123;//在左边数小于右边数的情况下	</span><br><span class="line">		mid = (left + right) / 2;</span><br><span class="line">		if (arr[mid] &lt; i)&#123;</span><br><span class="line">			left =mid + 1;</span><br><span class="line">		&#125;</span><br><span class="line">		else if(arr[mid] &gt; i)&#123;</span><br><span class="line">			right = mid - 1;</span><br><span class="line">		&#125;</span><br><span class="line">		else&#123;</span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if (arr[mid] == i)&#123;</span><br><span class="line">		printf(&quot;%d&quot;, mid);</span><br><span class="line">	&#125;</span><br><span class="line">	else&#123;</span><br><span class="line">		printf(&quot;-1&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>3.编写代码模拟三次密码输入的场景。<br>最多能输入三次密码，密码正确，提示“登录成功”,密码错误，<br>可以重新输入，最多输入三次。三次均错，则提示退出程序。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void login()&#123;</span><br><span class="line">	char pass[1024] = &#123;&#125;;</span><br><span class="line">	char password[] = &quot;123456&quot;;</span><br><span class="line">		for (int i = 0; i &lt; 3; i++)&#123;</span><br><span class="line">			printf(&quot;Please enter you password:\n&quot;);</span><br><span class="line">				scanf(&quot;%s&quot;, &amp;pass);</span><br><span class="line">		if (strcmp(password, pass) == 0)&#123;</span><br><span class="line">			printf(&quot;Welcome to system!\n&quot;);</span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;printf(&quot;sorry,exiting&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>4.编写一个程序，可以一直接收键盘字符，<br>如果是小写字符就输出对应的大写字符，<br>如果接收的是大写字符，就输出对应的小写字符，<br>如果是数字不输出。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void receive()&#123;</span><br><span class="line">	printf(&quot;please enter successively\n&quot;);</span><br><span class="line">	while(1)//永真情况下。永远进行循环。在字符数c为数字时跳出循环。</span><br><span class="line">	&#123;</span><br><span class="line">		char c;</span><br><span class="line">		c = getchar();//从控制台读取一个字符，但不显示在屏幕上。</span><br><span class="line">		if (c &gt;= 48 &amp;&amp; c &lt;= 57)&#123;</span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line">		putchar(c);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>1.完成猜数字游戏。 </p>
+<p>源文件内需执行的<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"输入1，开始游戏\n"</span>);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"输入0，退出游戏\n"</span>);</span><br><span class="line">		<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;i);</span><br><span class="line">		<span class="keyword">if</span> (i == <span class="number">1</span>)&#123;</span><br><span class="line">			Game();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(i == <span class="number">0</span>)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"goodbye!\n"</span>);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"请重新输入！\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>头文件.h<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span>  _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Game</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">	srand((<span class="keyword">unsigned</span> <span class="keyword">int</span>)time(<span class="literal">NULL</span>));</span><br><span class="line">	result = rand() % <span class="number">100</span> + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">do</span>&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"请输入一个数:"</span>);</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;num);</span><br><span class="line">		<span class="keyword">if</span> (num &lt; result)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"lower\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(num &gt; result)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"higher\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">while</span> (num != result);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"congratulations!\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2.写代码可以在整型有序数组中查找想要的数字，找到了返回下标，找不到返回-1.（折半查找）<br><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">void <span class="built_in">find</span>()&#123;</span><br><span class="line">	<span class="built_in">int</span> arr[] = &#123; <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>, <span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span> &#125;;</span><br><span class="line">	<span class="built_in">int</span> <span class="built_in">left</span> = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">int</span> <span class="built_in">right</span> = sizeof(arr) / sizeof(arr[<span class="number">0</span>]) - <span class="number">1</span>;//减一是因为数组下标规则</span><br><span class="line">	<span class="built_in">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">int</span> <span class="built_in">mid</span> = (<span class="built_in">left</span> + <span class="built_in">right</span>) / <span class="number">2</span>;</span><br><span class="line">	printf(<span class="string">"输入一个数字进行查找："</span>);</span><br><span class="line">	scanf(<span class="string">"%d"</span>, &amp;i);</span><br><span class="line">	while (<span class="built_in">left</span> &lt;= <span class="built_in">right</span>)&#123;//在左边数小于右边数的情况下	</span><br><span class="line">		<span class="built_in">mid</span> = (<span class="built_in">left</span> + <span class="built_in">right</span>) / <span class="number">2</span>;</span><br><span class="line">		<span class="built_in">if</span> (arr[<span class="built_in">mid</span>] &lt; i)&#123;</span><br><span class="line">			<span class="built_in">left</span> =<span class="built_in">mid</span> + <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		else <span class="built_in">if</span>(arr[<span class="built_in">mid</span>] &gt; i)&#123;</span><br><span class="line">			<span class="built_in">right</span> = <span class="built_in">mid</span> - <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		else&#123;</span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">if</span> (arr[<span class="built_in">mid</span>] == i)&#123;</span><br><span class="line">		printf(<span class="string">"%d"</span>, <span class="built_in">mid</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	else&#123;</span><br><span class="line">		printf(<span class="string">"-1"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>3.编写代码模拟三次密码输入的场景。 最多能输入三次密码，密码正确，提示“登录成功”,密码错误，可以重新输入，最多输入三次。三次均错，则提示退出程序。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">login</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> pass[<span class="number">1024</span>] = &#123;&#125;;</span><br><span class="line">	<span class="keyword">char</span> password[] = <span class="string">"123456"</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"Please enter you password:\n"</span>);</span><br><span class="line">				<span class="built_in">scanf</span>(<span class="string">"%s"</span>, &amp;pass);</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">strcmp</span>(password, pass) == <span class="number">0</span>)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"Welcome to system!\n"</span>);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;<span class="built_in">printf</span>(<span class="string">"sorry,exiting"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>4.编写一个程序，可以一直接收键盘字符，如果是小写字符就输出对应的大写字符，如果接收的是大写字符，就输出对应的小写字符，如果是数字不输出。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">receive</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"please enter successively\n"</span>);</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)<span class="comment">//永真情况下。永远进行循环。在字符数c为数字时跳出循环。</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">char</span> c;</span><br><span class="line">		c = getchar();<span class="comment">//从控制台读取一个字符，但不显示在屏幕上。</span></span><br><span class="line">		<span class="keyword">if</span> (c &gt;= <span class="number">48</span> &amp;&amp; c &lt;= <span class="number">57</span>)&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">putchar</span>(c);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>本次作业都是一些关于for和while循环的一些用法。第二题是需要好好思考一下的，难点在于中间值在比较过后，向右还是向左的问题。最后一定要break退出，否则会无法跳出循环。</p>
 
       
@@ -350,11 +353,23 @@
     
     
 
+<div>
+  
+    <div>
     
+        <div style="text-align:center;color: #555;font-size:14px;">-------------The End-------------</div>
+    
+</div>
+
+  
+</div>
 
     
 
     
+
+    
+
 
     <footer class="post-footer">
       
@@ -541,26 +556,6 @@
 
 
         
-<div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv">
-      <i class="fa fa-user"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      
-    </span>
-  
-
-  
-    <span class="site-pv">
-      <i class="fa fa-eye"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      
-    </span>
-  
-</div>
-
 
 
 
@@ -602,6 +597,7 @@
   
 
 
+  
 
 
 
@@ -609,6 +605,9 @@
 
 
 
+
+
+  
 
 
 
@@ -642,6 +641,16 @@
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="300" alpha="0.6" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
 
   
 
@@ -654,6 +663,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
@@ -737,5 +753,9 @@
 
   
 
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>
 <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
 </html>
