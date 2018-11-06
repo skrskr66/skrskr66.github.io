@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://skrskr66.github.io/"/>
-  <updated>2018-11-05T15:33:10.589Z</updated>
+  <updated>2018-11-06T10:22:37.002Z</updated>
   <id>https://skrskr66.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>静态顺序表的方法</title>
+    <link href="https://skrskr66.github.io/2018/11/06/%E9%9D%99%E6%80%81%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E6%96%B9%E6%B3%95/"/>
+    <id>https://skrskr66.github.io/2018/11/06/静态顺序表的方法/</id>
+    <published>2018-11-06T09:35:34.000Z</published>
+    <updated>2018-11-06T10:22:37.002Z</updated>
+    
+    <content type="html"><![CDATA[<p>静态顺序表属于数据结构开始的一种基本结构<br>首先我们要知道数据结构的概念</p><ol><li>数据结构  数据的组织关系</li><li>算法  为了达到特定的目的的一系列过程。在这个过程中又分为两种角度<br>1） 逻辑角度：线性结构，树形结构，图形结构<br>2） 存储角度：顺序存储，链式存储</li></ol><p>在线性结构中顺序存储的方式，在本次中为顺序表，分为静态和动态<br>而静态顺序表的理解可以分为<br>1） 结构体定义（定义、背后的内存布局模型）<br>2） 顺序表的基本操作：插/删/查/改。重点需要去掌握的是插和删。插（头插/尾插/插入），删（头删/尾删/删除）<br>接下来开始对于整个代码进行一个分析。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;   //一般不着急于先定义一堆，你需要什么在去定义什么。</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> DataType;  <span class="comment">//为现有类型创建别名。用DataType来代替int。</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_SIZE(100) <span class="comment">//开出一块空间，占用内存的最大位置。</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">SeqList</span>&#123;</span>     <span class="comment">//定义结构体的别名</span></span><br><span class="line">DataType <span class="built_in">array</span>[MAX_SIZE];  </span><br><span class="line"><span class="keyword">int</span> size;</span><br><span class="line">&#125;SeqList;   <span class="comment">//变量名</span></span><br></pre></td></tr></table></figure></p><p>当把结构体都定义好了之后，我们开始先进行两个基本操作，对数组进行初始化和销毁<br>此时我们要用到assert()。在开头首先要定义这个宏#include&lt;assert.h&gt;,他的功能就是测试一个条件可能使程序终止。用法void assert(int test)<br>在初始过程中，可能需要把内存清空一下，所以我们可能需要memset()这个函数。这个函数的用法void <em>memset(void </em>s, int ch, size_t n);<br><strong>将s所指向的某一块内存中的后n个 字节的内容全部设置为ch指定的ASCII值，第一个值为指定的内存地址，块的大小由第三个参数指定，这个函数通常为新申请的内存做初始化工作，其返回值为s。</strong></p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始化</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SeqListInit</span><span class="params">(Seqlist *pSeq)</span></span>&#123;</span><br><span class="line"><span class="comment">//初始化size</span></span><br><span class="line">assert(pSeq != <span class="literal">NULL</span>);</span><br><span class="line">pSep-&gt;size = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">memset</span>(pSep-&gt;<span class="built_in">array</span>,<span class="number">0</span>,SIZE_MAX * <span class="keyword">sizeof</span>(DataType));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//销毁</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SeqListDestory</span><span class="params">(SeqList *pSeq)</span></span>&#123;</span><br><span class="line">assert(pSeq);</span><br><span class="line">pSeq-&gt;size = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;静态顺序表属于数据结构开始的一种基本结构&lt;br&gt;首先我们要知道数据结构的概念&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;数据结构  数据的组织关系&lt;/li&gt;
+&lt;li&gt;算法  为了达到特定的目的的一系列过程。在这个过程中又分为两种角度&lt;br&gt;1） 逻辑角度：线性结构，树形结构，图形结构&lt;br
+      
+    
+    </summary>
+    
+    
+      <category term="C-数据结构" scheme="https://skrskr66.github.io/tags/C-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
   
   <entry>
     <title>初阶C-1103</title>
