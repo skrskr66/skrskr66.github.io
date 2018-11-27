@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://skrskr66.github.io/"/>
-  <updated>2018-11-25T14:11:23.563Z</updated>
+  <updated>2018-11-27T12:21:32.726Z</updated>
   <id>https://skrskr66.github.io/</id>
   
   <author>
@@ -15,6 +15,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>初阶C-1121</title>
+    <link href="https://skrskr66.github.io/2018/11/27/%E5%88%9D%E9%98%B6C-1121/"/>
+    <id>https://skrskr66.github.io/2018/11/27/初阶C-1121/</id>
+    <published>2018-11-27T12:17:13.000Z</published>
+    <updated>2018-11-27T12:21:32.726Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.写一个函数返回参数二进制中 1 的个数 ，比如：15   —&gt;   0000 1111 中4个1。  </p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">count_one_bits</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> value)</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> count  = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">32</span>; i++)&#123;</span><br><span class="line"><span class="keyword">if</span> (((value &gt;&gt; i) &amp; <span class="number">1</span>) == <span class="number">1</span>)&#123;</span><br><span class="line">count++;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>, count);</span><br><span class="line"><span class="comment">// 返回 1的位数 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>2.获取一个数二进制序列中所有的偶数位和奇数位,分别输出二进制序列。  </p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Print_col</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> value)</span></span>&#123;</span><br><span class="line"><span class="comment">//二进制的奇偶数位是从低位0123456开始算起</span></span><br><span class="line"><span class="keyword">int</span> odd;<span class="comment">//奇数</span></span><br><span class="line"><span class="keyword">int</span> even;<span class="comment">//偶数</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"偶数的序列:"</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">32</span>; i += <span class="number">2</span>)&#123;</span><br><span class="line">even = (value &gt;&gt; i) &amp; <span class="number">1</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d "</span>, even);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"奇数的序列:"</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; <span class="number">32</span>; j += <span class="number">2</span>)&#123;</span><br><span class="line">odd = (value &gt;&gt; j) &amp; <span class="number">1</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d "</span>, odd);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>3.输出一个整数的每一位。  </p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Print_num</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"请输入数:"</span>);</span><br><span class="line"><span class="keyword">int</span> x;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;x);</span><br><span class="line"><span class="keyword">while</span> (x)&#123;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d "</span>, x % <span class="number">10</span>);</span><br><span class="line">x /= <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>4.两个int（32位）整数m和n的二进制表达中,有多少个位(bit)不同?</p><p>输入例子:  1999 2299  输出例子:7</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">diff_bit</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> m, n,num,count = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"请输入两个数:"</span>);</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;m, &amp;n);</span><br><span class="line">num = m ^ n;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">32</span>; i++)&#123;</span><br><span class="line"><span class="keyword">if</span> (((num &gt;&gt; i) &amp; <span class="number">1</span>) == <span class="number">1</span>)&#123;</span><br><span class="line">count++;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>, count);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p> 在操作符总结完之后做的一些题。我个人觉得总结完之后，上手是非常容易的。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;1.写一个函数返回参数二进制中 1 的个数 ，比如：15   —&amp;gt;   0000 1111 中4个1。  &lt;/p&gt;
+&lt;figure class=&quot;highlight c&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="C初阶" scheme="https://skrskr66.github.io/tags/C%E5%88%9D%E9%98%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python-对猫眼网的top100的爬取</title>
+    <link href="https://skrskr66.github.io/2018/11/26/python-%E5%AF%B9%E7%8C%AB%E7%9C%BC%E7%BD%91%E7%9A%84top100%E7%9A%84%E7%88%AC%E5%8F%96/"/>
+    <id>https://skrskr66.github.io/2018/11/26/python-对猫眼网的top100的爬取/</id>
+    <published>2018-11-26T08:33:42.000Z</published>
+    <updated>2018-11-26T13:40:30.197Z</updated>
+    
+    <content type="html"><![CDATA[<p>python我从今年过年开始自学，断断续续的，最近参加了一个爬虫训练营，我发现爬虫对开始学习python是非常合适的，只不过首先得具备一些HTML的知识储备，毕竟爬虫是需要解析网页的。而且爬虫实现后的成就感是非常巨大的。所以，根据上周学习的一些知识，做一个小的总结。</p><p>首先需要安装requests库和beautifulsoup库，这两个库是有函数可以对网页进行一个解析操作的。比如request中的get()。beautifulsoup中的Beautifulsoup()的使用。</p><h4 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h4><p>首先最简单的安装就是利用cmd通过pip指令安装</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install requests</span><br><span class="line">pip install beautifulsoup4 //这里需要注意一下，后面必须有个<span class="number">4</span>。</span><br></pre></td></tr></table></figure><p>如果安装不上，那就从网上先下载好需要的安装文件，在进入该文件的目录下，进行安装。</p><h4 id="request-的使用"><a href="#request-的使用" class="headerlink" title="request()的使用"></a>request()的使用</h4><p>request的请求方式有多种，因为是一个第三方库，有多种使用方法，可以在网上寻找一些使用文档参考</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">requests.get(<span class="string">'http://www.xxxxxxxx.com'</span>)</span><br><span class="line">requests.post(<span class="string">'http://www.xxxxxxxx.com'</span>)</span><br><span class="line">requests.delete(<span class="string">'http://www.xxxxxxxx.com'</span>)</span><br><span class="line">requests.put(<span class="string">'http://www.xxxxxxxx.com'</span>)</span><br><span class="line">requests.head(<span class="string">'http://www.xxxxxxxx.com'</span>)</span><br></pre></td></tr></table></figure><p>列举一些常用的。</p><p>get：请求指定的页面信息，并返回一个主体。</p><p>post：</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;python我从今年过年开始自学，断断续续的，最近参加了一个爬虫训练营，我发现爬虫对开始学习python是非常合适的，只不过首先得具备一些HTML的知识储备，毕竟爬虫是需要解析网页的。而且爬虫实现后的成就感是非常巨大的。所以，根据上周学习的一些知识，做一个小的总结。&lt;/p&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="python" scheme="https://skrskr66.github.io/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>初阶C-指针总结与坑</title>
