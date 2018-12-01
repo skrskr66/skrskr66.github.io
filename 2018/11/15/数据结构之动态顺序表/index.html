@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="程序程">
 <meta property="og:description" content="动态顺序表动态顺序表是跟静态顺序表大体相似，有些地方是不同的，动态顺序表是在动态变化中，当我们的所需的内存不够时，它会自动开辟一个我们需要的空间，来供我们使用。 动态顺序表与静态顺序表的不同在于初始化/销毁/所有插入，其他和静态顺序表完全一样。 定义一个结构体先将我们需要的都定义好 12345678910111213141516#pragma once#include&amp;lt;stdio.h&amp;gt;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-30T13:45:40.460Z">
+<meta property="og:updated_time" content="2018-12-01T11:12:53.465Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构之动态顺序表">
 <meta name="twitter:description" content="动态顺序表动态顺序表是跟静态顺序表大体相似，有些地方是不同的，动态顺序表是在动态变化中，当我们的所需的内存不够时，它会自动开辟一个我们需要的空间，来供我们使用。 动态顺序表与静态顺序表的不同在于初始化/销毁/所有插入，其他和静态顺序表完全一样。 定义一个结构体先将我们需要的都定义好 12345678910111213141516#pragma once#include&amp;lt;stdio.h&amp;gt;">
@@ -375,7 +375,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  589
+                  850
                 </span>
               
 
@@ -391,7 +391,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -416,12 +416,16 @@
 <p>动态顺序表与静态顺序表的不同在于初始化/销毁/所有插入，其他和静态顺序表完全一样。</p>
 <h4 id="定义一个结构体"><a href="#定义一个结构体" class="headerlink" title="定义一个结构体"></a>定义一个结构体</h4><p>先将我们需要的都定义好</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;assert.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="comment">//为了观看方便先写在开头，正常应该需要什么去使用什么</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> DataType;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INIT_CAPACITY(3)<span class="comment">//定义一个动态的初始化空间容量为3</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">SeqListD</span>&#123;</span></span><br><span class="line">    DataType* parray;</span><br><span class="line">    <span class="keyword">int</span> capacity;</span><br><span class="line">    <span class="keyword">int</span> size;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在结构体的定义中，静态与动态的定义是不同的。静态的是直接定义了一个空间是有范围确定的数组。但是动态不同，动态定义的是一个指针，在这里面存储的范围是不确定的，当我们定义了一个当前我们认为足够大的空间时，它是在一个计算机给我们的随机地址中。当我们需要更大的空间时，我们将申请新空间，这个时候我们将数据转移，先将所有数据转移到新的空间，之后我们将旧的空间释放掉。这个时候空间是新开辟的一段空间，但是我们的地址是计算机重新分配的一段新地址。</p>
 <h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SeqListInit</span><span class="params">(SeqListD *pSeq)</span></span>&#123;</span><br><span class="line">    pSeq-&gt;capacity = INIT_CAPACITY;<span class="comment">//当前容量我们都先设置为3，每当我们不够时，</span></span><br><span class="line">    							<span class="comment">//我们就调用其他函数去扩充它</span></span><br><span class="line">    pSeq-&gt;parray = (DataType *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(DataType)*pSeq-&gt;capacity);<span class="comment">//我们的数组利用malloc函数</span></span><br><span class="line">    				<span class="comment">//类型			//4*3</span></span><br><span class="line">    assert(pSeq-&gt;parray);<span class="comment">//判断我的指针是否正常</span></span><br><span class="line">    pSeq-&gt;size = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>malloc():</strong> malloc的全称是memory allocation，中文叫动态内存分配，用于申请一块连续的指定大小的内存块区域以void*类型返回分配的内存区域地址，当无法知道内存具体位置的时候，想要绑定真正的内存空间，就需要用到动态的分配内存。 </p>
 <p>一般需和free函数配对使用。 </p>
 <h4 id="销毁"><a href="#销毁" class="headerlink" title="销毁"></a>销毁</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SeqListDestory</span><span class="params">(SeqListD *pSeq)</span></span>&#123;</span><br><span class="line">    <span class="built_in">free</span>(pSeq-&gt;parray);</span><br><span class="line">    <span class="comment">//将它释放掉</span></span><br><span class="line">    pSeq-&gt;capacity = <span class="number">0</span>;</span><br><span class="line">    pSeq-&gt;size = <span class="number">0</span>;</span><br><span class="line">    pSeq-&gt;parry = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="comment">//所有一切还原</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SeqListPushBack</span><span class="params">(SeqListD *pSeq,DataType data)</span></span>&#123;</span><br><span class="line">    <span class="comment">//静态：如果满了，不处理/报错</span></span><br><span class="line">	<span class="comment">//动态：加入扩容机制</span></span><br><span class="line">    ExpandIfRequired(pSeq);<span class="comment">//每次都需要去判断是否达到条件可以实现</span></span><br><span class="line">    pSeq-&gt;parray[pSeq-&gt;size] = data;<span class="comment">//</span></span><br><span class="line">    pSeq-&gt;size++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="判断是否需要扩大"><a href="#判断是否需要扩大" class="headerlink" title="判断是否需要扩大"></a>判断是否需要扩大</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ExpandIfRequired</span><span class="params">(SeqListD *pSeq)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(pSeq-&gt;size &lt; pSeq-&gt;capacity)&#123;</span><br><span class="line">        <span class="keyword">return</span>;<span class="comment">//还没满</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//扩容</span></span><br><span class="line">    pSeq-&gt;capacity *= <span class="number">2</span>;</span><br><span class="line">    <span class="comment">//开辟新空间</span></span><br><span class="line">    DataType *newArray = (DataType *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(DataType)*pSeq-&gt;capacity);</span><br><span class="line">    assert(newArray);</span><br><span class="line">    <span class="comment">//数据搬移</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; pSeq-&gt;size；i++)&#123;</span><br><span class="line">        newArray[i] = pSeq-&gt;parray[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//释放老空间，申请的新空间与动态顺序表关联起来</span></span><br><span class="line">    <span class="built_in">free</span>(pSeq-&gt;parray);</span><br><span class="line">    pSeq-&gt;parray = newArray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同理，所有插入都需要加入扩容机制</p>
+<p>其他的操作与静态顺序表的操作是相近的。可以参考我之前的对照着看。</p>
+<p>数据结构重新在学！如有不对，请cue我！</p>
 
       
     </div>
@@ -680,7 +684,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">16.7k</span>
+    <span title="Site words total count">16.9k</span>
   
 </div>
 
