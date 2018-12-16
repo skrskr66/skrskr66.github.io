@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="程序程">
 <meta property="og:description" content="之前写了一个猫眼的爬虫的代码。是利用了request()和beautifulsoup()。但是之前的方法是利用了selector的搜索方法。最近学习了一点正则表达式，用正则表达式对豆瓣的top250进行了尝试。 豆瓣一直都是我比较喜欢的一个app，我也很喜欢看电影，这次爬取下来250的数据也非常高兴。 正则表达式的定义正则表达式，又称规则表达式。（英语：Regular Expression，在代码">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-13T14:10:20.411Z">
+<meta property="og:updated_time" content="2018-12-16T05:16:15.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python-对豆瓣的top250的爬取">
 <meta name="twitter:description" content="之前写了一个猫眼的爬虫的代码。是利用了request()和beautifulsoup()。但是之前的方法是利用了selector的搜索方法。最近学习了一点正则表达式，用正则表达式对豆瓣的top250进行了尝试。 豆瓣一直都是我比较喜欢的一个app，我也很喜欢看电影，这次爬取下来250的数据也非常高兴。 正则表达式的定义正则表达式，又称规则表达式。（英语：Regular Expression，在代码">
@@ -375,7 +375,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  357
+                  721
                 </span>
               
 
@@ -391,7 +391,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -418,7 +418,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br></pre></td></tr></table></figure>
 <p>python如果要使用正则表达式，首先需要引用re库</p>
 <p>re库是一个python中有关于正则表达式的第三方库。因为我们在匹配过程中，也需要一些函数来剔除我们不需要的冗余字符。</p>
-<h4 id="正则表达式常用字符-1"><a href="#正则表达式常用字符-1" class="headerlink" title="正则表达式常用字符(1)"></a><strong>正则表达式常用字符(1)</strong></h4><table>
+<h4 id="正则表达式常用操作符-1"><a href="#正则表达式常用操作符-1" class="headerlink" title="正则表达式常用操作符(1)"></a><strong>正则表达式常用操作符(1)</strong></h4><table>
 <thead>
 <tr>
 <th style="text-align:center">操作符</th>
@@ -445,26 +445,98 @@
 <tr>
 <td style="text-align:center">*</td>
 <td style="text-align:center">前一个字符0次或无限次扩展</td>
-<td style="text-align:center">abc*表示为ab/abccc</td>
+<td style="text-align:center">abc*表示为ab/abc/abccc</td>
 </tr>
 <tr>
 <td style="text-align:center">+</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">前一个字符1次或无限次扩展</td>
+<td style="text-align:center">abc+表示abc/abcc/abccc</td>
 </tr>
 <tr>
 <td style="text-align:center">?</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">前一个字符0次或1次扩展</td>
+<td style="text-align:center">abc？表示ab/abc</td>
 </tr>
 <tr>
 <td style="text-align:center">\</td>
 <td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">左右表达式的任意一个</td>
+<td>abc\</td>
+<td>def表示 abc、def</td>
 </tr>
 </tbody>
 </table>
-
+<h4 id="正则表达式的常用操作符-2"><a href="#正则表达式的常用操作符-2" class="headerlink" title="正则表达式的常用操作符(2)"></a>正则表达式的常用操作符(2)</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">操作符</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">{m}</td>
+<td style="text-align:center">扩展前一个字符m次</td>
+<td style="text-align:center">ab{2}c表示abbc</td>
+</tr>
+<tr>
+<td style="text-align:center">{m,n}</td>
+<td style="text-align:center">扩展前一个字符m至n次（含n）</td>
+<td style="text-align:center">ab{1,2}c表示abc、abbc</td>
+</tr>
+<tr>
+<td style="text-align:center">^</td>
+<td style="text-align:center">匹配字符串开头</td>
+<td style="text-align:center">^abc表示abc且在一个字符串的开头</td>
+</tr>
+<tr>
+<td style="text-align:center">$</td>
+<td style="text-align:center">匹配字符串结尾</td>
+<td style="text-align:center">abc$表示abc且在一个字符串的结尾</td>
+</tr>
+<tr>
+<td style="text-align:center">( )</td>
+<td style="text-align:center">分组标记，内部只能使用\</td>
+<td style="text-align:center">操作符</td>
+<td>(abc)表示abc,(abc\</td>
+<td>def)表示abc、def</td>
+</tr>
+<tr>
+<td style="text-align:center">\d</td>
+<td style="text-align:center">数字，等价于[0-9]</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">\w</td>
+<td style="text-align:center">单词字符，等价于[A-Za-z0-9_]</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">常用标记</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">re.I        re.IGNORECASE</td>
+<td style="text-align:center">忽略正则表达式中的大小写，[A-Z]能够匹配小写字符</td>
+</tr>
+<tr>
+<td style="text-align:center">re.M        re.MULTILINE</td>
+<td style="text-align:center">正则表达式中的^操作符能够将给定字符串的每行当作匹配开始</td>
+</tr>
+<tr>
+<td style="text-align:center">re.S        re.DOTALL</td>
+<td style="text-align:center">正则表达式中的.操作符能够匹配所有字符，默认匹配除了换行以外的所有字符</td>
+</tr>
+</tbody>
+</table>
+<p>以上这些常用的操作符对于爬虫来说是足够的了，我们还需要的是怎么去使用去让其匹配。</p>
+<h4 id="几种常见的匹配方式"><a href="#几种常见的匹配方式" class="headerlink" title="几种常见的匹配方式"></a>几种常见的匹配方式</h4><h5 id="最常规匹配"><a href="#最常规匹配" class="headerlink" title="最常规匹配"></a>最常规匹配</h5><h5 id="泛匹配"><a href="#泛匹配" class="headerlink" title="泛匹配"></a>泛匹配</h5><h5 id="匹配目标"><a href="#匹配目标" class="headerlink" title="匹配目标"></a>匹配目标</h5><h5 id="贪婪匹配"><a href="#贪婪匹配" class="headerlink" title="贪婪匹配"></a>贪婪匹配</h5><h5 id="非贪婪匹配"><a href="#非贪婪匹配" class="headerlink" title="非贪婪匹配"></a>非贪婪匹配</h5><h5 id="匹配模式"><a href="#匹配模式" class="headerlink" title="匹配模式"></a>匹配模式</h5>
       
     </div>
     
@@ -675,7 +747,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#正则表达式的定义"><span class="nav-number">1.</span> <span class="nav-text">正则表达式的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正则表达式常用字符-1"><span class="nav-number">2.</span> <span class="nav-text">正则表达式常用字符(1)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#正则表达式的定义"><span class="nav-number">1.</span> <span class="nav-text">正则表达式的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正则表达式常用操作符-1"><span class="nav-number">2.</span> <span class="nav-text">正则表达式常用操作符(1)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正则表达式的常用操作符-2"><span class="nav-number">3.</span> <span class="nav-text">正则表达式的常用操作符(2)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#几种常见的匹配方式"><span class="nav-number">4.</span> <span class="nav-text">几种常见的匹配方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#最常规匹配"><span class="nav-number">4.1.</span> <span class="nav-text">最常规匹配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#泛匹配"><span class="nav-number">4.2.</span> <span class="nav-text">泛匹配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#匹配目标"><span class="nav-number">4.3.</span> <span class="nav-text">匹配目标</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#贪婪匹配"><span class="nav-number">4.4.</span> <span class="nav-text">贪婪匹配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#非贪婪匹配"><span class="nav-number">4.5.</span> <span class="nav-text">非贪婪匹配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#匹配模式"><span class="nav-number">4.6.</span> <span class="nav-text">匹配模式</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -718,7 +790,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">18.9k</span>
+    <span title="Site words total count">19.2k</span>
   
 </div>
 
