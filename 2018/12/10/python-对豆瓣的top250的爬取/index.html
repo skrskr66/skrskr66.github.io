@@ -98,18 +98,22 @@
 
 
 
-<meta name="description" content="之前写了一个猫眼的爬虫的代码。是利用了request()和beautifulsoup()。但是之前的方法是利用了selector的搜索方法。最近学习了一点正则表达式，用正则表达式对豆瓣的top250进行了尝试。 豆瓣一直都是我比较喜欢的一个app，我也很喜欢看电影，这次爬取下来250的数据也非常高兴。 正则表达式的定义正则表达式，又称规则表达式。（英语：Regular Expression，在代码">
+<meta name="description" content="之前写了一个猫眼的爬虫的代码。是利用了request()和beautifulsoup()。但是之前的方法是利用了selector的搜索方法。最近学习了一点正则表达式，用正则表达式对豆瓣的top250进行了尝试。 豆瓣一直都是我比较喜欢的一个app，我也很喜欢看电影，你如果喜欢，在我的博客里有我的豆瓣链接，我们可以互粉一下聊聊电影hhhhhh，看得不多，但坚持再看并且写影评。 这次爬取下来top25">
 <meta name="keywords" content="python-爬虫">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python-对豆瓣的top250的爬取">
 <meta property="og:url" content="https://skrskr66.github.io/2018/12/10/python-对豆瓣的top250的爬取/index.html">
 <meta property="og:site_name" content="程序程">
-<meta property="og:description" content="之前写了一个猫眼的爬虫的代码。是利用了request()和beautifulsoup()。但是之前的方法是利用了selector的搜索方法。最近学习了一点正则表达式，用正则表达式对豆瓣的top250进行了尝试。 豆瓣一直都是我比较喜欢的一个app，我也很喜欢看电影，这次爬取下来250的数据也非常高兴。 正则表达式的定义正则表达式，又称规则表达式。（英语：Regular Expression，在代码">
+<meta property="og:description" content="之前写了一个猫眼的爬虫的代码。是利用了request()和beautifulsoup()。但是之前的方法是利用了selector的搜索方法。最近学习了一点正则表达式，用正则表达式对豆瓣的top250进行了尝试。 豆瓣一直都是我比较喜欢的一个app，我也很喜欢看电影，你如果喜欢，在我的博客里有我的豆瓣链接，我们可以互粉一下聊聊电影hhhhhh，看得不多，但坚持再看并且写影评。 这次爬取下来top25">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-16T05:16:15.075Z">
+<meta property="og:image" content="https://skrskr66.github.io/2018/12/10/python-对豆瓣的top250的爬取/douban1.png">
+<meta property="og:image" content="https://skrskr66.github.io/2018/12/10/python-对豆瓣的top250的爬取/douban2.png">
+<meta property="og:image" content="https://skrskr66.github.io/2018/12/10/python-对豆瓣的top250的爬取/douban3.png">
+<meta property="og:updated_time" content="2018-12-23T15:42:19.267Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python-对豆瓣的top250的爬取">
-<meta name="twitter:description" content="之前写了一个猫眼的爬虫的代码。是利用了request()和beautifulsoup()。但是之前的方法是利用了selector的搜索方法。最近学习了一点正则表达式，用正则表达式对豆瓣的top250进行了尝试。 豆瓣一直都是我比较喜欢的一个app，我也很喜欢看电影，这次爬取下来250的数据也非常高兴。 正则表达式的定义正则表达式，又称规则表达式。（英语：Regular Expression，在代码">
+<meta name="twitter:description" content="之前写了一个猫眼的爬虫的代码。是利用了request()和beautifulsoup()。但是之前的方法是利用了selector的搜索方法。最近学习了一点正则表达式，用正则表达式对豆瓣的top250进行了尝试。 豆瓣一直都是我比较喜欢的一个app，我也很喜欢看电影，你如果喜欢，在我的博客里有我的豆瓣链接，我们可以互粉一下聊聊电影hhhhhh，看得不多，但坚持再看并且写影评。 这次爬取下来top25">
+<meta name="twitter:image" content="https://skrskr66.github.io/2018/12/10/python-对豆瓣的top250的爬取/douban1.png">
 
 
 
@@ -375,7 +379,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  721
+                  1.8k
                 </span>
               
 
@@ -391,7 +395,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  7
                 </span>
               
             </div>
@@ -413,7 +417,8 @@
 
       
         <p>之前写了一个猫眼的爬虫的代码。是利用了request()和beautifulsoup()。但是之前的方法是利用了selector的搜索方法。最近学习了一点正则表达式，用正则表达式对豆瓣的top250进行了尝试。</p>
-<p>豆瓣一直都是我比较喜欢的一个app，我也很喜欢看电影，这次爬取下来250的数据也非常高兴。</p>
+<p>豆瓣一直都是我比较喜欢的一个app，我也很喜欢看电影，你如果喜欢，在我的博客里有我的豆瓣链接，我们可以互粉一下聊聊电影hhhhhh，看得不多，但坚持再看并且写影评。</p>
+<p>这次爬取下来top250的数据也非常高兴。</p>
 <h4 id="正则表达式的定义"><a href="#正则表达式的定义" class="headerlink" title="正则表达式的定义"></a>正则表达式的定义</h4><p><strong>正则表达式</strong>，又称规则表达式<strong>。</strong>（英语：Regular Expression，在代码中常简写为regex、regexp或RE），计算机科学的一个概念。正则表达式通常被用来检索、替换那些符合某个模式(规则)的文本。 </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br></pre></td></tr></table></figure>
 <p>python如果要使用正则表达式，首先需要引用re库</p>
@@ -536,7 +541,36 @@
 </tbody>
 </table>
 <p>以上这些常用的操作符对于爬虫来说是足够的了，我们还需要的是怎么去使用去让其匹配。</p>
-<h4 id="几种常见的匹配方式"><a href="#几种常见的匹配方式" class="headerlink" title="几种常见的匹配方式"></a>几种常见的匹配方式</h4><h5 id="最常规匹配"><a href="#最常规匹配" class="headerlink" title="最常规匹配"></a>最常规匹配</h5><h5 id="泛匹配"><a href="#泛匹配" class="headerlink" title="泛匹配"></a>泛匹配</h5><h5 id="匹配目标"><a href="#匹配目标" class="headerlink" title="匹配目标"></a>匹配目标</h5><h5 id="贪婪匹配"><a href="#贪婪匹配" class="headerlink" title="贪婪匹配"></a>贪婪匹配</h5><h5 id="非贪婪匹配"><a href="#非贪婪匹配" class="headerlink" title="非贪婪匹配"></a>非贪婪匹配</h5><h5 id="匹配模式"><a href="#匹配模式" class="headerlink" title="匹配模式"></a>匹配模式</h5>
+<p>正则表达式的练习我用的是<strong>anaconda中的jupyter</strong>进行练习。</p>
+<h4 id="几种常见的匹配方式"><a href="#几种常见的匹配方式" class="headerlink" title="几种常见的匹配方式"></a>几种常见的匹配方式</h4><p>首先引用这个库，常规操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br></pre></td></tr></table></figure>
+<h5 id="最常规匹配"><a href="#最常规匹配" class="headerlink" title="最常规匹配"></a>最常规匹配</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">content=<span class="string">'Hello 123 4567 World_This is a Regex Demo'</span></span><br><span class="line">print(len(content))</span><br><span class="line">result=re.match(<span class="string">'^Hello\s\d\d\d\s\d&#123;4&#125;\s\w&#123;10&#125;.*Demo$'</span>,content)</span><br><span class="line">print(result)</span><br><span class="line">print(result.group())<span class="comment">#group()表示取全部匹配的字符串或者指定的组，返回结果是一个字符串</span></span><br><span class="line">print(result.span())<span class="comment">#span()表示返回一个元组包含匹配 (开始,结束) 的位置</span></span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">41</span></span><br><span class="line">&lt;re.Match object; span=(<span class="number">0</span>, <span class="number">41</span>), match=<span class="string">'Hello 123 4567 World_This is a Regex Demo'</span>&gt;</span><br><span class="line">Hello <span class="number">123</span> <span class="number">4567</span> World_This <span class="keyword">is</span> a Regex Demo</span><br><span class="line">(<span class="number">0</span>, <span class="number">41</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#这是最常规的匹配，将每一个字符都用操作符</span></span><br><span class="line"><span class="comment">#\s 是一个匹配空格 \d 匹配数字 \d&#123;4&#125; 匹配一串数字</span></span><br><span class="line"><span class="comment">#.*Demo$ 点用于匹配之前的 *作为前一个字符的匹配与'点'一起 最后用$作为一个匹配字符串的结尾</span></span><br></pre></td></tr></table></figure>
+<h5 id="泛匹配"><a href="#泛匹配" class="headerlink" title="泛匹配"></a>泛匹配</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">content = <span class="string">'Hello 123 4567 World_This is a Regex Demo'</span></span><br><span class="line">result = re.match(<span class="string">'^Hello.*Demo$'</span>,content)</span><br><span class="line">print(result)</span><br><span class="line">print(result.group())</span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;re.Match object; span=(<span class="number">0</span>, <span class="number">41</span>), match=<span class="string">'Hello 123 4567 World_This is a Regex Demo'</span>&gt;</span><br><span class="line">Hello <span class="number">123</span> <span class="number">4567</span> World_This <span class="keyword">is</span> a Regex Demo</span><br><span class="line"></span><br><span class="line"><span class="comment">#泛匹配就比较省略，有前面和后面的字符就行，中间的不需要也可以</span></span><br></pre></td></tr></table></figure>
+<h5 id="匹配目标"><a href="#匹配目标" class="headerlink" title="匹配目标"></a>匹配目标</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">content = <span class="string">'Hello 1234567 World_This is a Regex Demo'</span></span><br><span class="line">result = re.match(<span class="string">'^Hello\s(\d+)\sWorld.*Demo$'</span>,content)</span><br><span class="line">print(result)</span><br><span class="line">print(result.group(<span class="number">1</span>))<span class="comment">#为了看看匹配的分组中是否是我所需要的</span></span><br><span class="line">print(result.span())</span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;re.Match object; span=(<span class="number">0</span>, <span class="number">40</span>), match=<span class="string">'Hello 1234567 World_This is a Regex Demo'</span>&gt;</span><br><span class="line"><span class="number">1234567</span></span><br><span class="line">(<span class="number">0</span>, <span class="number">40</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#(\d+) \d表示数字, + 表示一个或多个，括号就是将其最为一个分组</span></span><br></pre></td></tr></table></figure>
+<p>接着是两个比较关键的匹配方法</p>
+<h5 id="贪婪匹配"><a href="#贪婪匹配" class="headerlink" title="贪婪匹配"></a>贪婪匹配</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">content = <span class="string">'Hello 1234567 World_This is a Regex Demo'</span></span><br><span class="line">result = re.match(<span class="string">'^He.*(\d+).*Demo$'</span>,content)</span><br><span class="line">print(result)</span><br><span class="line">print(result.group(<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;re.Match object; span=(<span class="number">0</span>, <span class="number">40</span>), match=<span class="string">'Hello 1234567 World_This is a Regex Demo'</span>&gt;</span><br><span class="line"><span class="number">7</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#Python里数量词默认是贪婪的（在少数语言里也可能是默认非贪婪），总是尝试匹配尽可能多的字符</span></span><br><span class="line"><span class="comment">#贪婪模式下字符串查找会直接走到字符串结尾去匹配，如果不相等就向前寻找，这一过程称为回溯。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#上面的例子可以看出 .* 这样的前后搭配匹配 可以前后尝试尽可能多的匹配字符</span></span><br></pre></td></tr></table></figure>
+<h5 id="非贪婪匹配"><a href="#非贪婪匹配" class="headerlink" title="非贪婪匹配"></a>非贪婪匹配</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">content = <span class="string">'Hello 1234567 World_This is a Regex Demo'</span></span><br><span class="line">result = re.match(<span class="string">'^He.*?(\d+).*Demo$'</span>,content)</span><br><span class="line">print(result)</span><br><span class="line">print(result.group(<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;re.Match object; span=(<span class="number">0</span>, <span class="number">40</span>), match=<span class="string">'Hello 1234567 World_This is a Regex Demo'</span>&gt;</span><br><span class="line"><span class="number">1234567</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#非贪婪则相反，总是尝试匹配尽可能少的字符。在"*","?","+","&#123;m,n&#125;"后面加上？，使贪婪变成非贪婪。</span></span><br><span class="line"><span class="comment">#非贪婪模式下会自左向右查找，一个一个匹配不会出现回溯的情况。</span></span><br></pre></td></tr></table></figure>
+<h5 id="匹配模式"><a href="#匹配模式" class="headerlink" title="匹配模式"></a>匹配模式</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">content = <span class="string">'''Hello 1234567 World_This</span></span><br><span class="line"><span class="string">is a Regex Demo</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">result = re.match(<span class="string">'^He.*?(\d+).*?Demo'</span>,content,re.S)</span><br><span class="line">print(result.group(<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+<p>匹配模式主要利用了re库中的re.S参数，这样就可以将字符串作为一个整体，在整体中进行匹配。</p>
+<p>以上就是关于正则表达式的基本知识。看一下例子，知道大概就足够了。</p>
+<h4 id="豆瓣内容爬取"><a href="#豆瓣内容爬取" class="headerlink" title="豆瓣内容爬取"></a>豆瓣内容爬取</h4><p><img src="/2018/12/10/python-对豆瓣的top250的爬取/douban1.png" alt="douban1"></p>
+<p>首先进入豆瓣的top250排行榜，我们首先能看到的就是关于电影的内容。利用chrome浏览器右击检查打开审查元素，我们来观察一下这个网页的html大概构成。</p>
+<p><img src="/2018/12/10/python-对豆瓣的top250的爬取/douban2.png" alt="douban2"></p>
+<p>我们将鼠标放到li标签上，可以看到左侧的一片区域都被标记了。说明这一块都是有关《肖申克的救赎》。</p>
+<p><img src="/2018/12/10/python-对豆瓣的top250的爬取/douban3.png" alt="douban3"></p>
+<p>一步一步点开这个标签我们将鼠标放到每一个标签之上能看到，每一个标签都有一个与之对应的区域，这个时候我们就需要使用这些标签来构建正则表达式。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'&lt;em class=""&gt;(\d+)&lt;/em&gt;.*?&lt;span class="title"&gt;(.*?)&lt;/span&gt;.*?&lt;p class=""&gt;(.*?)&lt;/p&gt;.*?&lt;span class="rating_num" property="v:average"&gt;(.*?)&lt;/span&gt;.*?&lt;span&gt;(.*?)&lt;/span&gt;.*?&lt;span class="inq"&gt;(.*?)&lt;/span&gt;'</span></span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -747,7 +781,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#正则表达式的定义"><span class="nav-number">1.</span> <span class="nav-text">正则表达式的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正则表达式常用操作符-1"><span class="nav-number">2.</span> <span class="nav-text">正则表达式常用操作符(1)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正则表达式的常用操作符-2"><span class="nav-number">3.</span> <span class="nav-text">正则表达式的常用操作符(2)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#几种常见的匹配方式"><span class="nav-number">4.</span> <span class="nav-text">几种常见的匹配方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#最常规匹配"><span class="nav-number">4.1.</span> <span class="nav-text">最常规匹配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#泛匹配"><span class="nav-number">4.2.</span> <span class="nav-text">泛匹配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#匹配目标"><span class="nav-number">4.3.</span> <span class="nav-text">匹配目标</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#贪婪匹配"><span class="nav-number">4.4.</span> <span class="nav-text">贪婪匹配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#非贪婪匹配"><span class="nav-number">4.5.</span> <span class="nav-text">非贪婪匹配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#匹配模式"><span class="nav-number">4.6.</span> <span class="nav-text">匹配模式</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#正则表达式的定义"><span class="nav-number">1.</span> <span class="nav-text">正则表达式的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正则表达式常用操作符-1"><span class="nav-number">2.</span> <span class="nav-text">正则表达式常用操作符(1)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正则表达式的常用操作符-2"><span class="nav-number">3.</span> <span class="nav-text">正则表达式的常用操作符(2)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#几种常见的匹配方式"><span class="nav-number">4.</span> <span class="nav-text">几种常见的匹配方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#最常规匹配"><span class="nav-number">4.1.</span> <span class="nav-text">最常规匹配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#泛匹配"><span class="nav-number">4.2.</span> <span class="nav-text">泛匹配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#匹配目标"><span class="nav-number">4.3.</span> <span class="nav-text">匹配目标</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#贪婪匹配"><span class="nav-number">4.4.</span> <span class="nav-text">贪婪匹配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#非贪婪匹配"><span class="nav-number">4.5.</span> <span class="nav-text">非贪婪匹配</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#匹配模式"><span class="nav-number">4.6.</span> <span class="nav-text">匹配模式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#豆瓣内容爬取"><span class="nav-number">5.</span> <span class="nav-text">豆瓣内容爬取</span></a></li></ol></div>
             
 
           </div>
@@ -790,7 +824,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">19.2k</span>
+    <span title="Site words total count">20.3k</span>
   
 </div>
 
