@@ -109,7 +109,7 @@
 <meta property="og:image" content="https://skrskr66.github.io/2018/12/10/python-对豆瓣的top250的爬取/douban1.png">
 <meta property="og:image" content="https://skrskr66.github.io/2018/12/10/python-对豆瓣的top250的爬取/douban2.png">
 <meta property="og:image" content="https://skrskr66.github.io/2018/12/10/python-对豆瓣的top250的爬取/douban3.png">
-<meta property="og:updated_time" content="2018-12-23T15:42:19.267Z">
+<meta property="og:updated_time" content="2018-12-23T15:55:59.315Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python-对豆瓣的top250的爬取">
 <meta name="twitter:description" content="之前写了一个猫眼的爬虫的代码。是利用了request()和beautifulsoup()。但是之前的方法是利用了selector的搜索方法。最近学习了一点正则表达式，用正则表达式对豆瓣的top250进行了尝试。 豆瓣一直都是我比较喜欢的一个app，我也很喜欢看电影，你如果喜欢，在我的博客里有我的豆瓣链接，我们可以互粉一下聊聊电影hhhhhh，看得不多，但坚持再看并且写影评。 这次爬取下来top25">
@@ -463,11 +463,9 @@
 <td style="text-align:center">abc？表示ab/abc</td>
 </tr>
 <tr>
-<td style="text-align:center">\</td>
-<td style="text-align:center"></td>
+<td style="text-align:center">&#124;</td>
 <td style="text-align:center">左右表达式的任意一个</td>
-<td>abc\</td>
-<td>def表示 abc、def</td>
+<td style="text-align:center">abc &#124; def表示 abc、def</td>
 </tr>
 </tbody>
 </table>
@@ -502,10 +500,8 @@
 </tr>
 <tr>
 <td style="text-align:center">( )</td>
-<td style="text-align:center">分组标记，内部只能使用\</td>
-<td style="text-align:center">操作符</td>
-<td>(abc)表示abc,(abc\</td>
-<td>def)表示abc、def</td>
+<td style="text-align:center">分组标记，内部只能使用 &#124; 操作符</td>
+<td style="text-align:center">(abc)表示abc,(abc &#124; def)表示abc、def</td>
 </tr>
 <tr>
 <td style="text-align:center">\d</td>
