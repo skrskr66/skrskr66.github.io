@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://skrskr66.github.io/"/>
-  <updated>2019-01-03T14:48:56.890Z</updated>
+  <updated>2019-01-04T15:14:36.936Z</updated>
   <id>https://skrskr66.github.io/</id>
   
   <author>
@@ -21,12 +21,22 @@
     <link href="https://skrskr66.github.io/2019/01/03/vim%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93/"/>
     <id>https://skrskr66.github.io/2019/01/03/vim操作总结/</id>
     <published>2019-01-03T14:48:56.000Z</published>
-    <updated>2019-01-03T14:48:56.890Z</updated>
+    <updated>2019-01-04T15:14:36.936Z</updated>
+    
+    <content type="html"><![CDATA[<p>之前学了Linux，用了vim之后发现特别强大。这一周又在做串口实验，我又用的Linux做的，再一次感觉到vim的强大。但是在写代码的过程中，因为快捷键没有记住，所以并不流畅。所以这周闲了，赶快来总结一下。</p>]]></content>
     
     <summary type="html">
     
+      
+      
+        &lt;p&gt;之前学了Linux，用了vim之后发现特别强大。这一周又在做串口实验，我又用的Linux做的，再一次感觉到vim的强大。但是在写代码的过程中，因为快捷键没有记住，所以并不流畅。所以这周闲了，赶快来总结一下。&lt;/p&gt;
+
+      
+    
     </summary>
     
+    
+      <category term="Linux" scheme="https://skrskr66.github.io/tags/Linux/"/>
     
   </entry>
   

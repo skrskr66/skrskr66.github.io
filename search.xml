@@ -3,7 +3,10 @@
   <entry>
     <title><![CDATA[vim操作总结]]></title>
     <url>%2F2019%2F01%2F03%2Fvim%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[之前学了Linux，用了vim之后发现特别强大。这一周又在做串口实验，我又用的Linux做的，再一次感觉到vim的强大。但是在写代码的过程中，因为快捷键没有记住，所以并不流畅。所以这周闲了，赶快来总结一下。]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[初阶C-1201]]></title>
