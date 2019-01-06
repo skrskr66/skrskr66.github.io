@@ -98,18 +98,24 @@
 
 
 
-<meta name="description" content="这周学校布置了关于操作系统的知识点论文，正好也写篇博客来好好分析一下关于进程调度的知识点。">
+<meta name="description" content="这周学校布置了关于操作系统的知识点论文，正好也写篇博客来好好分析一下关于进程调度的知识点。 调度的基本概念在多道程序系统中，进程的数量往往是多于处理机的个数的，这样不可能同时并行地处理各个进程。处理机调度，就是从就绪队列中按照一定的算法选择一个进程并将处理机分配给它运行，以实现进程的并发执行。 调度的三个层次高级调度由于内存空间有限，有时无法将用户的作业全部放入内存，因此就需要确定某种规则来决定将">
 <meta name="keywords" content="操作系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统之进程调度">
 <meta property="og:url" content="https://skrskr66.github.io/2019/01/05/操作系统之进程调度/index.html">
 <meta property="og:site_name" content="程序程">
-<meta property="og:description" content="这周学校布置了关于操作系统的知识点论文，正好也写篇博客来好好分析一下关于进程调度的知识点。">
+<meta property="og:description" content="这周学校布置了关于操作系统的知识点论文，正好也写篇博客来好好分析一下关于进程调度的知识点。 调度的基本概念在多道程序系统中，进程的数量往往是多于处理机的个数的，这样不可能同时并行地处理各个进程。处理机调度，就是从就绪队列中按照一定的算法选择一个进程并将处理机分配给它运行，以实现进程的并发执行。 调度的三个层次高级调度由于内存空间有限，有时无法将用户的作业全部放入内存，因此就需要确定某种规则来决定将">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-05T14:53:55.687Z">
+<meta property="og:image" content="https://skrskr66.github.io/2019/01/05/操作系统之进程调度/操作系统1.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/01/05/操作系统之进程调度/操作系统2.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/01/05/操作系统之进程调度/操作系统3.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/01/05/操作系统之进程调度/操作系统2.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/01/05/操作系统之进程调度/操作系统4.png">
+<meta property="og:updated_time" content="2019-01-06T12:12:32.707Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统之进程调度">
-<meta name="twitter:description" content="这周学校布置了关于操作系统的知识点论文，正好也写篇博客来好好分析一下关于进程调度的知识点。">
+<meta name="twitter:description" content="这周学校布置了关于操作系统的知识点论文，正好也写篇博客来好好分析一下关于进程调度的知识点。 调度的基本概念在多道程序系统中，进程的数量往往是多于处理机的个数的，这样不可能同时并行地处理各个进程。处理机调度，就是从就绪队列中按照一定的算法选择一个进程并将处理机分配给它运行，以实现进程的并发执行。 调度的三个层次高级调度由于内存空间有限，有时无法将用户的作业全部放入内存，因此就需要确定某种规则来决定将">
+<meta name="twitter:image" content="https://skrskr66.github.io/2019/01/05/操作系统之进程调度/操作系统1.png">
 
 
 
@@ -375,7 +381,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  43
+                  3.3k
                 </span>
               
 
@@ -391,7 +397,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  11
                 </span>
               
             </div>
@@ -413,6 +419,237 @@
 
       
         <p>这周学校布置了关于操作系统的知识点论文，正好也写篇博客来好好分析一下关于进程调度的知识点。</p>
+<h4 id="调度的基本概念"><a href="#调度的基本概念" class="headerlink" title="调度的基本概念"></a>调度的基本概念</h4><p>在多道程序系统中，进程的数量往往是多于处理机的个数的，这样不可能同时并行地处理各个进程。处理机调度，就是从就绪队列中<strong>按照一定的算法选择一个进程</strong>并<strong>将处理机分配给它</strong>运行，以实现进程的并发执行。</p>
+<h4 id="调度的三个层次"><a href="#调度的三个层次" class="headerlink" title="调度的三个层次"></a>调度的三个层次</h4><h5 id="高级调度"><a href="#高级调度" class="headerlink" title="高级调度"></a>高级调度</h5><p>由于内存空间有限，有时无法将用户的作业全部放入内存，因此就需要确定某种规则来决定将作业调入内存的顺序。</p>
+<p><strong>高级调度（作业调度）</strong>。按一定的原则从外存上处于后备队列的作业中挑选一个（或多个）作业，给他们分配内存等必要资源，并<strong>建立相应的进程（建立PCB）</strong>，以使它们<strong>获得竞争处理机的权利</strong>。高级调度使辅存（外存）与内存之间的调度。每个作业只调入一次，调出一次。<strong>作业调入时会建立相应的PCB，作业调出时才撤销PCB</strong>。高级调度主要是指调入的问题，因为只有调入的时机需要操作系统来确定，但调出的时机必然是作业运行结束才调出。</p>
+<h5 id="中级调度"><a href="#中级调度" class="headerlink" title="中级调度"></a>中级调度</h5><p>暂时调到外存等待的进程状态为挂起状态。值得注意的是，PCB并不会一起调到外存，而是<strong>会常驻内存</strong>。PCB中会记录进程数据在外存中存放位置，进程状态等信息，操作系统通过内存中的PCB来保持对各个进程的监控、管理。被挂起的进程PCB会被放到的挂起队列中。</p>
+<p><strong>中级调度（内存调度）</strong>，就是要决定将哪个处于挂起状态的进程重新调入内存。</p>
+<p>一个进程可能会被多次调出、调入内存，因此中级调度发生的<strong>频率</strong>要比高级调度更高。</p>
+<h5 id="低级调度"><a href="#低级调度" class="headerlink" title="低级调度"></a>低级调度</h5><p><strong>低级调度（进程调度）</strong>，其主要任务是按照某种方法和策略从就绪队列中选取一个进程，将处理机分配给它。</p>
+<p>进程调度是操作系统中<strong>最基本的一种调度</strong>，在一般的操作系统中都必须配置进程调度。</p>
+<p>进程调度的频率很高，一般几十毫秒一次。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">要做什么</th>
+<th style="text-align:center">调度发生在..</th>
+<th style="text-align:center">发生频率</th>
+<th style="text-align:center">对进程状态的影响</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">高级调度</td>
+<td style="text-align:center">按照某种规则，从后备队列中选择合适的作业将其调入内存，并为其创建进程</td>
+<td style="text-align:center">外存→内存</td>
+<td style="text-align:center">最低</td>
+<td style="text-align:center">无→创建态→就绪态</td>
+</tr>
+<tr>
+<td style="text-align:center">中级调度</td>
+<td style="text-align:center">按照某种规则，从挂起队列中选择合适的进程将其数据调回内存</td>
+<td style="text-align:center">外存→内存</td>
+<td style="text-align:center">中等</td>
+<td style="text-align:center">挂起态→就绪态</td>
+</tr>
+<tr>
+<td style="text-align:center">低级调度</td>
+<td style="text-align:center">按照某种规则，从就绪队列中选择一个进程为其分配处理机</td>
+<td style="text-align:center">内存→CPU</td>
+<td style="text-align:center">最高</td>
+<td style="text-align:center">就绪态→运行态</td>
+</tr>
+</tbody>
+</table>
+<h4 id="进程调度的方式"><a href="#进程调度的方式" class="headerlink" title="进程调度的方式"></a>进程调度的方式</h4><h5 id="非抢占方式"><a href="#非抢占方式" class="headerlink" title="非抢占方式"></a>非抢占方式</h5><p>只允许进程主动放弃处理机。在运行过程中即便有更紧迫的任务到达，当前进程依然会继续使用处理机，直到该进程终止或主动要求进入阻塞态。</p>
+<h5 id="抢占方式"><a href="#抢占方式" class="headerlink" title="抢占方式"></a>抢占方式</h5><p>当一个进程正在处理机上执行时，如果有一个更重要或更紧迫的进程需要使用处理机，则立即暂停正在执行的进程，将处理机分配给更重要紧迫的那个进程。</p>
+<p>进程调度中的这两种方式决定了调度中时间的改变。</p>
+<h4 id="调度算法的评价指标"><a href="#调度算法的评价指标" class="headerlink" title="调度算法的评价指标"></a>调度算法的评价指标</h4><p>CPU利用率 = 忙碌的时间/总时间</p>
+<p>系统吞吐量 = 总共完成了多少道作业/总共花了多少时间</p>
+<p>周转时间 = 作业完成时间 - 作业提交时间（到达时间）</p>
+<p>平均周转时间 = 各作业周转时间之和 / 作业数</p>
+<p>带权周转时间 = 作业周转时间/作业实际运行的时间</p>
+<p>平均带权周转时间 = 各作业带权周转时间之和/作业数</p>
+<p>这些名词可以衡量一个进程调度过程中，是否能达到一个高效的过程。时间的分配是否合理。但是这些也并不是都是绝对的。因为考虑到有些进程的调度有其他因素的考虑，所以我们只是将其作为一个参考。</p>
+<h4 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h4><h5 id="先来先服务（FCFS）"><a href="#先来先服务（FCFS）" class="headerlink" title="先来先服务（FCFS）"></a>先来先服务（FCFS）</h5><p><strong>先来先服务算法</strong>：主要从“公平”的角度考虑（类似于我们生活中排队买东西的例子）。一种非抢占式的算法。</p>
+<p>它主要按照作业/进程到达的先后顺序进行服务。等待时间越久的越优先得到服务。用于作业调度时，考虑的是哪个作业先到达后备队列；用于进程调度时，考虑的是哪个进程先到达就绪队列。对长作业有利，对短作业不利</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">进程</th>
+<th style="text-align:center">到达时间</th>
+<th style="text-align:center">运行时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">P1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">7</td>
+</tr>
+<tr>
+<td style="text-align:center">P2</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">P3</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">P4</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">4</td>
+</tr>
+</tbody>
+</table>
+<p>调度顺序为：P1→P2→P3→P4</p>
+<p><img src="/2019/01/05/操作系统之进程调度/操作系统1.png" alt="操作系统1"></p>
+<h5 id="短作业优先（SJF）"><a href="#短作业优先（SJF）" class="headerlink" title="短作业优先（SJF）"></a>短作业优先（SJF）</h5><p><strong>短作业优先算法</strong>：追求最少的平均等待时间，最少的平均周转时间，最少的平均带权周转时间。所谓“最短”就是要求服务时间最短。即可用于作业调度，也可用于进程调度。它具有非抢占式和抢占式。</p>
+<p><strong>非抢占式</strong>：每次调度时选择已到达且运行时间最短的作业/进程</p>
+<p><strong>抢占式(最短剩余时间优先算法)</strong>：每当有进程加入就绪队列改变时就需要调度，如果新到达的进程剩余时间比当前运行的进程剩余时间更短，则由新进程抢占处理机，当前运行进程重新回到就绪队列，另外，当一个进程完成时也需要调度。 </p>
+<p>调度顺序为：P1→P3→P2→P4</p>
+<p><img src="/2019/01/05/操作系统之进程调度/操作系统2.png" alt="操作系统2"></p>
+<h5 id="高响应比优先（HRRN）"><a href="#高响应比优先（HRRN）" class="headerlink" title="高响应比优先（HRRN）"></a>高响应比优先（HRRN）</h5><p><strong>高响应比优先算法：</strong>要综合考虑作业/进程的等待时间和要求服务的时间</p>
+<p>在每次调度时先计算各个作业/进程的响应比，选择响应比最高的作业/进程为其服务。</p>
+<p>响应比 = （等待时间 + 要求服务时间）/ 要求服务时间（响应比 &gt;= 1)</p>
+<p>即可作业调度也可进程调度。它是一种非抢占式的算法。因此只有当前运行的作业/进程主动放弃处理机（CPU）时，才需要调度，才需要计算响应比。调度时<strong>计算所有就绪进程的响应比，玄响应比最高的</strong>进程上处理机。看下面例子：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">进程</th>
+<th style="text-align:center">到达时间</th>
+<th style="text-align:center">运行时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">P1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">7</td>
+</tr>
+<tr>
+<td style="text-align:center">P2</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">P3</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">P4</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">4</td>
+</tr>
+</tbody>
+</table>
+<p>0时刻：只有P1到达就绪队列，P1上处理机</p>
+<p>7时刻（P1主动放弃CPU）：就绪队列中有P2（响应比=（5+4）/4=2.25）、P3((3 + 1) / 1 =3)、P4((2 + 4)/4 = 1.5），P3的响应比高，所以P3上处理机</p>
+<p>8时刻（P3完成）：P2（2.5），p4（1.75）P2高，P2上处理机</p>
+<p>12时刻（P2完成）：就绪队列中只剩下P4.这时候P4上处理机</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">算法</th>
+<th style="text-align:center">可抢占？</th>
+<th style="text-align:center">优点</th>
+<th style="text-align:center">缺点</th>
+<th style="text-align:center">考虑到等待时间&amp;运行时间</th>
+<th style="text-align:center">会导致饥饿？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">FCFS</td>
+<td style="text-align:center">非抢占</td>
+<td style="text-align:center">实现简单</td>
+<td style="text-align:center">对短作业不利</td>
+<td style="text-align:center">1，0</td>
+<td style="text-align:center">不会</td>
+</tr>
+<tr>
+<td style="text-align:center">SJF/SPF</td>
+<td style="text-align:center">默认为非抢占式，但也有抢占式</td>
+<td style="text-align:center">最短的平均等待/周转时间</td>
+<td style="text-align:center">对长作业不利，可能导致饥饿；难以做到真正的短作业优先</td>
+<td style="text-align:center">0，1</td>
+<td style="text-align:center">会</td>
+</tr>
+<tr>
+<td style="text-align:center">HRRN</td>
+<td style="text-align:center">非抢占</td>
+<td style="text-align:center">上述两种算法的权衡折中，综合考虑的等待时间和运行时间</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">1，1</td>
+<td style="text-align:center">不会</td>
+</tr>
+</tbody>
+</table>
+<p>注：1为考虑到，0为没有考虑到</p>
+<p><strong>以上这三种算法一般适合于早期的批处理系统。下面的算法适合于交互式系统的调度算法。</strong> </p>
+<h5 id="时间片轮转调度算法"><a href="#时间片轮转调度算法" class="headerlink" title="时间片轮转调度算法"></a>时间片轮转调度算法</h5><p><strong>时间片轮转算法：</strong>公平地、轮流地为各个进程服务，让每个进程在一定时间隔内都可以得到响应。按照各进程到达就绪队列的顺序，轮流让各个进程执行一个时间片（如100ms），若进程未在一个时间片内执行完，则剥夺处理机，将进程重新放到就绪队列队尾重新排队。</p>
+<p>只用于进程调度，只有作业放入内存建立了相应的进程后，才能被分配处理机时间片。该算法也属于抢占式算法，由时钟装置发出时钟中断，来通知CPU时间片已到。轮流让就绪队列中的进程依次执行一个时间片（每次选择的都是排在就绪队列队头的进程）。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">进程</th>
+<th style="text-align:center">到达时间</th>
+<th style="text-align:center">运行时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">P1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td style="text-align:center">P2</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">P3</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">P4</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/2019/01/05/操作系统之进程调度/操作系统3.png" alt="操作系统3"></p>
+<p>时间片的大小为2。</p>
+<p>0时刻(P1(5)):0时刻只有P1到达就绪队列，让P1上处理机运行一个时间片</p>
+<p>2时刻(P2(4)→P1(3))：2时刻P2到达就绪队列，P1运行完一个时间片，被剥夺处理机，重新放到队尾。此时P2排在队头，因此让P2上处理机。(注意：2时刻，P1下处理机，同一时刻新进程P2到达，如果在题目中遇到这种情况，<strong>默认新到达的进程先进入就绪队列</strong>)</p>
+<p>4时刻(P1(3)→P3(1)→P2(2)):4时刻，P3到达，先插到就绪队尾，紧接着，P2下处理机也插到队尾</p>
+<p>5时刻(P3(1)→P2(2)→P4(6)):5时刻，P4到达插到就绪队尾(注意：由于P1的时间片还没用完，因此P1重新排到就绪队列之后，等到执行)</p>
+<p>6时刻(P3(1)→P2(2)→P4(6)→P1(1)):6时刻，P1时间片用完，下处理机，重新放回就绪队尾，发生调度</p>
+<p>7时刻(P2(2)→P4(6)→P1(1))：虽然P3的时间片没用完，但是由于P3只需运行1个单位的时间，运行完了会主动放弃处理机，因此也会主动放弃处理机，因此也会发生调度。队头进程P2上处理机。</p>
+<p>9时刻(P4(6)→P1(1))：进程P2时间片用完，并刚好运行完，发生调度，P4上处理机</p>
+<p>11时刻(P1(1)→P4(4))：P4时间片用完，重新回到就绪队列，P1上处理机</p>
+<p>12时刻(P4(4))：P1运行完，主动放弃处理机，此时就绪队列中只剩P4，P4上处理机</p>
+<p>14时刻()：就绪队列为空，因此让P4接着运行一个时间片</p>
+<p>16时刻：所有进程运行结束</p>
+<h5 id="优先级调度算法"><a href="#优先级调度算法" class="headerlink" title="优先级调度算法"></a>优先级调度算法</h5><p><strong>优先级调度算法：</strong>每个作业/进程有各自的优先级，调度时选择优先级最高的作业/进程。即可用于作业调度，也可用于进程调度。</p>
+<p><strong>非抢占式：</strong>只需在进程主动放弃处理机时进行调度即可，每次调度时选择当前已到达且优先级最高的进程。当前进程主动放弃处理机时发生调度</p>
+<p><img src="/2019/01/05/操作系统之进程调度/操作系统2.png" alt="操作系统2"></p>
+<p><strong>抢占式：</strong>需要在就绪队列变化时，检查是否会发生抢占。每次调度时选择当前已到达且优先级最高的进程。当前进程主动放弃处理机时发生调度。另外，当就绪队列改变时也需要检查是否会发生抢占。</p>
+<p><img src="/2019/01/05/操作系统之进程调度/操作系统4.png" alt="操作系统4"></p>
+<p>0时刻(P1):只有P1到达，P1上处理机</p>
+<p>2时刻(P2)：P2到达就绪队列，优先级比P1更高，发生抢占。P1回到就绪队列，P2上处理机</p>
+<p>4时刻(P1、P3)：P3到达，优先级比P2更高，P2回到就绪队列，P3抢占处理机</p>
+<p>5时刻(P1、P2、P4):P3完成，主动释放处理机，同时，P4也到达，由于P2比P4更先进入就绪队列，因此选择P2上处理机</p>
+<p>7时刻(P1、P4):P2完成，就绪队列只剩P1、P4，P4上处理机。</p>
+<p>11时刻(P1):P4完成，P1上处理机。</p>
+<p>就绪队列未必只有一个，可以按照不同优先级来组织，另外，也可以把优先级高的进程排在更靠近队头的位置。</p>
+<p>以上就是关于操作系统进程调度的基本定义和算法。毕竟CPU是计算机的核心，它具有对我们的进程进行分配的一个过程。可以看作是OS中关键的部分。比如我们日常生活中又想听歌又想敲代码。这时候我们的CPU就要对我们的这个行为进行一个分配管理。通过一个学期的学习，OS让我更加对计算机和编程有了更大兴趣。也真的更加看到了自己的不足。想真正成为一个大佬还差得十万八千里呢。所以，从现在脚踏实地的做起吧。</p>
 
       
     </div>
@@ -520,8 +757,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -606,6 +852,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#调度的基本概念"><span class="nav-number">1.</span> <span class="nav-text">调度的基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调度的三个层次"><span class="nav-number">2.</span> <span class="nav-text">调度的三个层次</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#高级调度"><span class="nav-number">2.1.</span> <span class="nav-text">高级调度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#中级调度"><span class="nav-number">2.2.</span> <span class="nav-text">中级调度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#低级调度"><span class="nav-number">2.3.</span> <span class="nav-text">低级调度</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程调度的方式"><span class="nav-number">3.</span> <span class="nav-text">进程调度的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#非抢占方式"><span class="nav-number">3.1.</span> <span class="nav-text">非抢占方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#抢占方式"><span class="nav-number">3.2.</span> <span class="nav-text">抢占方式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调度算法的评价指标"><span class="nav-number">4.</span> <span class="nav-text">调度算法的评价指标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调度算法"><span class="nav-number">5.</span> <span class="nav-text">调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#先来先服务（FCFS）"><span class="nav-number">5.1.</span> <span class="nav-text">先来先服务（FCFS）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#短作业优先（SJF）"><span class="nav-number">5.2.</span> <span class="nav-text">短作业优先（SJF）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#高响应比优先（HRRN）"><span class="nav-number">5.3.</span> <span class="nav-text">高响应比优先（HRRN）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#时间片轮转调度算法"><span class="nav-number">5.4.</span> <span class="nav-text">时间片轮转调度算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#优先级调度算法"><span class="nav-number">5.5.</span> <span class="nav-text">优先级调度算法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -642,7 +904,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">23.7k</span>
+    <span title="Site words total count">27k</span>
   
 </div>
 
