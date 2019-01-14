@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://skrskr66.github.io/"/>
-  <updated>2019-01-07T15:05:59.593Z</updated>
+  <updated>2019-01-14T14:08:07.714Z</updated>
   <id>https://skrskr66.github.io/</id>
   
   <author>
@@ -21,12 +21,23 @@
     <link href="https://skrskr66.github.io/2019/01/07/C%E8%BF%9B%E9%98%B6-%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AD%98%E5%82%A8/"/>
     <id>https://skrskr66.github.io/2019/01/07/C进阶-数据的存储/</id>
     <published>2019-01-07T15:05:59.000Z</published>
-    <updated>2019-01-07T15:05:59.593Z</updated>
+    <updated>2019-01-14T14:08:07.714Z</updated>
+    
+    <content type="html"><![CDATA[<p>就目前来看，<code>C++</code>和<code>JAVA</code>的选择我选择了前者。</p><p>大家都说是Hard模式，但是自己不尝试，不努力又怎么知道能否成功呢！</p><p>所以再一次开始了C语言的进阶。这几部分总结完之后，我想就能开始C++的真正学习了！</p>]]></content>
     
     <summary type="html">
     
+      
+      
+        &lt;p&gt;就目前来看，&lt;code&gt;C++&lt;/code&gt;和&lt;code&gt;JAVA&lt;/code&gt;的选择我选择了前者。&lt;/p&gt;
+&lt;p&gt;大家都说是Hard模式，但是自己不尝试，不努力又怎么知道能否成功呢！&lt;/p&gt;
+&lt;p&gt;所以再一次开始了C语言的进阶。这几部分总结完之后，我想就能开始C++的真正
+      
+    
     </summary>
     
+    
+      <category term="进阶C" scheme="https://skrskr66.github.io/tags/%E8%BF%9B%E9%98%B6C/"/>
     
   </entry>
   

@@ -3,7 +3,10 @@
   <entry>
     <title><![CDATA[C进阶-数据的存储]]></title>
     <url>%2F2019%2F01%2F07%2FC%E8%BF%9B%E9%98%B6-%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AD%98%E5%82%A8%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[就目前来看，C++和JAVA的选择我选择了前者。 大家都说是Hard模式，但是自己不尝试，不努力又怎么知道能否成功呢！ 所以再一次开始了C语言的进阶。这几部分总结完之后，我想就能开始C++的真正学习了！]]></content>
+      <tags>
+        <tag>进阶C</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[操作系统之进程调度]]></title>
