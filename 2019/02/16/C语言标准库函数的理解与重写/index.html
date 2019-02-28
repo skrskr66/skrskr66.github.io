@@ -85,7 +85,7 @@
 
 
 
-  <meta name="keywords" content="C初阶,">
+  <meta name="keywords" content="进阶C,">
 
 
 
@@ -98,18 +98,18 @@
 
 
 
-<meta name="description" content="#C常见的几种比较我用的VS2013，头文件与源文件分开，在此只贴出函数。 1.给定两个整形变量的值，将两个值的内容进行交换。  123456789void compare()&amp;#123;	int a = 10;	int b = 20;	int tmp = 0;	tmp = a;	a = b;	b = tmp;	printf(&quot;a=%d,b=%d&quot;, a, b);&amp;#125; 2.不允许创建临时变">
-<meta name="keywords" content="C初阶">
+<meta name="description" content="1.实现strcpy  2.实现strcat  3.实现strstr  4.实现strchr  5.实现strcmp  6.实现memcpy  7.实现memmove  为了更好的去理解这几个函数的用法，自己去实现一下功能，才能更好的学习 123456789#include&amp;lt;assert.h&amp;gt;size_t Strlen(const char* str)&amp;#123;	//无符号整型">
+<meta name="keywords" content="进阶C">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初阶C_1025">
-<meta property="og:url" content="https://skrskr66.github.io/2018/10/31/初阶阶C-1025/index.html">
+<meta property="og:title" content="C语言标准库函数的理解与重写">
+<meta property="og:url" content="https://skrskr66.github.io/2019/02/16/C语言标准库函数的理解与重写/index.html">
 <meta property="og:site_name" content="程序程">
-<meta property="og:description" content="#C常见的几种比较我用的VS2013，头文件与源文件分开，在此只贴出函数。 1.给定两个整形变量的值，将两个值的内容进行交换。  123456789void compare()&amp;#123;	int a = 10;	int b = 20;	int tmp = 0;	tmp = a;	a = b;	b = tmp;	printf(&quot;a=%d,b=%d&quot;, a, b);&amp;#125; 2.不允许创建临时变">
+<meta property="og:description" content="1.实现strcpy  2.实现strcat  3.实现strstr  4.实现strchr  5.实现strcmp  6.实现memcpy  7.实现memmove  为了更好的去理解这几个函数的用法，自己去实现一下功能，才能更好的学习 123456789#include&amp;lt;assert.h&amp;gt;size_t Strlen(const char* str)&amp;#123;	//无符号整型">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-07T15:03:41.412Z">
+<meta property="og:updated_time" content="2019-02-17T10:36:56.129Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初阶C_1025">
-<meta name="twitter:description" content="#C常见的几种比较我用的VS2013，头文件与源文件分开，在此只贴出函数。 1.给定两个整形变量的值，将两个值的内容进行交换。  123456789void compare()&amp;#123;	int a = 10;	int b = 20;	int tmp = 0;	tmp = a;	a = b;	b = tmp;	printf(&quot;a=%d,b=%d&quot;, a, b);&amp;#125; 2.不允许创建临时变">
+<meta name="twitter:title" content="C语言标准库函数的理解与重写">
+<meta name="twitter:description" content="1.实现strcpy  2.实现strcat  3.实现strstr  4.实现strchr  5.实现strcmp  6.实现memcpy  7.实现memmove  为了更好的去理解这几个函数的用法，自己去实现一下功能，才能更好的学习 123456789#include&amp;lt;assert.h&amp;gt;size_t Strlen(const char* str)&amp;#123;	//无符号整型">
 
 
 
@@ -139,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="https://skrskr66.github.io/2018/10/31/初阶阶C-1025/">
+  <link rel="canonical" href="https://skrskr66.github.io/2019/02/16/C语言标准库函数的理解与重写/">
 
 
 
 
 
-  <title>初阶C_1025 | 程序程</title>
+  <title>C语言标准库函数的理解与重写 | 程序程</title>
   
 
 
@@ -314,7 +314,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://skrskr66.github.io/2018/10/31/初阶阶C-1025/">
+    <link itemprop="mainEntityOfPage" href="https://skrskr66.github.io/2019/02/16/C语言标准库函数的理解与重写/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lyc">
@@ -331,7 +331,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">初阶C_1025</h1>
+          <h1 class="post-title" itemprop="name headline">C语言标准库函数的理解与重写</h1>
         
 
         <div class="post-meta">
@@ -343,8 +343,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-31T20:12:27+08:00">
-                2018-10-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-16T12:33:44+08:00">
+                2019-02-16
               </time>
             
 
@@ -375,7 +375,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  384
+                  674
                 </span>
               
 
@@ -391,7 +391,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -412,17 +412,16 @@
       
 
       
-        <p>#C常见的几种比较<br>我用的VS2013，头文件与源文件分开，在此只贴出函数。</p>
-<p>1.给定两个整形变量的值，将两个值的内容进行交换。 </p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void <span class="built_in">compare</span>()&#123;</span><br><span class="line">	int a = <span class="number">10</span><span class="comment">;</span></span><br><span class="line">	int <span class="keyword">b </span>= <span class="number">20</span><span class="comment">;</span></span><br><span class="line">	int tmp = <span class="number">0</span><span class="comment">;</span></span><br><span class="line">	tmp = a<span class="comment">;</span></span><br><span class="line">	a = <span class="keyword">b;</span></span><br><span class="line"><span class="keyword">	</span><span class="keyword">b </span>= tmp<span class="comment">;</span></span><br><span class="line">	printf(<span class="string">"a=%d,b=%d"</span>, a, <span class="keyword">b);</span></span><br><span class="line"><span class="keyword">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>2.不允许创建临时变量，交换两个数的内容</p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void compare2()&#123;</span><br><span class="line">	int a = <span class="number">20</span><span class="comment">;</span></span><br><span class="line">	int <span class="keyword">b </span>= <span class="number">10</span><span class="comment">;</span></span><br><span class="line">	a = a - <span class="keyword">b;</span></span><br><span class="line"><span class="keyword">	</span><span class="keyword">b </span>= a + <span class="keyword">b;</span></span><br><span class="line"><span class="keyword">	</span>a = <span class="keyword">b </span>- a<span class="comment">;</span></span><br><span class="line">	printf(<span class="string">"a=%d,b=%d"</span>, a, <span class="keyword">b);</span></span><br><span class="line"><span class="keyword">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>3.求10 个整数中最大值。 </p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void compare3()&#123;</span><br><span class="line">	int a[<span class="number">10</span>] = &#123; <span class="number">12</span>, <span class="number">23</span>, <span class="number">51</span>, <span class="number">5</span>, <span class="number">24</span>, <span class="number">35</span>, <span class="number">62</span>, <span class="number">25</span>, <span class="number">19</span>, <span class="number">60</span> &#125;;</span><br><span class="line">	int i;</span><br><span class="line">	int max = a[<span class="number">0</span>];</span><br><span class="line">	for (i = <span class="number">0</span>; i &lt; <span class="number">11</span>; i++)&#123;</span><br><span class="line">		if (max &lt; a[i])&#123;</span><br><span class="line">			max = a[i];		</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(<span class="string">"最大数为%d"</span>, max);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>4.将三个数按从大到小输出。</p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">void compare4(int a,int <span class="keyword">b,int </span>c)&#123;</span><br><span class="line">	int tmp = <span class="number">0</span><span class="comment">;</span></span><br><span class="line">	if (a &gt; <span class="keyword">b)&#123;</span></span><br><span class="line"><span class="keyword">	</span>	tmp = a<span class="comment">;</span></span><br><span class="line">		a = <span class="keyword">b;</span></span><br><span class="line"><span class="keyword">	</span>	<span class="keyword">b </span>= tmp<span class="comment">;</span></span><br><span class="line">	&#125;</span><br><span class="line">	if (<span class="keyword">b </span>&gt; c)&#123;</span><br><span class="line">		tmp = <span class="keyword">b;</span></span><br><span class="line"><span class="keyword">	</span>	<span class="keyword">b </span>= c<span class="comment">;</span></span><br><span class="line">		c = tmp<span class="comment">;</span></span><br><span class="line">	&#125;</span><br><span class="line">	if (a &gt; <span class="keyword">b)&#123;</span></span><br><span class="line"><span class="keyword">	</span>	tmp = a<span class="comment">;</span></span><br><span class="line">		a = <span class="keyword">b;</span></span><br><span class="line"><span class="keyword">	</span>	<span class="keyword">b </span>= tmp<span class="comment">;</span></span><br><span class="line">	&#125;</span><br><span class="line">	printf(<span class="string">"这三个数的排序为：%d,%d,%d"</span>, a, <span class="keyword">b, </span>c)<span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在这里特别说一下，求最大公约数这用的是相减法，在while语句中，有个特别注意的。a-b的数需要考虑大小的问题，因为一直用大数减小数直到为0.<br>5.求两个数的最大公约数。</p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">void compare5(int a,int <span class="keyword">b)&#123;</span></span><br><span class="line"><span class="keyword">	</span>int tmp = <span class="number">0</span><span class="comment">;</span></span><br><span class="line">	if (a &lt; <span class="keyword">b)&#123;</span></span><br><span class="line"><span class="keyword">	</span>	tmp = a<span class="comment">;</span></span><br><span class="line">		a = <span class="keyword">b;</span></span><br><span class="line"><span class="keyword">	</span>	<span class="keyword">b </span>= tmp<span class="comment">;</span></span><br><span class="line">	&#125;</span><br><span class="line">	while (a-<span class="keyword">b!=0)&#123;</span></span><br><span class="line"><span class="keyword">	</span>	tmp = a - <span class="keyword">b;</span></span><br><span class="line"><span class="keyword">	</span>	a = <span class="keyword">b;</span></span><br><span class="line"><span class="keyword">	</span>	<span class="keyword">b </span>= tmp<span class="comment">;</span></span><br><span class="line">			if (a &lt; <span class="keyword">b)&#123;</span></span><br><span class="line"><span class="keyword">	</span>		tmp = a<span class="comment">;</span></span><br><span class="line">			a = <span class="keyword">b;</span></span><br><span class="line"><span class="keyword">	</span>		<span class="keyword">b </span>= tmp<span class="comment">;</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(<span class="string">"最大公约数为：%d"</span>, <span class="keyword">b);</span></span><br><span class="line"><span class="keyword">&#125;</span></span><br></pre></td></tr></table></figure>
+        <p>1.实现strcpy  2.实现strcat  3.实现strstr  4.实现strchr  5.实现strcmp  6.实现memcpy  7.实现memmove </p>
+<p>为了更好的去理解这几个函数的用法，自己去实现一下功能，才能更好的学习</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;assert.h&gt;</span></span></span><br><span class="line"><span class="keyword">size_t</span> Strlen(<span class="keyword">const</span> <span class="keyword">char</span>* str)&#123;	<span class="comment">//无符号整型</span></span><br><span class="line">    assert(str != <span class="literal">NULL</span>);<span class="comment">//首先要进行合法性判断，如果字符串本身都有问题，那么就没必要检验了</span></span><br><span class="line">    <span class="keyword">size_t</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(str[count] != <span class="string">'\0'</span>)&#123;</span><br><span class="line">        ++count;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> conunt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;assert.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">Strcpy</span><span class="params">(<span class="keyword">char</span>* dest,<span class="keyword">const</span> <span class="keyword">char</span>* src)</span></span>&#123;</span><br><span class="line">    assert(dest != <span class="literal">NULL</span>);</span><br><span class="line">    assert(src != <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">int64_t</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;src[i] != <span class="string">'\0'</span>;i++)&#123;</span><br><span class="line">        dest[i] = src[i];</span><br><span class="line">    &#125;</span><br><span class="line">    dest[i] = <span class="string">'\0'</span>;</span><br><span class="line">    <span class="keyword">return</span> dest;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;assert.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">Strcat</span><span class="params">(<span class="keyword">char</span>* dest,<span class="keyword">const</span> <span class="keyword">char</span>* src)</span></span>&#123;</span><br><span class="line">    assert(dest != <span class="literal">NULL</span>);</span><br><span class="line">    assert(src != <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; dest[i] != <span class="string">'\0'</span>;i++);</span><br><span class="line">    Strcpy(&amp;dest[i],src);</span><br><span class="line">    <span class="keyword">return</span> dest;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;assert.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">const</span> <span class="keyword">char</span>* <span class="title">Strstr</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* str1,<span class="keyword">const</span> <span class="keyword">char</span>* str2)</span></span>&#123;</span><br><span class="line">    assert(str1 != <span class="literal">NULL</span>);</span><br><span class="line">    assert(str2 != <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">if</span>(*str1 == <span class="string">'\0'</span> || *str2 == <span class="string">'\0'</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span>* black_ptr = str1;</span><br><span class="line">    <span class="keyword">while</span>(*black_ptr != <span class="string">'\0'</span>)&#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">char</span>* sub_ptr = str2;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">char</span>* red_ptr = black_ptr;</span><br><span class="line">        <span class="keyword">while</span>(*red_ptr != <span class="string">'\0'</span> &amp;&amp; *sub_ptr != <span class="string">'\0'</span> &amp;&amp;(*red_ptr == *sub_ptr))&#123;</span><br><span class="line">            ++red_ptr;</span><br><span class="line">            ++sub_ptr;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(*sub_ptr == <span class="string">'\0'</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> black_ptr;</span><br><span class="line">        &#125;</span><br><span class="line">        ++black_ptr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;assert.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">const</span> <span class="keyword">char</span>* <span class="title">Strchr</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* str,<span class="keyword">int</span> chr)</span></span>&#123;</span><br><span class="line">    assert(str != <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">while</span>(*str)&#123;<span class="comment">//*str表示字符数组中第一个字符</span></span><br><span class="line">        <span class="keyword">if</span>(*str == (<span class="keyword">char</span>)chr)&#123;</span><br><span class="line">            <span class="keyword">return</span> (<span class="keyword">char</span>*)str;<span class="comment">//此时返回的是第一个找到所需字符的地址</span></span><br><span class="line">        &#125;</span><br><span class="line">        ++str;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;assert.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Strcmp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* str1, <span class="keyword">const</span> <span class="keyword">char</span>* str2)</span></span>&#123;</span><br><span class="line">    assert(str1 != <span class="literal">NULL</span>);</span><br><span class="line">    assert(str2 != <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">while</span>(*str1 != <span class="string">'\0'</span> &amp;&amp; *str2 != <span class="string">'\0'</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(*str1 &gt; *str2)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(*str1 &lt; *str2)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            ++str1;</span><br><span class="line">            ++str2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//此时如果str1或者str2有一个提前遇到了'\0',那么跳出了while循环，接着判断</span></span><br><span class="line">    <span class="keyword">if</span>(*str1 &gt; *str2)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(*str1 &lt; *str2)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;assert.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span>* <span class="title">Memcpy</span><span class="params">(<span class="keyword">void</span>* dest,<span class="keyword">void</span>* src,<span class="keyword">size_t</span> num)</span></span>&#123;</span><br><span class="line">    assert(dest != <span class="literal">NULL</span>);</span><br><span class="line">    assert(src != <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">char</span>* pdest = (<span class="keyword">char</span>*)dest;<span class="comment">//void*不能解引用，类型改变，只在运算中起作用，是临时的，本身的类型不改变，所以最后还是返回dest</span></span><br><span class="line">    <span class="keyword">char</span>* psrc = (<span class="keyword">char</span>*)src;</span><br><span class="line">    <span class="keyword">size_t</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; num;++i)&#123;</span><br><span class="line">        pdest[i] = psrc[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dest;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;assert.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span>* <span class="title">Memmove</span><span class="params">(<span class="keyword">void</span>* dest,<span class="keyword">const</span> <span class="keyword">void</span>* src,<span class="keyword">size_t</span> num)</span></span>&#123;</span><br><span class="line">    assert(dest != <span class="literal">NULL</span>);</span><br><span class="line">    assert(src != <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">char</span>* pdest = (<span class="keyword">char</span>*)dest;</span><br><span class="line">    <span class="keyword">char</span>* psrc = (<span class="keyword">char</span>*)src;</span><br><span class="line">    <span class="keyword">if</span>(pdest &gt;= psrc &amp;&amp; pdest &lt; psrc + num)&#123;<span class="comment">//这是标准库认为的缓冲区重合</span></span><br><span class="line">        <span class="comment">//起始dest指针如果在src缓冲区范围以内，拷贝为缓冲区重合</span></span><br><span class="line">        <span class="comment">//以外则不为缓冲区拷贝</span></span><br><span class="line">        <span class="keyword">int64_t</span> i = <span class="number">0</span>;<span class="comment">//从最后一个元素的下标开始，倒着拷贝</span></span><br><span class="line">        <span class="keyword">for</span>(i = num - i;i &gt;= <span class="number">0</span>;i++)&#123;</span><br><span class="line">            pdest[i] = psrc[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//完全按照原来方法拷贝</span></span><br><span class="line">        Memcpy(dest,src,num);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dest;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -452,7 +451,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C初阶/" rel="tag"># C初阶</a>
+            <a href="/tags/进阶C/" rel="tag"># 进阶C</a>
           
         </div>
       
@@ -465,8 +464,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/29/新的开始/" rel="next" title="新的开始">
-                <i class="fa fa-chevron-left"></i> 新的开始
+              <a href="/2019/02/15/初阶C-0215/" rel="next" title="初阶C-0215">
+                <i class="fa fa-chevron-left"></i> 初阶C-0215
               </a>
             
           </div>
@@ -475,8 +474,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/31/初阶C-1027/" rel="prev" title="初阶C_1027">
-                初阶C_1027 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/02/21/模拟实现strncpy-strncat-strncmp/" rel="prev" title="模拟实现strncpy,strncat,strncmp">
+                模拟实现strncpy,strncat,strncmp <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -552,7 +551,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -565,7 +564,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -656,7 +655,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">27.1k</span>
+    <span title="Site words total count">40.3k</span>
   
 </div>
 
