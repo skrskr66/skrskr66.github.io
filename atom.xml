@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://skrskr66.github.io/"/>
-  <updated>2019-03-06T14:46:54.339Z</updated>
+  <updated>2019-03-06T15:16:40.717Z</updated>
   <id>https://skrskr66.github.io/</id>
   
   <author>
@@ -21,9 +21,17 @@
     <link href="https://skrskr66.github.io/2019/03/06/Django%E5%BB%BA%E7%AB%8B%E4%B8%80%E4%B8%AA%E9%9F%B3%E4%B9%90%E7%BD%91%E7%AB%99-%E4%B8%80/"/>
     <id>https://skrskr66.github.io/2019/03/06/Django建立一个音乐网站-一/</id>
     <published>2019-03-06T14:45:58.000Z</published>
-    <updated>2019-03-06T14:46:54.339Z</updated>
+    <updated>2019-03-06T15:16:40.717Z</updated>
+    
+    <content type="html"><![CDATA[<p>Django是python学习的一个分支。最近跟着书上在学习。关于书上的项目我觉得拿来练手非常合适。而且涉及了数据库，html相关知识，对程序员的学习关联性我觉得还是有很大的提升的。</p><h4 id="Django的安装"><a href="#Django的安装" class="headerlink" title="Django的安装"></a>Django的安装</h4><p>因为Django也到了2.0的时代，而且2.0之前的版本与现在有了一些很大变化，所以根据书上进行，使用2.0进行的学习。</p><p>python的环境不再多说，应该都是准备好了。</p><p>但是django与python的版本互搭问题这个请网上自己寻找。django-2.0还是推荐python3.5之上版本</p><h5 id="利用pip安装"><a href="#利用pip安装" class="headerlink" title="利用pip安装"></a>利用pip安装</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install Django</span><br></pre></td></tr></table></figure><p>这个是最简单的方式，但是如果pip版本不高，可能下的django版本也不高。还有另一个方法</p><h5 id="下载源码安装"><a href="#下载源码安装" class="headerlink" title="下载源码安装"></a>下载源码安装</h5><p><a href="https://www.djangoproject.com/download/" target="_blank" rel="noopener">https://www.djangoproject.com/download/</a> </p><p>如果是源码包, 比如 django-1.11.8.tar.gz </p><p>直接用解压软件解压，然后到命令行（XP/Win7点击<strong>开始</strong>，在下面的那个输入框中输入 cmd, Win8在开始那里点右键，选择命令行)</p><p>比如在<code>D:\django-1.11.8\</code>这个文件夹下</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd D:</span><br><span class="line">cd django<span class="number">-1.11</span><span class="number">.8</span></span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure><p>之后检查是否安装成功,从终端进入python环境.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> django</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>django.VERSION</span><br><span class="line">(<span class="number">1</span>, <span class="number">11</span>, <span class="number">8</span>, <span class="string">'final'</span>, <span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>django.get_version()</span><br><span class="line"><span class="string">'1.11.8'</span></span><br></pre></td></tr></table></figure><h4 id="Django项目的创建"><a href="#Django项目的创建" class="headerlink" title="Django项目的创建"></a>Django项目的创建</h4><p>当基本安装完成后，开始项目的创建。这时候使用Pycharm来进行项目的创建。</p><p>选择Pycharm的理由是IDE能更好的帮助我们，工具好，我们才能更好的去理解其他的知识。</p><p>在Pycharm直接新建工程。</p><p><strong>注意！注意！注意！</strong></p><p>此时不要建立成了python工程，要选择django工程。(如果你没有，说明你下载的可能是社区版，请寻找激活码激活的版本)</p><p><img src="/2019/03/06/Django建立一个音乐网站-一/django1.png" alt="django1"></p><p>如上图所示，建立完成后，开始进行项目的初始配置</p>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;p&gt;Django是python学习的一个分支。最近跟着书上在学习。关于书上的项目我觉得拿来练手非常合适。而且涉及了数据库，html相关知识，对程序员的学习关联性我觉得还是有很大的提升的。&lt;/p&gt;
+&lt;h4 id=&quot;Django的安装&quot;&gt;&lt;a href=&quot;#Django的安装&quot; c
+      
     
     </summary>
     

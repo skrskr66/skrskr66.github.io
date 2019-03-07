@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Django建立一个音乐网站(一)]]></title>
     <url>%2F2019%2F03%2F06%2FDjango%E5%BB%BA%E7%AB%8B%E4%B8%80%E4%B8%AA%E9%9F%B3%E4%B9%90%E7%BD%91%E7%AB%99-%E4%B8%80%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[Django是python学习的一个分支。最近跟着书上在学习。关于书上的项目我觉得拿来练手非常合适。而且涉及了数据库，html相关知识，对程序员的学习关联性我觉得还是有很大的提升的。 Django的安装因为Django也到了2.0的时代，而且2.0之前的版本与现在有了一些很大变化，所以根据书上进行，使用2.0进行的学习。 python的环境不再多说，应该都是准备好了。 但是django与python的版本互搭问题这个请网上自己寻找。django-2.0还是推荐python3.5之上版本 利用pip安装1pip install Django 这个是最简单的方式，但是如果pip版本不高，可能下的django版本也不高。还有另一个方法 下载源码安装https://www.djangoproject.com/download/ 如果是源码包, 比如 django-1.11.8.tar.gz 直接用解压软件解压，然后到命令行（XP/Win7点击开始，在下面的那个输入框中输入 cmd, Win8在开始那里点右键，选择命令行) 比如在D:\django-1.11.8\这个文件夹下 123cd D:cd django-1.11.8python setup.py install 之后检查是否安装成功,从终端进入python环境. 123456&gt;&gt;&gt; import django&gt;&gt;&gt; django.VERSION(1, 11, 8, 'final', 0)&gt;&gt;&gt; &gt;&gt;&gt; django.get_version()'1.11.8' Django项目的创建当基本安装完成后，开始项目的创建。这时候使用Pycharm来进行项目的创建。 选择Pycharm的理由是IDE能更好的帮助我们，工具好，我们才能更好的去理解其他的知识。 在Pycharm直接新建工程。 注意！注意！注意！ 此时不要建立成了python工程，要选择django工程。(如果你没有，说明你下载的可能是社区版，请寻找激活码激活的版本) 如上图所示，建立完成后，开始进行项目的初始配置]]></content>
       <tags>
         <tag>python, django</tag>
       </tags>
