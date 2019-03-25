@@ -98,18 +98,23 @@
 
 
 
-<meta name="description" content="Full of adventure,Full of discovery">
+<meta name="description" content="之前将网站一些该有的元素都准备完成了。接下来就是关于用户注册和后台admin设置。 user模块关于一个网站的浏览量是靠用户的数量来决定的。所以每一个用户在网站的操作，要做出限制。这个是可以实现的。接着还有一些个人的账号和数据信息可以完善，让管理员能更好的管理。 12345678910111213141516171819202122232425262728293031323334353637383">
 <meta name="keywords" content="python, django">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Django建立一个音乐网站(四)">
 <meta property="og:url" content="https://skrskr66.github.io/2019/03/16/Django建立一个音乐网站-四/index.html">
 <meta property="og:site_name" content="程序程">
-<meta property="og:description" content="Full of adventure,Full of discovery">
+<meta property="og:description" content="之前将网站一些该有的元素都准备完成了。接下来就是关于用户注册和后台admin设置。 user模块关于一个网站的浏览量是靠用户的数量来决定的。所以每一个用户在网站的操作，要做出限制。这个是可以实现的。接着还有一些个人的账号和数据信息可以完善，让管理员能更好的管理。 12345678910111213141516171819202122232425262728293031323334353637383">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-19T15:23:36.315Z">
+<meta property="og:image" content="https://skrskr66.github.io/2019/03/16/Django建立一个音乐网站-四/django.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/03/16/Django建立一个音乐网站-四/django1.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/03/16/Django建立一个音乐网站-四/django3.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/03/16/Django建立一个音乐网站-四/django4.png">
+<meta property="og:updated_time" content="2019-03-25T06:16:09.929Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django建立一个音乐网站(四)">
-<meta name="twitter:description" content="Full of adventure,Full of discovery">
+<meta name="twitter:description" content="之前将网站一些该有的元素都准备完成了。接下来就是关于用户注册和后台admin设置。 user模块关于一个网站的浏览量是靠用户的数量来决定的。所以每一个用户在网站的操作，要做出限制。这个是可以实现的。接着还有一些个人的账号和数据信息可以完善，让管理员能更好的管理。 12345678910111213141516171819202122232425262728293031323334353637383">
+<meta name="twitter:image" content="https://skrskr66.github.io/2019/03/16/Django建立一个音乐网站-四/django.png">
 
 
 
@@ -380,7 +385,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1.2k
                 </span>
               
 
@@ -396,7 +401,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -417,7 +422,22 @@
       
 
       
-        
+        <p>之前将网站一些该有的元素都准备完成了。接下来就是关于用户注册和后台admin设置。</p>
+<h5 id="user模块"><a href="#user模块" class="headerlink" title="user模块"></a>user模块</h5><p>关于一个网站的浏览量是靠用户的数量来决定的。所以每一个用户在网站的操作，要做出限制。这个是可以实现的。接着还有一些个人的账号和数据信息可以完善，让管理员能更好的管理。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#user的urls模块</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    <span class="comment">#用户的注册和登陆</span></span><br><span class="line">    path(<span class="string">'login.html'</span>, views.loginView, name=<span class="string">'login'</span>),</span><br><span class="line">    <span class="comment">#用户登录中心</span></span><br><span class="line">    path(<span class="string">'home/&lt;int:page&gt;.html'</span>, views.homeView, name=<span class="string">'home'</span>),</span><br><span class="line">    <span class="comment">#退出用户登陆</span></span><br><span class="line">    path(<span class="string">'logout.html'</span>, views.logoutView, name=<span class="string">'logout'</span>),</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">#两个html文件已经放到之前的文件下载中</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">------------------------------------------------------------------------------------------------</span><br><span class="line"><span class="comment">#user的models模块</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> AbstractUser</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyUser</span><span class="params">(AbstractUser)</span>:</span></span><br><span class="line">    qq = models.CharField(<span class="string">'QQ号码'</span>, max_length=<span class="number">20</span>)</span><br><span class="line">    weChat = models.CharField(<span class="string">'微信账号'</span>, max_length=<span class="number">20</span>)</span><br><span class="line">    mobile = models.CharField(<span class="string">'手机账号'</span>, max_length=<span class="number">11</span>, unique=<span class="keyword">True</span>)</span><br><span class="line">    <span class="comment">#设置返回值</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.username</span><br><span class="line"></span><br><span class="line"><span class="comment">#这里与之前数据库的建立连接是一个意思，此时需要将之前库内所有表删除(建议先导出数据保存)，在将这个执行</span></span><br><span class="line"><span class="comment">#python manage.py makemigrations和python manage.py migrate 两个指令操作</span></span><br><span class="line"></span><br><span class="line">------------------------------------------------------------------------------------------------</span><br><span class="line"><span class="comment">#user的forms模块</span></span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.forms <span class="keyword">import</span> UserCreationForm</span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> MyUser</span><br><span class="line"><span class="keyword">from</span> django <span class="keyword">import</span> forms</span><br><span class="line"></span><br><span class="line"><span class="comment">#定义MyUser的数据表单，用于用户注册</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyUserCreationForm</span><span class="params">(UserCreationForm)</span>:</span></span><br><span class="line">    <span class="comment">#重写初始化函数，设置自定义字段password1和password2的样式和属性</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, *args, **kwargs)</span>:</span></span><br><span class="line">        super(MyUserCreationForm, self).__init__(*args, **kwargs)</span><br><span class="line">        self.fields[<span class="string">'password1'</span>].widget = forms.PasswordInput(attrs=&#123;<span class="string">'class'</span>:<span class="string">'txt tabInput'</span>, <span class="string">'placeholder'</span>:<span class="string">'密码，4-16位数字/字母。特殊符号（空格除外）'</span>&#125;)</span><br><span class="line">        self.fields[<span class="string">'password2'</span>].widget = forms.PasswordInput(attrs=&#123;<span class="string">'class'</span>:<span class="string">'txt tabInput'</span>, <span class="string">'placeholder'</span>:<span class="string">'重复密码'</span>&#125;)</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span><span class="params">(UserCreationForm.Meta)</span>:</span></span><br><span class="line">        model = MyUser</span><br><span class="line">        <span class="comment">#在注册界面添加模型字段：手机号码和密码</span></span><br><span class="line">        fields = UserCreationForm.Meta.fields + (<span class="string">'mobile'</span>,)</span><br><span class="line">        <span class="comment">#设置模型字段的样式和属性(widgets)</span></span><br><span class="line">        widgets = &#123;</span><br><span class="line">            <span class="string">'mobile'</span>:forms.widgets.TextInput(attrs=&#123;<span class="string">'class'</span>:<span class="string">'txt tabInput'</span>,<span class="string">'placeholder'</span>:<span class="string">'手机号'</span>&#125;),</span><br><span class="line">            <span class="string">'username'</span>:forms.widgets.TextInput(attrs=&#123;<span class="string">'class'</span>:<span class="string">'txt tabInput'</span>,<span class="string">'placeholder'</span>:<span class="string">'用户名'</span>&#125;),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">#实现用户的注册和登陆之前，除了自定义用户模型MyUser之外，还需要定义用户注册的表单类。</span></span><br><span class="line">        <span class="comment">#这里通过重写Django中的内置表单类UserCreationForm</span></span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">------------------------------------------------------------------------------------------------</span><br><span class="line"><span class="comment">#user的views模块</span></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render, redirect</span><br><span class="line"><span class="keyword">from</span> django.db.models <span class="keyword">import</span> Q</span><br><span class="line"><span class="keyword">from</span> index.models <span class="keyword">import</span> Dynamic</span><br><span class="line"><span class="keyword">from</span> user.models <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth <span class="keyword">import</span> login, logout</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.hashers <span class="keyword">import</span> check_password</span><br><span class="line"><span class="keyword">from</span> .form <span class="keyword">import</span> MyUserCreationForm</span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.decorators <span class="keyword">import</span> login_required</span><br><span class="line"><span class="keyword">from</span> django.core.paginator <span class="keyword">import</span> Paginator, EmptyPage, PageNotAnInteger</span><br><span class="line"></span><br><span class="line"><span class="comment">#用户注册与登录</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">loginView</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="comment">#表单对象user</span></span><br><span class="line">    user = MyUserCreationForm()</span><br><span class="line">    <span class="comment">#表单提交</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:</span><br><span class="line">        <span class="comment">#判断表单提交是     用户登陆     还是       用户注册</span></span><br><span class="line">        <span class="comment">#用户登陆</span></span><br><span class="line">        <span class="keyword">if</span> request.POST.get(<span class="string">'loginUser'</span>, <span class="string">''</span>):<span class="comment">#获取搜索内容如果为loginUser，没有返回空</span></span><br><span class="line">            loginUser = request.POST.get(<span class="string">'loginUser'</span>, <span class="string">''</span>)<span class="comment">#这里是已经获取到用户输入的</span></span><br><span class="line">            password = request.POST.get(<span class="string">'password'</span>, <span class="string">''</span>)</span><br><span class="line">            <span class="keyword">if</span> MyUser.objects.filter(Q(mobile = loginUser) | Q(username=loginUser)):</span><br><span class="line">                user = MyUser.objects.filter(Q(mobile=loginUser) | Q(username=loginUser)).first()<span class="comment">#这里是sql语句在django中的不同表示方法</span></span><br><span class="line">                <span class="keyword">if</span> check_password(password, user.password):</span><br><span class="line">                    login(request, user)</span><br><span class="line">                    <span class="keyword">return</span> redirect(<span class="string">'/user/home/1.html'</span>)<span class="comment">#页面跳转</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    tips = <span class="string">'密码错误'</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                tips = <span class="string">'用户不存在'</span></span><br><span class="line">        <span class="comment">#用户注册</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            user = MyUserCreationForm(request.POST)</span><br><span class="line">            <span class="keyword">if</span> user.is_valid():</span><br><span class="line">                user.save()</span><br><span class="line">                tips = <span class="string">'注册成功'</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> user.errors.get(<span class="string">'username'</span>, <span class="string">''</span>):</span><br><span class="line">                    tips = user.errors.get(<span class="string">'username'</span>, <span class="string">'注册失败'</span>)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    tips = user.errors.get(<span class="string">'mobile'</span>, <span class="string">'注册失败'</span>)</span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">'login.html'</span>, locals())</span><br><span class="line"></span><br><span class="line"><span class="comment">#用户中心</span></span><br><span class="line"><span class="comment">#设置用户登录限制</span></span><br><span class="line"><span class="meta">@login_required(login_url='/user/login.html')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">homeView</span><span class="params">(request, page)</span>:</span></span><br><span class="line">    <span class="comment">#热搜歌曲</span></span><br><span class="line">    search_song = Dynamic.objects.select_related(<span class="string">'song'</span>).order_by(<span class="string">'-dynamic_search'</span>).all()[:<span class="number">4</span>]</span><br><span class="line">    <span class="comment">#分页功能</span></span><br><span class="line">    song_info = request.session.get(<span class="string">'play_list'</span>, [])</span><br><span class="line">    paginator = Paginator(song_info, <span class="number">3</span>)</span><br><span class="line">    <span class="keyword">try</span>:<span class="comment">#错误解决方法</span></span><br><span class="line">        contacts = paginator.page(page)</span><br><span class="line">    <span class="keyword">except</span> PageNotAnInteger:</span><br><span class="line">        contacts = paginator.page(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">except</span> EmptyPage:</span><br><span class="line">        contacts = paginator.page(paginator.num_pages)</span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">'home.html'</span>, locals())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logoutView</span><span class="params">(request)</span>:</span></span><br><span class="line">    logout(request)</span><br><span class="line">    <span class="keyword">return</span> redirect(<span class="string">'/'</span>)</span><br></pre></td></tr></table></figure>
+<p>在上面的代码中涉及到了表单类这么一个概念。</p>
+<p>在这里要说明以下，<strong>表单</strong>是搜集用户数据信息的各种表单元素的集合，作用是实现网页上的数据交互，用户在网站输入数据信息，然后提交到网站服务器端进行处理</p>
+<p>表单我们学过html的知道，定义一个类似下拉菜单的样式，在这个项目中是先利用了内置表单类，然后重写了两个新功能。</p>
+<p>1、添加用户注册的字段，在Meta类对fields属性设置字段即可，添加的字段必须是模型字段并且以元组或列表的形式添加</p>
+<p>2、设置字段的CSS格式，设置表单字段mobile、username、password1、password2的attrs属性。其中mobile和username是模型MyUser的字段，所以在Meta类中重写widgets属性。widgets是内置表单类的一个参数，两个密码password是额外定义的表单字段，所以重写初始函数<code>__init__</code>可以实现字段样式设置</p>
+<p>这里对表单说的有点多，因为在网站中，用户注册是一个非常重要的环节。而且表单这里还是涉及到了前端的知识…原谅本小白不才….实在能力有限。</p>
+<p>至此除了后台系统之外，基本全部完成。上几个截图看看吧</p>
+<p><img src="/2019/03/16/Django建立一个音乐网站-四/django.png" alt="django"></p>
+<p><img src="/2019/03/16/Django建立一个音乐网站-四/django1.png" alt="django1"></p>
+<p><img src="/2019/03/16/Django建立一个音乐网站-四/django3.png" alt="django3"></p>
+<p><img src="/2019/03/16/Django建立一个音乐网站-四/django4.png" alt="django4"></p>
+<p>接下来就是后台系统了….</p>
+
       
     </div>
     
@@ -468,6 +488,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/25/Django建立一个音乐网站-五/" rel="prev" title="Django建立一个音乐网站(五)">
+                Django建立一个音乐网站(五) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -524,8 +548,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -542,7 +575,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -555,7 +588,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -610,6 +643,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#user模块"><span class="nav-number">1.</span> <span class="nav-text">user模块</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -647,7 +696,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">45.6k</span>
+    <span title="Site words total count">47.1k</span>
   
 </div>
 
