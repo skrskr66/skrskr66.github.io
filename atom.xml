@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://skrskr66.github.io/"/>
-  <updated>2019-03-30T10:45:28.961Z</updated>
+  <updated>2019-03-31T15:09:31.095Z</updated>
   <id>https://skrskr66.github.io/</id>
   
   <author>
@@ -15,6 +15,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux进程概念</title>
+    <link href="https://skrskr66.github.io/2019/03/31/Linux%E8%BF%9B%E7%A8%8B%E6%A6%82%E5%BF%B5/"/>
+    <id>https://skrskr66.github.io/2019/03/31/Linux进程概念/</id>
+    <published>2019-03-31T15:09:31.000Z</published>
+    <updated>2019-03-31T15:09:31.095Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Linux的文件权限</title>
@@ -482,30 +496,6 @@
     
     
       <category term="操作系统" scheme="https://skrskr66.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vim操作总结</title>
-    <link href="https://skrskr66.github.io/2019/01/03/vim%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93/"/>
-    <id>https://skrskr66.github.io/2019/01/03/vim操作总结/</id>
-    <published>2019-01-03T14:48:56.000Z</published>
-    <updated>2019-01-05T10:08:20.983Z</updated>
-    
-    <content type="html"><![CDATA[<p>之前学了Linux，用了vim之后发现特别强大。这一周又在做串口实验，我又用的Linux做的，再一次感觉到vim的强大。但是在写代码的过程中，因为快捷键没有记住，所以并不流畅。所以这周闲了，赶快来总结一下。</p><p>首先通过指令    <code>vimtutor</code>        进入到vim新手教程。</p><p>Kana大神说过，对vim的掌握有五个层次：</p><ul><li><p>层次0： 对vim一无所知</p></li><li><p>层次1： 了解vim的基本使用</p></li><li><p>层次2： 知道可视模式</p></li><li><p>层次3： 知道多种移动动作</p></li><li><p>层次4： 不再需要可视模式</p><p>说实话，我目前只能说在层次0.5（哈哈哈哈哈哈哈哈哈）。因为我了解但是基本操作都不记得</p><h4 id="文本基本编辑"><a href="#文本基本编辑" class="headerlink" title="文本基本编辑"></a>文本基本编辑</h4><h5 id="移动光标"><a href="#移动光标" class="headerlink" title="移动光标"></a>移动光标</h5><p>这个操作比较基础，上下左右的使用，打破了使用方向键的惯性习惯。不是说不能使用方向键，而是编辑器特有的操作方式。</p><p>h：代表光标左移</p><p>l：代表光标右移</p><p>j：代表光标下移</p><p>k：代表光标上移</p><h5 id="进入与退出"><a href="#进入与退出" class="headerlink" title="进入与退出"></a>进入与退出</h5><p>输入vimtutor进入教程，退出或者需要其他指令时，先使用ESC键。然后<code>:q!</code>退出。</p><h5 id="文本删除"><a href="#文本删除" class="headerlink" title="文本删除"></a>文本删除</h5><p>将光标移至需要删除的字符处，按下x键</p><h5 id="文本插入"><a href="#文本插入" class="headerlink" title="文本插入"></a>文本插入</h5><p>将光标移至第一个准备插入字符的位置，按下<code>i</code>键</p><h5 id="文本添加"><a href="#文本添加" class="headerlink" title="文本添加"></a>文本添加</h5><p>将光标移至需要插入的位置，按下<code>a</code>键</p><h5 id="文本保存并退出"><a href="#文本保存并退出" class="headerlink" title="文本保存并退出"></a>文本保存并退出</h5><p>按下ESC进入正常模式，然后<code>:wq</code>按键操作，即可退出并保存。</p><h4 id="删除命令"><a href="#删除命令" class="headerlink" title="删除命令"></a>删除命令</h4><p>使用<code>dw</code>可以从光标处删除至一个单词的结尾</p><p>使用<code>d$</code>可以从当前光标删除至行末</p><p>使用<code>de</code>可以从当前光标删除到单词末尾，包括最后一个字符</p><h5 id="计数动作"><a href="#计数动作" class="headerlink" title="计数动作"></a>计数动作</h5><p>输入<code>2w</code>使光标向前移动两个单词</p><p>输入<code>3e</code>使光标向前移动到第三个单词的末尾</p><p>输入<code>0</code>移动光标到行首</p><h5 id="计数动作删除"><a href="#计数动作删除" class="headerlink" title="计数动作删除"></a>计数动作删除</h5><p>d+number+motion</p><p>例如输入<code>d2w</code>删除光标后面两个单词</p><p>输入<code>dd</code>可以直接删除掉整行</p><p>输入<code>2dd</code>可以直接删除两行</p><h5 id="撤销类命令"><a href="#撤销类命令" class="headerlink" title="撤销类命令"></a>撤销类命令</h5><p><strong>重要的说三遍</strong></p><p><strong>ctrl组合键，按住ctrl不放+操作按键</strong></p><p><strong>ctrl组合键，按住ctrl不放+操作按键</strong></p><p><strong>ctrl组合键，按住ctrl不放+操作按键</strong></p><p>输入<code>x</code>删除字符之后，利用<code>u</code>来撤销最后一次的执行命令（类比于Windows下的ctrl-z）</p><p>利用<code>U</code>恢复该行的原始状态</p><p>利用<code>CTRL-R</code>撤销掉撤销命令（类比于Windows下的crtl-y）</p><h4 id="置入类命令"><a href="#置入类命令" class="headerlink" title="置入类命令"></a>置入类命令</h4><p>输入<code>p</code>将最后一次删除的内容置入光标之后</p><p>将光标移动到需要更改的位置，输入<code>r</code>之后在输入一个我们需要替换的字符，就可以完成更改</p><p>如果要改变文本中的一个单词，先将光标移动到错误单词处，按下<code>cw</code>键，然后输入正确的单词</p><p>如果要改变文本中的更多单词，先将光标移动到错误单词处，按下<code>c$</code>键，然后输入你想输入的</p><h4 id="定位及文件状态"><a href="#定位及文件状态" class="headerlink" title="定位及文件状态"></a>定位及文件状态</h4><h5 id="定位文件关键位置"><a href="#定位文件关键位置" class="headerlink" title="定位文件关键位置"></a>定位文件关键位置</h5><p>按下<code>CTRL-g</code>此时我们在vim编辑框最底部，可以查看到一个状态信息行。记住这个行号！！</p><p>按下<code>gg</code>跳至文件最开头，按下<code>G</code>跳至文件最底部</p><p>输入你想要返回的 <code>行号+G</code>，可以返回第一次按下<code>ctrl-g</code>时所在的行了</p><h5 id="搜索类命令"><a href="#搜索类命令" class="headerlink" title="搜索类命令"></a>搜索类命令</h5><p>跟<code>：</code>命令相似，输入<code>/</code>,加上你所要查找的关键字符，就可以查找到。</p><p>按键<code>n</code>查找同上一个字符，按键<code>N</code>查找同下一个字符（可称为逆向查找）</p><h5 id="配对括号查找（好用）"><a href="#配对括号查找（好用）" class="headerlink" title="配对括号查找（好用）"></a>配对括号查找（好用）</h5><p>输入<code>%</code>可以查找配对的括号)、]、}</p><h5 id="替换命令"><a href="#替换命令" class="headerlink" title="替换命令"></a>替换命令</h5><p>将光标移到需要改变的一行。输入<code>:s/错误字符/修改字符</code>，只替换第一个匹配串</p><p>若是<code>:s/错误字符/修改字符/g</code>替换全行的字符串</p><p>若是<code>:#,#s/错误字符/修改字符</code>#，#代表的是替换若干行的首尾两行</p><p>若是<code>:%s/错误字符/修改字符/g</code>替换整个文件的每个匹配串</p><p>若是<code>:%s/错误字符/修改字符/gc</code>替换整个文件的每个匹配串，但是会进行提示，是否进行替换</p><h4 id="vim内执行外部指令"><a href="#vim内执行外部指令" class="headerlink" title="vim内执行外部指令"></a>vim内执行外部指令</h4><p>输入<code>:!+你所需要的外部指令（LINUX具有的）</code>比如<code>:!dir</code></p><h5 id="对文件的改动保存到文件中"><a href="#对文件的改动保存到文件中" class="headerlink" title="对文件的改动保存到文件中"></a>对文件的改动保存到文件中</h5><p>输入<code>w FILENAME</code>保存到文件中</p><h5 id="可视模式（超关键）"><a href="#可视模式（超关键）" class="headerlink" title="可视模式（超关键）"></a>可视模式（超关键）</h5><p>按 v 键使 Vim 进入可视模式进行选取。您可以四处移动光标使选取区域变大或变小。</p><p>接着您可以使用一个操作符对选中文本进行操作。例如，按 d 键会删除选中的文本内容。</p><h5 id="提取和合并文件"><a href="#提取和合并文件" class="headerlink" title="提取和合并文件"></a>提取和合并文件</h5><p><code>:r FILENAME</code> 可提取磁盘文件 FILENAME 并将其插入到当前文件的光标位置后面。</p><h4 id="打开类命令"><a href="#打开类命令" class="headerlink" title="打开类命令"></a>打开类命令</h4><p>光标移动到想要添加的上一行，按下<code>o</code>键，可以打开新的一行，进行编辑</p><h5 id="附加类命令"><a href="#附加类命令" class="headerlink" title="附加类命令"></a>附加类命令</h5><p>输入 <code>a</code> 将可在光标之后插入文本。</p><p><code>a</code>、<code>i</code> 和 <code>A</code> 都会带您进入插入模式，惟一的区别在于字符插入的位置。</p><h5 id="另一个置换类命令的版本"><a href="#另一个置换类命令的版本" class="headerlink" title="另一个置换类命令的版本"></a>另一个置换类命令的版本</h5><p>移动光标到需要更改的位置，输入按键<code>R</code>，就可以连续更改了，按ESC退出</p><h5 id="复制粘贴文本（绝对是最需要的！！！！！！！！）"><a href="#复制粘贴文本（绝对是最需要的！！！！！！！！）" class="headerlink" title="复制粘贴文本（绝对是最需要的！！！！！！！！）"></a>复制粘贴文本（绝对是最需要的！！！！！！！！）</h5><p>先按键<code>v</code>进入可视模式，对需要复制的部分进行选取。选取完之后，按<code>y</code>进行复制拷贝。</p><p>在移动光标到我们需要复制的位置，按<code>p</code>进行粘贴。</p><h5 id="设置类的选项"><a href="#设置类的选项" class="headerlink" title="设置类的选项"></a>设置类的选项</h5><p>设置可使查找或者替换可忽略大小写的选项</p><p>输入<code>:set ic</code>可以忽略大小写。输入<code>:set noic</code>禁用大小写</p><p>输入<code>:set incsearch</code>,查找短语时显示部分匹配</p><p>输入<code>:set hlsearch</code>,高亮显示所有的匹配短语</p><h4 id="关于vim"><a href="#关于vim" class="headerlink" title="关于vim"></a>关于vim</h4><p>获取帮助，输入<code>:help</code>或者按下F1。</p><h5 id="创建启动脚本"><a href="#创建启动脚本" class="headerlink" title="创建启动脚本"></a>创建启动脚本</h5><p>Vim 的功能特性要比 Vi 多得多，但其中大部分都没有缺省启用。为了使用更多的特性，您得创建一个vimrc 文件。</p><p>开始编辑 vimrc 文件，具体命令取决于您所使用的操作系统：</p><pre><code>`:edit ~/.vimrc`          这是 Unix 系统所使用的命令`:edit $VIM/_vimrc `    这是 MS-Windows 系统所使用的命令</code></pre><p>接着读取 vimrc 示例文件的内容：<code>:r $VIMRUNTIME/vimrc_example.vim</code></p><p>保存文件，命令为：<code>:write</code></p></li></ul><p>以上就是vim的基本操作。这些掌握了，用起来就特别方便啦。还是那句话，操作不能靠背的。需要多练。换句话说，多敲代码就行啦！！！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;之前学了Linux，用了vim之后发现特别强大。这一周又在做串口实验，我又用的Linux做的，再一次感觉到vim的强大。但是在写代码的过程中，因为快捷键没有记住，所以并不流畅。所以这周闲了，赶快来总结一下。&lt;/p&gt;
-&lt;p&gt;首先通过指令    &lt;code&gt;vimtutor&lt;/
-      
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="https://skrskr66.github.io/tags/Linux/"/>
     
   </entry>
   
