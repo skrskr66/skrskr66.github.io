@@ -115,7 +115,7 @@
 <meta property="og:image" content="https://skrskr66.github.io/2019/03/31/Linux进程概念/进程7.png">
 <meta property="og:image" content="https://skrskr66.github.io/2019/03/31/Linux进程概念/进程8.png">
 <meta property="og:image" content="https://skrskr66.github.io/2019/03/31/Linux进程概念/进程9.png">
-<meta property="og:updated_time" content="2019-04-02T07:56:40.992Z">
+<meta property="og:updated_time" content="2019-04-04T08:08:05.663Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux进程概念">
 <meta name="twitter:description" content="进程是什么？在操作系统中，我们经常能听到这样的话。我们要终止一个进程或者杀死一个进程，父进程创建了子进程这一类的话。往往我们听到都会觉得很高大上，这跟编程语言完全不同的感觉，操作了整个计算机。 进程的概念冯诺依曼体系结构在进程之前首先要提一下我们的“祖师爷”——冯诺依曼体系结构。 这个是一个计算机入门第一节课必然会提到的知识。 冯诺依曼体系结构提出了计算机采用二进制；计算机应该按照程序顺序执行。">
@@ -390,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.2k
+                  3.5k
                 </span>
               
 
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  11
+                  12
                 </span>
               
             </div>
@@ -559,7 +559,9 @@
 <p>这是虚拟内存地址使用的过程。它的作用就是保持进程的独立性，通过页表映射物理地址，充分的利用物理地址，增加内存访问控制。</p>
 <p>这就是进程有关的知识。总结一下</p>
 <p>进程从用户角度和操作系统角度去理解。前者就是一个运行的程序，后者表示运行一个程序，需要描述一个程序的运行过程，通过一个结构体task_struct{}来描述，叫做PCB。对操作系统来说，进程就是PCB</p>
-<p>进程的</p>
+<p>进程的创建需要一个我们必须要掌握的函数——fork()函数，创建一个子进程。并且fork()函数会有两个返回值，在返回的过程中父进程之前的数据不进行拷贝，之后与父进程的运行一致。创建子进程是为了分摊压力/干其他工作</p>
+<p>进程的状态有运行态，睡眠状态，磁盘休眠状态，停止状态，死亡状态。每一种状态是容易理解的。但是还有两个特殊的进程</p>
+<p>僵尸进程和孤儿进程，<strong>前者</strong>是进程退出后资源没有释放，操作系统通知父进程，但是父进程此时正在处理其他事情，没有关注子进程的退出通知，系统为了保护资源，没有释放掉，并且在子进程的PCB中也保留了退出原因，此时既没有运行也没有完全退出，处于了僵死状态。但是<strong>后者</strong>是父进程先于子进程先退出，子进程成为了后台程序，由一号进程接管。</p>
 
       
     </div>
@@ -611,6 +613,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/04/数据结构之二叉树/" rel="prev" title="数据结构之二叉树">
+                数据结构之二叉树 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -694,7 +700,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -815,7 +821,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">54.8k</span>
+    <span title="Site words total count">55.1k</span>
   
 </div>
 
