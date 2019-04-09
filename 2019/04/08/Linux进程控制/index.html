@@ -85,7 +85,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Linux,">
 
 
 
@@ -98,16 +98,20 @@
 
 
 
-<meta name="description" content="Full of adventure,Full of discovery">
-<meta property="og:type" content="website">
-<meta property="og:title" content="程序程">
-<meta property="og:url" content="https://skrskr66.github.io/archives/page/4/index.html">
+<meta name="description" content="在之前的Linux进程概念中提到了一些关于进程的创建。进程的创建通过fork函数创建子进程。 进程终止进程终止顾名思义，进程结束。但是结束有各种可能，可能成功，可能失败，也可能异常。 进程常见退出方法123456正常退出1、从main返回2、调用exit3、_exit异常退出ctrl + c exit函数12345#include &amp;lt;unistd.h&amp;gt; void _exit(int s">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux进程控制">
+<meta property="og:url" content="https://skrskr66.github.io/2019/04/08/Linux进程控制/index.html">
 <meta property="og:site_name" content="程序程">
-<meta property="og:description" content="Full of adventure,Full of discovery">
+<meta property="og:description" content="在之前的Linux进程概念中提到了一些关于进程的创建。进程的创建通过fork函数创建子进程。 进程终止进程终止顾名思义，进程结束。但是结束有各种可能，可能成功，可能失败，也可能异常。 进程常见退出方法123456正常退出1、从main返回2、调用exit3、_exit异常退出ctrl + c exit函数12345#include &amp;lt;unistd.h&amp;gt; void _exit(int s">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://skrskr66.github.io/2019/04/08/Linux进程控制/进程控制1.png">
+<meta property="og:updated_time" content="2019-04-09T15:47:21.646Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="程序程">
-<meta name="twitter:description" content="Full of adventure,Full of discovery">
+<meta name="twitter:title" content="Linux进程控制">
+<meta name="twitter:description" content="在之前的Linux进程概念中提到了一些关于进程的创建。进程的创建通过fork函数创建子进程。 进程终止进程终止顾名思义，进程结束。但是结束有各种可能，可能成功，可能失败，也可能异常。 进程常见退出方法123456正常退出1、从main返回2、调用exit3、_exit异常退出ctrl + c exit函数12345#include &amp;lt;unistd.h&amp;gt; void _exit(int s">
+<meta name="twitter:image" content="https://skrskr66.github.io/2019/04/08/Linux进程控制/进程控制1.png">
 
 
 
@@ -137,13 +141,13 @@
 
 
 
-  <link rel="canonical" href="https://skrskr66.github.io/archives/page/4/">
+  <link rel="canonical" href="https://skrskr66.github.io/2019/04/08/Linux进程控制/">
 
 
 
 
 
-  <title>归档 | 程序程</title>
+  <title>Linux进程控制 | 程序程</title>
   
 
 
@@ -162,7 +166,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -298,215 +302,213 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      <span class="archive-page-counter">
-        
-        
-         
-        
-        OK! 目前共计 43 篇日志。 继续努力。
-      </span>
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://skrskr66.github.io/2019/04/08/Linux进程控制/">
 
-      
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lyc">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/IMG_4933.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序程">
+    </span>
+
+    
+      <header class="post-header">
 
         
         
+          <h1 class="post-title" itemprop="name headline">Linux进程控制</h1>
         
 
-        
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-08T19:53:27+08:00">
+                2019-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/22/进阶C-C语言文件操作/" itemprop="url">
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文阅读数<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
               
-                <span itemprop="name">C进阶-C语言文件操作</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1k
+                </span>
               
-            </a>
-        
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-22T11:23:39+08:00" content="2019-01-22">
-          01-22
-        </time>
-      </div>
+              
+                <span class="post-meta-divider">|</span>
+              
 
-    </header>
-  </article>
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
 
+          
 
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/20/进阶C-动态内存管理/" itemprop="url">
-              
-                <span itemprop="name">进阶C-动态内存管理</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-20T19:11:55+08:00" content="2019-01-20">
-          01-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/19/进阶C-结构体-枚举-联合/" itemprop="url">
-              
-                <span itemprop="name">进阶C-结构体,枚举,联合</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-19T17:59:20+08:00" content="2019-01-19">
-          01-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>在之前的Linux进程概念中提到了一些关于进程的创建。进程的创建通过fork函数创建子进程。</p>
+<h4 id="进程终止"><a href="#进程终止" class="headerlink" title="进程终止"></a>进程终止</h4><p>进程终止顾名思义，进程结束。但是结束有各种可能，可能成功，可能失败，也可能异常。</p>
+<h5 id="进程常见退出方法"><a href="#进程常见退出方法" class="headerlink" title="进程常见退出方法"></a>进程常见退出方法</h5><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">正常退出</span><br><span class="line">1、从main返回</span><br><span class="line">2、调用exit</span><br><span class="line">3、_exit</span><br><span class="line">异常退出</span><br><span class="line">ctrl + c</span><br></pre></td></tr></table></figure>
+<h5 id="exit函数"><a href="#exit函数" class="headerlink" title="exit函数"></a>exit函数</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt; </span></span></span><br><span class="line"><span class="keyword">void</span> _exit(<span class="keyword">int</span> status);</span><br><span class="line">参数：status 定义了进程的终止状态，父进程通过wait来获取该值 </span><br><span class="line">说明：虽然status是<span class="keyword">int</span>，但是仅有低<span class="number">8</span>位可以被父进程所用。</span><br><span class="line">所以_exit(<span class="number">-1</span>)时，在终端执行$?发现返回值 是<span class="number">255</span>。</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;    </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;    </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;    </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;    </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;errno.h&gt;    </span></span></span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;    </span><br><span class="line">  <span class="keyword">int</span> pid = fork();    </span><br><span class="line">  <span class="keyword">if</span>(pid &lt; <span class="number">0</span>)&#123;    </span><br><span class="line">    perror(<span class="string">"fork error"</span>);    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"fork error:%s\n"</span>,strerror(errno));    </span><br><span class="line">  &#125;    </span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">0</span>;    </span><br><span class="line">  <span class="keyword">for</span>( ;i &lt; <span class="number">256</span>; i++)&#123;    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"errno:[%s]\n"</span>,strerror(i));    </span><br><span class="line">  &#125;    </span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"hello bit"</span>);    </span><br><span class="line">  sleep(<span class="number">1</span>);    </span><br><span class="line">  _exit(<span class="number">257</span>);            </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这之中调用的是_exit函数，关于这两个函数，并没有什么太大的区别，<code>exit()</code>就是对<code>-exit</code>进行的一个分装。通过man手册可以详细了解。</p>
+<p>_ exit()的退出是简单粗暴的，exit()还做了一些其他的工作。可自行查看</p>
+<p>他们俩的共同点就是都会关闭文件描述符，都会清空内存，但是exit还会额外地清空输入输出流缓存，移除临时创建的文件，调用注册好的出口函数等等。 </p>
+<h4 id="进程等待"><a href="#进程等待" class="headerlink" title="进程等待"></a>进程等待</h4><p>为什么要进行进程等待？</p>
+<p>之前写过僵尸进程的危害，一个僵尸进程对内存的资源泄漏是积少成多的。一个两个倒没啥，但是如果多了将无法再创建新的进程，并且就连最强大的杀死进程<code>kill -9</code>也无法将其杀死，所以进程等待的必要性是很重要的。当父进程创建一个子进程时，通过进程等待，回收子进程资源，获取子进程的退出信息，而不让其保存在操作系统中。</p>
+<p>总的来说：因为父进程不知道子进程什么时候退出，因此只能在子进程进程创建之后调用wait()，进行进程等待。因为调用wait就是一直在等待子进程的退出。</p>
+<h5 id="进程等待的方法"><a href="#进程等待的方法" class="headerlink" title="进程等待的方法"></a>进程等待的方法</h5><p>wait()接口是一个阻塞函数，功能是等待子进程退出，如果子进程没有退出，一直等待到有子进程退出</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;type.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;wait.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">pid_t</span> wait(<span class="keyword">int</span> *status);</span><br><span class="line">函数的返回值：成功返回等待的pid，失败返回<span class="number">-1</span></span><br><span class="line">参数：输出型参数，获取子进程的状态，不关心则可以设置为<span class="literal">NULL</span></span><br></pre></td></tr></table></figure>
+<p>waitpid()函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pid_t</span> waitpid(<span class="keyword">pid_t</span> pid, <span class="keyword">int</span> *status,<span class="keyword">int</span> options);</span><br><span class="line">返回值：    </span><br><span class="line">当正常返回的时候waitpid返回收集到的子进程的进程ID；    </span><br><span class="line">如果设置了选项WNOHANG,而调用中waitpid发现没有已退出的子进程可收集,则返回<span class="number">0</span>；    </span><br><span class="line">如果调用中出错,则返回<span class="number">-1</span>,这时errno会被设置成相应的值以指示错误所在； </span><br><span class="line"></span><br><span class="line">参数：    pid：        </span><br><span class="line">Pid=<span class="number">-1</span>,等待任一个子进程。与wait等效。        </span><br><span class="line">Pid&gt;<span class="number">0.</span>等待其进程ID与pid相等的子进程。    </span><br><span class="line">status:        </span><br><span class="line">	WIFEXITED(status): 若为正常终止子进程返回的状态，则为真。（查看进程是否是正常退出）       			WEXITSTATUS(status): 若WIFEXITED非零，提取子进程退出码。（查看进程的退出码）    </span><br><span class="line">options:        </span><br><span class="line">	WNOHANG: 若pid指定的子进程没有结束，则waitpid()函数返回<span class="number">0</span>，不予以等待。若正常结束，则返回该子进 程的ID。</span><br></pre></td></tr></table></figure>
+<p>第二种wait还是一种封装方式。只不过需要讨论以下status的参数获取。</p>
+<p>status是输出型参数，由操作系统填充。status的使用只在低16位上</p>
+<p><img src="/2019/04/08/Linux进程控制/进程控制1.png" alt="进程控制1"></p>
+<p>从图片可以看出status低八位保存异常的情况，高八位保存的是我们的数据</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/17/进阶C-字符串-内存函数/" itemprop="url">
-              
-                <span itemprop="name">进阶C-字符串+内存函数</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-17T16:55:00+08:00" content="2019-01-17">
-          01-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/16/进阶C-指针的进阶/" itemprop="url">
-              
-                <span itemprop="name">进阶C-指针的进阶</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-16T16:08:26+08:00" content="2019-01-16">
-          01-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #555;font-size:14px;">-------------The End-------------</div>
+    
+</div>
+
+  
+</div>
+
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/04/数据结构之二叉树/" rel="next" title="数据结构之二叉树">
+                <i class="fa fa-chevron-left"></i> 数据结构之二叉树
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/9/">9</a><a class="extend next" rel="next" href="/archives/page/5/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -514,6 +516,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MDc5Mi8xNzMxNw=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -534,8 +545,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -619,6 +639,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#进程终止"><span class="nav-number">1.</span> <span class="nav-text">进程终止</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#进程常见退出方法"><span class="nav-number">1.1.</span> <span class="nav-text">进程常见退出方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#exit函数"><span class="nav-number">1.2.</span> <span class="nav-text">exit函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程等待"><span class="nav-number">2.</span> <span class="nav-text">进程等待</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#进程等待的方法"><span class="nav-number">2.1.</span> <span class="nav-text">进程等待的方法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -806,6 +842,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -834,6 +874,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
