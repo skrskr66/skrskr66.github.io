@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Linux-基础IO]]></title>
     <url>%2F2019%2F04%2F12%2FLinux-%E5%9F%BA%E7%A1%80IO%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[文件的输入输出在c语言之前了解过。比如标准库的IO接口 回顾C语言的库函数fopen，fread，fwrite，fseek，fclose这几个函数。关键在于参数的使用。 例如fopen，FILE *fopen(const char *path, const char *mode),在不同的模式下打开文件所能作的操作也不同。 文件使用方式 含义 如果指定文件不存在 r–只读 为了输入数据，打开一个已经存在的文本 文件出错 w–只写 为了输出数据，打开一个文本文件 建立一个新文件 a–追加 向文本文件尾添加数据 出错 rb–只读 为了输入数据，打开一个二进制文件 出错 wb–只写 为了输出数据，打开一个二进制文件 建立一个新文件 ab–追加 向一个二进制文件尾添加数据 出错 r+–读写 为了读和写，打开一个文本文件 出错 w+–读写 为了读和写，建立一个新的文件 建立一个新文件 a+–读写 打开一个文件，在文件尾进行读写 建立一个新的文件 rb+–读写 为了读和写打开一个二进制文件 出错 wb+–读写 为了读和写，新建一个新的二进制文件 建立一个新的文件 ab+–读写 打开一个二进制文件，在文件尾进行读和写 建立一个新的文件 先回顾一下C语言中的文件操作 12345678910111213141516171819202122232425262728#include &lt;stdio.h&gt; #include &lt;unistd.h&gt; #include &lt;string.h&gt; int main()&#123; int ret; FILE *fp = NULL; fp = fopen("./tmp.txt","r+"); if(fp == NULL)&#123; perror("打开失败"); return -1; &#125; fseek(fp, 5, SEEK_END); char *ptr = "nihao---\n"; ret = fwrite(ptr, 1, strlen(ptr), fp); printf("write item:%d\n",ret); fseek(fp, 0, SEEK_SET); char buf[1024] = &#123;0&#125;; ret = fread(buf, 1, 1023, fp); perror("读取失败"); printf("read buf[%s]-[%d]",buf,ret); fclose(fp); return 0; &#125; 先打开当前路径下的tmp.txt文件以读写的方式打开，之后利用fseek函数跳转读写位置从当前文件位置的末尾开始向后五个位置跳转。然后写入数据，一个字节写入，写入长度为*ptr的字符串长度，然后再跳转到文件的开头开始读取数据读取到buf中。fread返回值是读取的数据长度。最后关闭文件。 这是C语言库函数中的使用方法。 系统调用IO接口open write read close lseek 1234int open(const char *pathname, int flags, mode_t mode);ssize_t write(int fd, const void *buf, size_t count);ssize_t read(int fd, void *buf, size_t count);off_t lseek(int fd, off_t offset, int whence);]]></content>
       <tags>
         <tag>Linux</tag>
       </tags>
