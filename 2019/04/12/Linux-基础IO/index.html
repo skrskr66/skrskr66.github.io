@@ -110,7 +110,7 @@
 <meta property="og:image" content="https://skrskr66.github.io/2019/04/12/Linux-基础IO/基础IO2.png">
 <meta property="og:image" content="https://skrskr66.github.io/2019/04/12/Linux-基础IO/基础IO3.png">
 <meta property="og:image" content="https://skrskr66.github.io/2019/04/12/Linux-基础IO/基础IO4.png">
-<meta property="og:updated_time" content="2019-04-15T15:59:08.033Z">
+<meta property="og:updated_time" content="2019-04-15T16:24:08.402Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux-基础IO">
 <meta name="twitter:description" content="文件的输入输出在c语言之前了解过。比如标准库的IO接口 回顾C语言的库函数fopen，fread，fwrite，fseek，fclose这几个函数。关键在于参数的使用。 例如fopen，FILE *fopen(const char *path, const char *mode),在不同的模式下打开文件所能作的操作也不同。    文件使用方式 含义 如果指定文件不存在     r–只读 为了输入数">
@@ -385,7 +385,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.8k
+                  3.3k
                 </span>
               
 
@@ -401,7 +401,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  11
+                  13
                 </span>
               
             </div>
@@ -553,7 +553,30 @@
 <p>软链接可以跨分区建立，硬链接不可以</p>
 <h4 id="静态库与动态库"><a href="#静态库与动态库" class="headerlink" title="静态库与动态库"></a>静态库与动态库</h4><p>静态库：<strong>名字一般为libxxx.a</strong>，编译时会整合到可执行程序中。程序在编译链接的时候把库的代码链接到可执行文件中。程序运行的时候将不再需要静态库 。<strong>优点是运行时不需要外部函数库支持，缺点是编译后程序较大，一旦静态库改变，程序需要重新编译。</strong> </p>
 <p>动态库：<strong>名字一般为libxxx.M.N.so,M为主版本号，N为副版本号</strong> ，程序在运行的时候才去链接动态库的代码，多个程序共享使用库的代码。优点是运行时，有需要时才动态调用外部库中的函数，节省空间，缺点是运行环境中必须提供相应的库，动态库更新升级方便。 </p>
-<h5 id="建立静态库"><a href="#建立静态库" class="headerlink" title="建立静态库"></a>建立静态库</h5>
+<h5 id="建立静态库"><a href="#建立静态库" class="headerlink" title="建立静态库"></a>建立静态库</h5><p>​    <code>gcc -fPIC -c b.c -o b.o</code>产生位置无关代码</p>
+<p>​    生成静态库gcc -c b.c -o b.o</p>
+<p>​    <code>ar -cr libmytest.a b.o</code>生成静态库</p>
+<p>gcc选项:</p>
+<p>​        -fPIC：产生位置无关代码</p>
+<p>​        –share：生成一个共享库而不是可执行程序</p>
+<p>​    ar：静态库打包所有命令</p>
+<p>​        -c 创建</p>
+<p>​        -r 替换</p>
+<h5 id="建立动态库"><a href="#建立动态库" class="headerlink" title="建立动态库"></a>建立动态库</h5><p>生成动态库gcc -fPIC -c b.c -o b.o    </p>
+<p><code>gcc --share b.o -o libmytest.so</code>生成动态库</p>
+<h5 id="库的使用"><a href="#库的使用" class="headerlink" title="库的使用"></a>库的使用</h5><p>动态库—&gt;libmytest.so        静态库—&gt;libmytest.a</p>
+<p><strong>同名动态和静态库，先链接动态库</strong></p>
+<p>链接库的时候：gcc a.c -o main -lmytest。如果报错，找不到库(链接库的查找路径—-库的查找路径)</p>
+<p>库链接的时候和运行加载的时候都需要在指定目录下</p>
+<p>库文件的默认查找路径/lib64    /usr/lib64</p>
+<p>设置环境变量：LIBRARY_PATH=.(库的链接路径)——&gt;使用选项 ’-L‘</p>
+<p>因为gcc默认是动态链接—因此优先使用动态库生成可执行程序</p>
+<p><strong>注意！</strong></p>
+<p>通常我们自己链接静态库生成可执行程序的时候，并不是使用-static静态链接，而是将静态库放到指定路径下，然后直接使用gcc -L选项指定库的链接路径链接静态库生成可执行程序</p>
+<p>-static：作用是可执行程序使用静态链接生成，不依赖任何动态库</p>
+<h4 id="关于基础IO的总结"><a href="#关于基础IO的总结" class="headerlink" title="关于基础IO的总结"></a>关于基础IO的总结</h4><p>最重要的还是区分系统调用和库函数调用的区别和用法。在不同的语言中有着不同的用法，Linux下的使用可能还要考虑到进程的创建，程序替换等操作。</p>
+<p>还有就是文件系统的理解与inode节点的作用，磁盘的分配有着独特的规则，通过inode来调用分配空间的使用。</p>
+
       
     </div>
     
@@ -764,7 +787,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#回顾C语言的库函数"><span class="nav-number">1.</span> <span class="nav-text">回顾C语言的库函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统调用IO接口"><span class="nav-number">2.</span> <span class="nav-text">系统调用IO接口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#文件描述符和文件流指针"><span class="nav-number">2.1.</span> <span class="nav-text">文件描述符和文件流指针</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#系统调用函数"><span class="nav-number">2.2.</span> <span class="nav-text">系统调用函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#标准输入输出的重定向"><span class="nav-number">2.3.</span> <span class="nav-text">标准输入输出的重定向</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#模拟实现minishell重定向"><span class="nav-number">2.4.</span> <span class="nav-text">模拟实现minishell重定向</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux-ext2文件系统"><span class="nav-number">3.</span> <span class="nav-text">Linux ext2文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#存储文件的流程"><span class="nav-number">3.1.</span> <span class="nav-text">存储文件的流程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#软硬链接"><span class="nav-number">4.</span> <span class="nav-text">软硬链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#静态库与动态库"><span class="nav-number">5.</span> <span class="nav-text">静态库与动态库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#建立静态库"><span class="nav-number">5.1.</span> <span class="nav-text">建立静态库</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#回顾C语言的库函数"><span class="nav-number">1.</span> <span class="nav-text">回顾C语言的库函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统调用IO接口"><span class="nav-number">2.</span> <span class="nav-text">系统调用IO接口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#文件描述符和文件流指针"><span class="nav-number">2.1.</span> <span class="nav-text">文件描述符和文件流指针</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#系统调用函数"><span class="nav-number">2.2.</span> <span class="nav-text">系统调用函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#标准输入输出的重定向"><span class="nav-number">2.3.</span> <span class="nav-text">标准输入输出的重定向</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#模拟实现minishell重定向"><span class="nav-number">2.4.</span> <span class="nav-text">模拟实现minishell重定向</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux-ext2文件系统"><span class="nav-number">3.</span> <span class="nav-text">Linux ext2文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#存储文件的流程"><span class="nav-number">3.1.</span> <span class="nav-text">存储文件的流程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#软硬链接"><span class="nav-number">4.</span> <span class="nav-text">软硬链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#静态库与动态库"><span class="nav-number">5.</span> <span class="nav-text">静态库与动态库</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#建立静态库"><span class="nav-number">5.1.</span> <span class="nav-text">建立静态库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#建立动态库"><span class="nav-number">5.2.</span> <span class="nav-text">建立动态库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#库的使用"><span class="nav-number">5.3.</span> <span class="nav-text">库的使用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于基础IO的总结"><span class="nav-number">6.</span> <span class="nav-text">关于基础IO的总结</span></a></li></ol></div>
             
 
           </div>
@@ -808,7 +831,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">60.7k</span>
+    <span title="Site words total count">62.3k</span>
   
 </div>
 
