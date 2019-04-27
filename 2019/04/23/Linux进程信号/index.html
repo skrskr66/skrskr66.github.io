@@ -107,7 +107,7 @@
 <meta property="og:description" content="信号信号概念通知进程发生了某件事情导致了软件中断—-会打断当前的阻塞操作，去处理事情 信号的种类信号有不同的种类，每个信号都对应了不同的事件 通过命令行kill -l可以查看信号的种类  在图中可以看到这些都是信号的种类，总共有62个种信号 1-31—-&amp;gt;每个都有各自对应的事件        非可靠信号/非实时信号 34-64—-&amp;gt;后续添加的信号                可靠信号">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://skrskr66.github.io/2019/04/23/Linux进程信号/信号1.png">
-<meta property="og:updated_time" content="2019-04-26T15:57:37.438Z">
+<meta property="og:updated_time" content="2019-04-27T15:12:40.290Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux进程信号">
 <meta name="twitter:description" content="信号信号概念通知进程发生了某件事情导致了软件中断—-会打断当前的阻塞操作，去处理事情 信号的种类信号有不同的种类，每个信号都对应了不同的事件 通过命令行kill -l可以查看信号的种类  在图中可以看到这些都是信号的种类，总共有62个种信号 1-31—-&amp;gt;每个都有各自对应的事件        非可靠信号/非实时信号 34-64—-&amp;gt;后续添加的信号                可靠信号">
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  563
+                  574
                 </span>
               
 
@@ -433,7 +433,7 @@
 <p><strong>同步：就是发出一个功能调用时，在没有得到结果之前，该调用就不返回或继续执行后续操作</strong></p>
 <p><strong>异步：当一个异步过程调用发出后，调用者在没有得到结果之前，就可以继续执行后续操作。当这个调用完成后，一般通过状态、通知和回调来通知调用者。对于异步调用，调用的返回并不受调用者控制</strong></p>
 <h5 id="信号的产生"><a href="#信号的产生" class="headerlink" title="信号的产生"></a>信号的产生</h5><p>硬件产生：ctrl+c，ctrl+|，ctrl+z。通过键盘强行关闭，比如在一个无限循环中，使用键盘组合按键将该进程强行停掉。</p>
-<p>软件产生：</p>
+<p>软件产生：kill -signo pid 命令 产生一个信号</p>
 
       
     </div>
