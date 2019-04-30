@@ -112,7 +112,10 @@
 <meta property="og:image" content="https://skrskr66.github.io/2019/04/23/Linux进程信号/信号3.png">
 <meta property="og:image" content="https://skrskr66.github.io/2019/04/23/Linux进程信号/信号5.png">
 <meta property="og:image" content="https://skrskr66.github.io/2019/04/23/Linux进程信号/信号6.png">
-<meta property="og:updated_time" content="2019-04-28T15:37:26.822Z">
+<meta property="og:image" content="https://skrskr66.github.io/2019/04/23/Linux进程信号/信号7.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/04/23/Linux进程信号/信号8.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/04/23/Linux进程信号/信号9.png">
+<meta property="og:updated_time" content="2019-04-30T07:46:08.984Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux进程信号">
 <meta name="twitter:description" content="信号信号概念通知进程发生了某件事情导致了软件中断—-会打断当前的阻塞操作，去处理事情 信号的种类信号有不同的种类，每个信号都对应了不同的事件 通过命令行kill -l可以查看信号的种类  在图中可以看到这些都是信号的种类，总共有62个种信号 1-31—-&amp;gt;每个都有各自对应的事件        非可靠信号/非实时信号 34-64—-&amp;gt;后续添加的信号                可靠信号">
@@ -387,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.4k
+                  2.7k
                 </span>
               
 
@@ -403,7 +406,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  9
                 </span>
               
             </div>
@@ -465,7 +468,54 @@
 <p><strong>可靠信号的注销</strong>：因为可靠信号的信号节点可能会有多个，若还有相同信号节点，则位图依然置1，否则置0</p>
 <p>删除节点，判断是否还有相同节点。若有，则位图依然置1，否则修改位图置0</p>
 <p>也可以这样理解，只要存在相同的信号节点，那么位图永远置1。只要没有相同的，则置为0</p>
-<h4 id="信号的处理"><a href="#信号的处理" class="headerlink" title="信号的处理"></a>信号的处理</h4>
+<h4 id="信号的处理"><a href="#信号的处理" class="headerlink" title="信号的处理"></a>信号的处理</h4><p>信号的处理有三种方式：</p>
+<h5 id="默认处理方式"><a href="#默认处理方式" class="headerlink" title="默认处理方式"></a>默认处理方式</h5><p>操作系统(内核)既定的处理方式—-SIG_DFL，可能是以下的某种类型：</p>
+<p><strong>Treminate</strong>：进程被终止(杀死)</p>
+<p><strong>Dump</strong>：进程被终止(杀死)，如果可能，创建包含进程执行上下文的核心转储文件(core dump)</p>
+<p><strong>Ignore</strong>：信号被忽略</p>
+<p><strong>Stop</strong>：进程被停止，即把进程置为TASK_STOPPED状态</p>
+<p><strong>Continue</strong>：如果进程被禁止，就把它设置为TASK_RUNNING状态</p>
+<h5 id="忽略处理方式"><a href="#忽略处理方式" class="headerlink" title="忽略处理方式"></a>忽略处理方式</h5><p>这与默认中的忽略是不同的，该处理方式处理了信号，但是什么都没有做。</p>
+<h5 id="自定义处理方式"><a href="#自定义处理方式" class="headerlink" title="自定义处理方式"></a>自定义处理方式</h5><p>通过调用相应的信号处理函数捕捉信号。</p>
+<p><strong>注意！！</strong></p>
+<p><strong>注意！！</strong></p>
+<p><strong>注意！！</strong></p>
+<p><strong>有两个信号SIGKILL -9 SIGSTOP -19 无法被阻塞，无法自定义，无法被忽略</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">信号的捕捉初识</span><br><span class="line">      <span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*<span class="keyword">sighandler_t</span>)</span><span class="params">(<span class="keyword">int</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">sighandler_t</span> signal(<span class="keyword">int</span> signum, <span class="keyword">sighandler_t</span> handler);</span><br><span class="line">      signum: 信号编号</span><br><span class="line">      handler：   函数指针</span><br><span class="line">              SIG_DFL     默认处理方式</span><br><span class="line">              SIG_IGN     忽略处理方式</span><br><span class="line">      使用handler函数替换signum信号的处理方式</span><br></pre></td></tr></table></figure>
+<p>我们利用man手册来了解该函数的用处</p>
+<p><strong>函数的作用是:从三种方式中选择一种接收信号sig的方式。如果func的值是SIG_DFL，则将对该信号进行默认处理。如果func的值为SIG_IGN，则忽略该信号。否则，应用程序应确保func指向信号发生时要调用的函数。由于信号而调用这样一个函数，或者(递归地)调用该调用的任何其他函数(标准库中的函数除外)，称为“信号处理程序”。</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#inlcude <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;signal.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sigcb</span><span class="params">(<span class="keyword">int</span> signo)</span></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"---------\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    signal(SIGINT, sigcb);</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"hello ~~~"</span>\n);</span><br><span class="line">        sleep(<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/04/23/Linux进程信号/信号7.png" alt="信号7"></p>
+<p>通过调用signal函数来改变信号的处理方式。平时使用<code>ctrl+c</code>将强制退出软件，但是当这次使用将不在执行</p>
+<p>SIGINT： 程序中止信号，在用户键入INTR字符（通常是Ctrl+C）时发出。 </p>
+<p>此时信号的处理将SIGINT改变成打印一段———，所以最后退出用了<code>ctrl+|</code>才得以退出</p>
+<h5 id="信号自定义处理方式的流程"><a href="#信号自定义处理方式的流程" class="headerlink" title="信号自定义处理方式的流程"></a>信号自定义处理方式的流程</h5><p>用户态切换到内核态运行，完毕后准备从内核态切换到用户态运行的时候，去处理信号。若信号为默认/忽略处理，则在内核中直接完成，但是如果是自定义处理方式，则需要返回用户态执行信号回调函数，完毕后回到内核态，没有信号了则回到程序主流程</p>
+<p><img src="/2019/04/23/Linux进程信号/信号8.png" alt="信号8"></p>
+<p>还有一个处理函数</p>
+<p><code>int sigaction(int sig, const struct sigaction *restrict act,struct sigaction *restrict oact)</code></p>
+<p>sigaction参数结构如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sigaction</span> &#123;</span></span><br><span class="line"><span class="keyword">void</span> (*sa_handler)(<span class="keyword">int</span>);</span><br><span class="line"><span class="keyword">void</span> (*sa_sigaction)(<span class="keyword">int</span>, <span class="keyword">siginfo_t</span> *, <span class="keyword">void</span> *);</span><br><span class="line"><span class="keyword">sigset_t</span> sa_mask;</span><br><span class="line"><span class="keyword">int</span> sa_flags;</span><br><span class="line"><span class="keyword">void</span> (*sa_restorer)(<span class="keyword">void</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>函数的作用是:允许调用过程检查指定与特定信号相关联的操作</strong></p>
+<p>使用act动作替换原有的处理动作，并且将原有处理动作拷贝到oldact中。不过这个需要等一下再说</p>
+<h4 id="信号的阻塞"><a href="#信号的阻塞" class="headerlink" title="信号的阻塞"></a>信号的阻塞</h4><h5 id="信号的一些其他概念"><a href="#信号的一些其他概念" class="headerlink" title="信号的一些其他概念"></a>信号的一些其他概念</h5><p>信号递达：实际执行信号的处理动作</p>
+<p>信号未决：信号从产生到递达之间的状态</p>
+<h5 id="信号阻塞概念"><a href="#信号阻塞概念" class="headerlink" title="信号阻塞概念"></a>信号阻塞概念</h5><p>暂时阻止信号被递达(处理)。<strong>信号依然可以注册，只是暂时不处理，解除阻塞之后才会处理</strong></p>
+<h5 id="信号阻塞的过程"><a href="#信号阻塞的过程" class="headerlink" title="信号阻塞的过程"></a>信号阻塞的过程</h5><p>在pcb的block-信号阻塞集合中(程序初始化的时候)标记要阻塞的信号，到来之后暂不处理,将blocked位图集合中对应的位-置1，表示阻塞这个信号，直到被解除阻塞(从block集合中移除)</p>
+<h5 id="信号阻塞的接口"><a href="#信号阻塞的接口" class="headerlink" title="信号阻塞的接口"></a>信号阻塞的接口</h5><p><strong>sigprocmask：阻塞/解除阻塞信号</strong></p>
+<p>sigprocmask()用于获取 (与/或) 更改调用线程的信号掩码。信号掩码是一组信号，它的传递目前被调用方阻塞</p>
+<p>SET_BLOCK 将信号添加到阻塞集合中 block = block | set</p>
+<p>SET_UNBLOCK 将信号从阻塞集合中移出 block = block &amp; ~set</p>
+<p>SET_SETMASK 被阻塞的信号集被设置为参数集。block = set</p>
+<p><strong>sigemptyset：清空信号集合</strong></p>
+<p><strong>sigfillset：向集合中添加所有信号</strong></p>
+<p><strong>sigaddset：向集合中添加指定的信号</strong></p>
+<p><strong>sigismember：判断信号是否在集合中</strong></p>
+<p><strong>sigdelset：从集合中移除执行信号</strong></p>
+<p><strong>sigpending：后获取未决信号</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;signal.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sigaction</span> <span class="title">act</span>,  <span class="title">oldact</span>;</span>    </span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sigcb</span><span class="params">(<span class="keyword">int</span> signo)</span></span>&#123;    </span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"revc signo:%d\n"</span>, signo);    </span><br><span class="line">  sigaction(signo, &amp;oldact, <span class="literal">NULL</span>);                                                                                      </span><br><span class="line">&#125;    </span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;    </span><br><span class="line">  act.sa_handler = sigcb;    </span><br><span class="line">  act.sa_flags = <span class="number">0</span>;    </span><br><span class="line">    </span><br><span class="line">  sigemptyset(&amp;act.sa_mask);    </span><br><span class="line">  sigaction(SIGINT, &amp;act, &amp;oldact);    </span><br><span class="line">    </span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)&#123;    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"---------\n"</span>);    </span><br><span class="line">    sleep(<span class="number">2</span>);    </span><br><span class="line">  &#125;    </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/04/23/Linux进程信号/信号9.png" alt="信号9"></p>
+<p>接着之前的另一个处理信号的方法，先将sigaction中参数结构的成员都设置完，之后将信号集合中的信号全部清空。act动作是handler自定义函数，这时候替换了<code>ctrl+c</code>操作。在sigcb函数中再次调用sigaction，此时act动作将继续执行SIGINT。执行结果如上图</p>
+
       
     </div>
     
@@ -676,7 +726,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#信号"><span class="nav-number">1.</span> <span class="nav-text">信号</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#信号概念"><span class="nav-number">1.1.</span> <span class="nav-text">信号概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信号的种类"><span class="nav-number">1.2.</span> <span class="nav-text">信号的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#同步和异步"><span class="nav-number">1.2.1.</span> <span class="nav-text">同步和异步</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#信号的产生"><span class="nav-number">1.2.2.</span> <span class="nav-text">信号的产生</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信号的注册"><span class="nav-number">1.3.</span> <span class="nav-text">信号的注册</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#信号注册"><span class="nav-number">1.3.1.</span> <span class="nav-text">信号注册</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信号的注销"><span class="nav-number">1.4.</span> <span class="nav-text">信号的注销</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信号的处理"><span class="nav-number">1.5.</span> <span class="nav-text">信号的处理</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#信号"><span class="nav-number">1.</span> <span class="nav-text">信号</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#信号概念"><span class="nav-number">1.1.</span> <span class="nav-text">信号概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信号的种类"><span class="nav-number">1.2.</span> <span class="nav-text">信号的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#同步和异步"><span class="nav-number">1.2.1.</span> <span class="nav-text">同步和异步</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#信号的产生"><span class="nav-number">1.2.2.</span> <span class="nav-text">信号的产生</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信号的注册"><span class="nav-number">1.3.</span> <span class="nav-text">信号的注册</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#信号注册"><span class="nav-number">1.3.1.</span> <span class="nav-text">信号注册</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信号的注销"><span class="nav-number">1.4.</span> <span class="nav-text">信号的注销</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信号的处理"><span class="nav-number">1.5.</span> <span class="nav-text">信号的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#默认处理方式"><span class="nav-number">1.5.1.</span> <span class="nav-text">默认处理方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#忽略处理方式"><span class="nav-number">1.5.2.</span> <span class="nav-text">忽略处理方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#自定义处理方式"><span class="nav-number">1.5.3.</span> <span class="nav-text">自定义处理方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#信号自定义处理方式的流程"><span class="nav-number">1.5.4.</span> <span class="nav-text">信号自定义处理方式的流程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信号的阻塞"><span class="nav-number">1.6.</span> <span class="nav-text">信号的阻塞</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#信号的一些其他概念"><span class="nav-number">1.6.1.</span> <span class="nav-text">信号的一些其他概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#信号阻塞概念"><span class="nav-number">1.6.2.</span> <span class="nav-text">信号阻塞概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#信号阻塞的过程"><span class="nav-number">1.6.3.</span> <span class="nav-text">信号阻塞的过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#信号阻塞的接口"><span class="nav-number">1.6.4.</span> <span class="nav-text">信号阻塞的接口</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -720,7 +770,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">67.9k</span>
+    <span title="Site words total count">69.1k</span>
   
 </div>
 
