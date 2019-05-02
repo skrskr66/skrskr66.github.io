@@ -85,7 +85,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="C++,">
 
 
 
@@ -98,17 +98,23 @@
 
 
 
-<meta name="description" content="Full of adventure,Full of discovery">
+<meta name="description" content="终于进入了C++的学习。正所谓学好C++，走遍全天下。C++可以说为我打开了新世界。不过数据结构的知识还是得不断地复习啊 C++关键字关键字在C语言中就已经见过了许多比如最常见的if-else，for，int，double等等。只不过在C++中还会遇到更多的，以后会慢慢学习 命名空间C++引入命名空间这个概念是因为在我们编程中可能写到大量的函数，比如我在某个头文件中写了abc()这样一个函数，但是">
+<meta name="keywords" content="C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++入门">
 <meta property="og:url" content="https://skrskr66.github.io/2019/05/01/C-入门/index.html">
 <meta property="og:site_name" content="程序程">
-<meta property="og:description" content="Full of adventure,Full of discovery">
+<meta property="og:description" content="终于进入了C++的学习。正所谓学好C++，走遍全天下。C++可以说为我打开了新世界。不过数据结构的知识还是得不断地复习啊 C++关键字关键字在C语言中就已经见过了许多比如最常见的if-else，for，int，double等等。只不过在C++中还会遇到更多的，以后会慢慢学习 命名空间C++引入命名空间这个概念是因为在我们编程中可能写到大量的函数，比如我在某个头文件中写了abc()这样一个函数，但是">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-01T13:13:22.444Z">
+<meta property="og:image" content="https://skrskr66.github.io/2019/05/01/C-入门/入门1.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/05/01/C-入门/入门2.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/05/01/C-入门/入门3.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/05/01/C-入门/入门4.png">
+<meta property="og:updated_time" content="2019-05-02T09:41:46.798Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++入门">
-<meta name="twitter:description" content="Full of adventure,Full of discovery">
+<meta name="twitter:description" content="终于进入了C++的学习。正所谓学好C++，走遍全天下。C++可以说为我打开了新世界。不过数据结构的知识还是得不断地复习啊 C++关键字关键字在C语言中就已经见过了许多比如最常见的if-else，for，int，double等等。只不过在C++中还会遇到更多的，以后会慢慢学习 命名空间C++引入命名空间这个概念是因为在我们编程中可能写到大量的函数，比如我在某个头文件中写了abc()这样一个函数，但是">
+<meta name="twitter:image" content="https://skrskr66.github.io/2019/05/01/C-入门/入门1.png">
 
 
 
@@ -379,7 +385,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  2.8k
                 </span>
               
 
@@ -395,7 +401,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  11
                 </span>
               
             </div>
@@ -416,7 +422,73 @@
       
 
       
-        
+        <p>终于进入了C++的学习。正所谓学好C++，走遍全天下。C++可以说为我打开了新世界。不过数据结构的知识还是得不断地复习啊</p>
+<h4 id="C-关键字"><a href="#C-关键字" class="headerlink" title="C++关键字"></a>C++关键字</h4><p>关键字在C语言中就已经见过了许多比如最常见的if-else，for，int，double等等。只不过在C++中还会遇到更多的，以后会慢慢学习</p>
+<h4 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h4><p>C++引入命名空间这个概念是因为在我们编程中可能写到大量的函数，比如我在某个头文件中写了abc()这样一个函数，但是在我的另一个库文件中本身就存在abc()这样一个函数。那么我一旦调用就会发生冲突</p>
+<p>所以使用命名空间的目的<strong>是对标识符的名称进行本地化，以避免命名冲突或名字污染</strong>，namespace关键字的出现就是针对这个问题的</p>
+<h5 id="命名空间的定义"><a href="#命名空间的定义" class="headerlink" title="命名空间的定义"></a>命名空间的定义</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//普通的命名空间</span></span><br><span class="line"><span class="keyword">namespace</span> N1&#123;<span class="comment">//N1为命名空间的名称</span></span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    <span class="comment">//命名空间的内容，既可以定义变量，也可以定义函数</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> b, <span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> b + c;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//命名空间也可以嵌套</span></span><br><span class="line"><span class="keyword">namespace</span> N1&#123;</span><br><span class="line">	<span class="keyword">int</span> a;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> b, <span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> b + c;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">namespace</span> N2&#123;</span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> b, <span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> b + c;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//同一个工程中允许存在多个相同名称的命名空间</span></span><br><span class="line"><span class="comment">//编译器最后会合成同一个命名空间</span></span><br><span class="line"><span class="keyword">namespace</span> N1&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">Mul</span><span class="params">(<span class="keyword">int</span> b, <span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> b * c;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：一定命名空间定义了一个新的作用域，命名空间中的所有内容都局限于该命名空间中</strong></p>
+<h5 id="命名空间的使用"><a href="#命名空间的使用" class="headerlink" title="命名空间的使用"></a>命名空间的使用</h5><p><strong>1、加命名空间名称及作用域限定符</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d/n"</span>,N1::a);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2、使用using将命名空间中成员引入</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> N1::a;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>3、使用using namespace命名空间引入</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> N1;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,a);</span><br><span class="line">    add(<span class="number">10</span>,<span class="number">20</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="C-输入和输出"><a href="#C-输入和输出" class="headerlink" title="C++输入和输出"></a>C++输入和输出</h4><p>学习一门语言最先开始要进行的打招呼仪式</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt; <span class="string">"hello,world"</span> &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用<code>cout标准输出</code>和<code>cin标准输入时</code>，必须包含<code>&lt;iostream&gt;</code>头文件以及<strong>std标准命名空间</strong>。</p>
+<p>关于<code>.h</code>：早期标准库将所有功能在全局域中实现，声明在<code>.h</code>的后缀的头文件中，使用时只需要包含对应的头文件即可，后来将其实现在std命名空间下，为了和C头文件区分，也为了正确使用命名空间，规定C++头文件不带<code>.h</code>；旧编译器(VC++6.0)还支持，后续不再支持。现在推荐使用<code>&lt;iostream&gt; + std</code>的方式</p>
+<p>使用c++输入输出更方便，不需增加数据格式控制</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">cout</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    <span class="keyword">double</span> b;</span><br><span class="line">    <span class="keyword">char</span> c;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;a;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;b&gt;&gt;c;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt; a &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt; b &lt;&lt;<span class="string">" "</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/01/C-入门/入门1.png" alt="入门1"></p>
+<h4 id="缺省参数"><a href="#缺省参数" class="headerlink" title="缺省参数"></a>缺省参数</h4><p>缺省参数可以理解为备用值。</p>
+<h5 id="缺省参数概念"><a href="#缺省参数概念" class="headerlink" title="缺省参数概念"></a>缺省参数概念</h5><p>缺省参数是声明或定义函数时为函数的参数指定一个默认值。在调用该函数时，如果没有指定实参则采用该默认值，否则使用指定的实参。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;    </span></span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">cout</span>;    </span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">endl</span>;    </span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Func</span><span class="params">(<span class="keyword">int</span> a = <span class="number">9</span>)</span></span>&#123;    </span><br><span class="line">  <span class="built_in">cout</span>&lt;&lt;a&lt;&lt;<span class="built_in">endl</span>;    </span><br><span class="line">&#125;    </span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;    </span><br><span class="line">    </span><br><span class="line">  Func();    </span><br><span class="line">  Func(<span class="number">100</span>);    </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;                                                                                                             </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/01/C-入门/入门2.png" alt="入门2"></p>
+<h5 id="缺省参数的分类"><a href="#缺省参数的分类" class="headerlink" title="缺省参数的分类"></a>缺省参数的分类</h5><p><strong>全缺省参数</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testfunc</span><span class="params">(<span class="keyword">int</span> a = <span class="number">10</span>,<span class="keyword">int</span> b = <span class="number">20</span>,<span class="keyword">int</span> c = <span class="number">30</span>)</span></span>&#123;    </span><br><span class="line">  <span class="built_in">cout</span>&lt;&lt;<span class="string">"a = "</span>&lt;&lt;a&lt;&lt;<span class="built_in">endl</span>;    </span><br><span class="line">  <span class="built_in">cout</span>&lt;&lt;<span class="string">"b = "</span>&lt;&lt;b&lt;&lt;<span class="built_in">endl</span>;    </span><br><span class="line">  <span class="built_in">cout</span>&lt;&lt;<span class="string">"c = "</span>&lt;&lt;c&lt;&lt;<span class="built_in">endl</span>;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>半缺省参数</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testfunc2</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b = <span class="number">20</span>,<span class="keyword">int</span> c = <span class="number">30</span>)</span></span>&#123;    </span><br><span class="line">  <span class="built_in">cout</span>&lt;&lt;<span class="string">"a = "</span>&lt;&lt;a&lt;&lt;<span class="built_in">endl</span>;    </span><br><span class="line">  <span class="built_in">cout</span>&lt;&lt;<span class="string">"b = "</span>&lt;&lt;b&lt;&lt;<span class="built_in">endl</span>;    </span><br><span class="line">  <span class="built_in">cout</span>&lt;&lt;<span class="string">"c = "</span>&lt;&lt;c&lt;&lt;<span class="built_in">endl</span>;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>半缺省参数的函数在调用时，必须加上参数a的赋值，否则会报错。</p>
+<p>半缺省参数必须从右往左依次来给，不能间隔着给</p>
+<p>缺省参数不能在函数声明和定义中同时出现，因为当声明与定义位置同时出现，恰巧两个位置提供的值不同，那编译器就无法确认到底该用哪个缺省值</p>
+<p>缺省值必须是常量或者全局变量</p>
+<h4 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h4><h5 id="函数重载的概念"><a href="#函数重载的概念" class="headerlink" title="函数重载的概念"></a>函数重载的概念</h5><p>函数重载是函数的一种特殊情况，C++允许在同一作用域中声明几个功能类似的同名函数，这些同名函数的形参列表(参数个数 或 类型 或 顺序)必须不同，常用来处理实现功能类似数据类型不同的问题</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;    </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">cout</span>;    </span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">endl</span>;    </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;    </span><br><span class="line">  <span class="keyword">return</span> a + b;    </span><br><span class="line">&#125;    </span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">add</span><span class="params">(<span class="keyword">double</span> a, <span class="keyword">double</span> b)</span></span>&#123;    </span><br><span class="line">  <span class="keyword">return</span> a + b;    </span><br><span class="line">&#125;    </span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">add</span><span class="params">(<span class="keyword">long</span> a,<span class="keyword">long</span> b)</span></span>&#123;    </span><br><span class="line">  <span class="keyword">return</span> a +b;    </span><br><span class="line">&#125;    </span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;    </span><br><span class="line">  <span class="built_in">cout</span>&lt;&lt;add(<span class="number">10</span>,<span class="number">20</span>)&lt;&lt;<span class="built_in">endl</span>;    </span><br><span class="line">  <span class="built_in">cout</span>&lt;&lt;add(<span class="number">10.0</span>,<span class="number">20.0</span>)&lt;&lt;<span class="built_in">endl</span>;    </span><br><span class="line">  <span class="built_in">cout</span>&lt;&lt;add(<span class="number">10L</span>,<span class="number">20L</span>)&lt;&lt;<span class="built_in">endl</span>;    </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;                      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>虽然函数名都是一样的，但是参数传参的类型不同。当在调用的时候，编译器检查到参数的不同，对应到相应的函数中，这样就可以实现不同类型的计算了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//下面两个函数，虽然参数不同，但是函数类型已经确定了返回值，这样的话函数不管参数给什么都没法实现不同类型的计算，就不存在重载的意义了</span></span><br><span class="line"><span class="function"><span class="keyword">short</span> <span class="title">Add</span><span class="params">(<span class="keyword">short</span> left, <span class="keyword">short</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">return</span> left+right;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Add</span><span class="params">(<span class="keyword">short</span> left, <span class="keyword">short</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">return</span> left+right;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="名字修饰"><a href="#名字修饰" class="headerlink" title="名字修饰"></a>名字修饰</h5><p>在C++中，一个程序要运行起来，需要经历以下几个阶段：<strong>预处理，编译，汇编，链接</strong></p>
+<p><strong>而名字修饰是一种在编译过程中，将函数、变量的名称重新改编的机制，简单来说就是编译器为了区分各个函数，将函数通过某种算法，重新修饰为一个全局唯一的名称</strong></p>
+<p>C语言的名字修饰比较简单，就直接在函数名前面加了一个下划线。比如<code>add</code>修饰为<code>_add</code></p>
+<p>但C++不同，由于C++要支持重载，命名空间等，使得其修饰规则比较复杂，不同编译器在底层的实现方式可能都有差异</p>
+<p>名字的修饰过程不必深入了解，只需知道被重新修饰后的名字中包含了：<strong>函数的名字以及参数类型</strong>，这就是为什么函数重载中几个同名函数要求其参数列表不同。</p>
+<p>Linux下我们通过指令反汇编来查看<code>objdump -d a.out &gt;log.txt</code></p>
+<p><img src="/2019/05/01/C-入门/入门3.png" alt="入门3"></p>
+<p>我们可以看到三个很相似的名字，<code>_Z3addii</code>，<code>_Z3adddd</code>,<code>_Z3addll</code></p>
+<p>但是仔细观察它们的最后两个字母都不相同，这代表了参数类型不同。分别是int，double，long</p>
+<p>但是它们的规制是一样的”<strong>返回类型+函数名+参数列表</strong>“</p>
+<p>这也可以解释了为什么C语言中不支持函数重载，因为在函数编译过程中，C语言并不能将同名不同参数的函数<strong>名字修饰</strong>，所以它没法支持函数重载。</p>
+<h5 id="extern“C”"><a href="#extern“C”" class="headerlink" title="extern“C”"></a>extern“C”</h5><p>有时候在C++工程中可能需要<strong>将某些函数按照C的风格来编译</strong>，在函数前加extern “C”，意思是告诉编译器，将该函数按照C语言规则来编译。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function"><span class="keyword">int</span> <span class="title">Add</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> Add(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line"> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//可以编译通过，但是链接时出现错误</span></span><br></pre></td></tr></table></figure>
+<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><h5 id="引用的概念"><a href="#引用的概念" class="headerlink" title="引用的概念"></a>引用的概念</h5><p><strong>引用不是新定义一个变量，而是给已存在的变量取了一个别名，编译器不会为引用变量开辟内存空间，它和引用的变量共用同一块内存空间</strong></p>
+<p><code>类型&amp; 引用变量名(对象名) = 引用实体</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">TestRef</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span>&amp; ra = a;<span class="comment">//&lt;====定义引用类型</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%p\n"</span>, &amp;a);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%p\n"</span>, &amp;ra);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>引用类型必须和引用实体是同种类型的</strong></p>
+<h5 id="引用特性"><a href="#引用特性" class="headerlink" title="引用特性"></a>引用特性</h5><p>1、引用在定义时必须初始化</p>
+<p>2、一个变量可以有多个引用</p>
+<p>3、引用一旦引用一个实体，再不能引用其他实体</p>
+<h5 id="常引用"><a href="#常引用" class="headerlink" title="常引用"></a>常引用</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">TestConstRef</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="comment">//int&amp; ra = a;   // 该语句编译时会出错，a为常量</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>&amp; ra = a;</span><br><span class="line"><span class="comment">// int&amp; b = 10; // 该语句编译时会出错，b为常量</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>&amp; b = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">double</span> d = <span class="number">12.34</span>;</span><br><span class="line"><span class="comment">//int&amp; rd = d; // 该语句编译时会出错，类型不同</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>&amp; rd = d;<span class="comment">//这样引用类型可以，但是返回值是int类型</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>int const&amp;表示此引用所代表的int类型变量无法使用此引用修改.</strong></p>
+<p><strong>const int&amp;表示此引用所代表的是const int类型变量,同样也无法用此引用修改.</strong> </p>
+<h5 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>&amp; <span class="title">Add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> c = a + b;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span>&amp; ret = Add(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">    Add(<span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Add(1, 2) is :"</span>&lt;&lt; ret &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当执行这段代码时，输出应该是3，但是输出的结果是7</p>
+<p><img src="/2019/05/01/C-入门/入门4.png" alt="入门4"></p>
+<p><strong>这是因为再函数返回时，离开函数作用域后，其栈上空间已经还给了系统，因此不能用栈上的空间作为引用类型返回。如果以引用类型返回，返回值的生命周期必须不受函数的限制(即比函数生命周期长)</strong></p>
+<p>再来看这段代码，ret第一次引用之后为3，但是函数离开了作用域后，栈上的空间被归还了。但此时又调用了一次这个函数，栈上的空间可能还为上一次使用的区域，此时ret就为7了。</p>
+<h5 id="引用和指针的区别"><a href="#引用和指针的区别" class="headerlink" title="引用和指针的区别"></a>引用和指针的区别</h5><p>在语法概念上引用就是一个别名，没有独立空间，和其引用实体共用同一块空间</p>
+<p>但是在底层实现上实际是有空间的，因为引用按照指针方式实现的</p>
+<p><strong>引用和指针的不同点</strong></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1. </span>引用在定义时必须初始化，指针没有要求</span><br><span class="line"><span class="bullet">2. </span>引用在初始化时引用一个实体后，就不能再引用其他实体，而指针可以在任何时候指向任何一个同类型实</span><br><span class="line">体</span><br><span class="line"><span class="bullet">3. </span>没有NULL引用，但有NULL指针</span><br><span class="line"><span class="bullet">4. </span>在sizeof中含义不同：引用结果为引用类型的大小，但指针始终是地址空间所占字节个数(32位平台下占4</span><br><span class="line">个字节)</span><br><span class="line"><span class="bullet">5. </span>引用自加即引用的实体增加1，指针自加即指针向后偏移一个类型的大小</span><br><span class="line"><span class="bullet">6. </span>有多级指针，但是没有多级引用</span><br><span class="line"><span class="bullet">7. </span>访问实体方式不同，指针需要显式解引用，引用编译器自己处理</span><br><span class="line"><span class="bullet">8. </span>引用比指针使用起来相对更安全</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -442,6 +514,12 @@
 
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+        </div>
       
 
       
@@ -517,8 +595,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -548,7 +635,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -603,6 +690,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#C-关键字"><span class="nav-number">1.</span> <span class="nav-text">C++关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命名空间"><span class="nav-number">2.</span> <span class="nav-text">命名空间</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#命名空间的定义"><span class="nav-number">2.1.</span> <span class="nav-text">命名空间的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#命名空间的使用"><span class="nav-number">2.2.</span> <span class="nav-text">命名空间的使用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-输入和输出"><span class="nav-number">3.</span> <span class="nav-text">C++输入和输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺省参数"><span class="nav-number">4.</span> <span class="nav-text">缺省参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#缺省参数概念"><span class="nav-number">4.1.</span> <span class="nav-text">缺省参数概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#缺省参数的分类"><span class="nav-number">4.2.</span> <span class="nav-text">缺省参数的分类</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数重载"><span class="nav-number">5.</span> <span class="nav-text">函数重载</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#函数重载的概念"><span class="nav-number">5.1.</span> <span class="nav-text">函数重载的概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#名字修饰"><span class="nav-number">5.2.</span> <span class="nav-text">名字修饰</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#extern“C”"><span class="nav-number">5.3.</span> <span class="nav-text">extern“C”</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引用"><span class="nav-number">6.</span> <span class="nav-text">引用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#引用的概念"><span class="nav-number">6.1.</span> <span class="nav-text">引用的概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#引用特性"><span class="nav-number">6.2.</span> <span class="nav-text">引用特性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#常引用"><span class="nav-number">6.3.</span> <span class="nav-text">常引用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用场景"><span class="nav-number">6.4.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#引用和指针的区别"><span class="nav-number">6.5.</span> <span class="nav-text">引用和指针的区别</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -640,7 +743,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">69.8k</span>
+    <span title="Site words total count">72.5k</span>
   
 </div>
 
