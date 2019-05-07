@@ -85,7 +85,7 @@
 
 
 
-  <meta name="keywords" content="C初阶,">
+  <meta name="keywords" content="Linux,">
 
 
 
@@ -98,18 +98,20 @@
 
 
 
-<meta name="description" content="1.编写函数：  unsigned int reverse_bit(unsigned int value);   这个函数的返回值value的二进制位模式从左到右翻转后的值。    如：  在32位机器上    25这个值包含下列各位：   00000000000000000000000000011001  翻转后：（2550136832）           100110000000000000">
-<meta name="keywords" content="C初阶">
+<meta name="description" content="多线程越深入的学习之后，经常能听到这么一个词—-多线程。之前的学习经常会提到多进程，父进程在忙不过来的情况下，会创建子进程进行帮忙，这样就是一个多进程的任务。那么什么是多线程呢？ 线程概念在传统的操作系统中，进程就是一个运行中程序的描述信息—-pcb，控制程序的运行。 在Linux操作系统下，pcb是进程，因为Linux下线程是以进程pcb模拟实现线程；也有人称为轻量级进程。但是Linux下没有为">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初阶C-1124">
-<meta property="og:url" content="https://skrskr66.github.io/2018/12/06/初阶C-1124/index.html">
+<meta property="og:title" content="Linux多线程">
+<meta property="og:url" content="https://skrskr66.github.io/2019/05/06/Linux多线程/index.html">
 <meta property="og:site_name" content="程序程">
-<meta property="og:description" content="1.编写函数：  unsigned int reverse_bit(unsigned int value);   这个函数的返回值value的二进制位模式从左到右翻转后的值。    如：  在32位机器上    25这个值包含下列各位：   00000000000000000000000000011001  翻转后：（2550136832）           100110000000000000">
+<meta property="og:description" content="多线程越深入的学习之后，经常能听到这么一个词—-多线程。之前的学习经常会提到多进程，父进程在忙不过来的情况下，会创建子进程进行帮忙，这样就是一个多进程的任务。那么什么是多线程呢？ 线程概念在传统的操作系统中，进程就是一个运行中程序的描述信息—-pcb，控制程序的运行。 在Linux操作系统下，pcb是进程，因为Linux下线程是以进程pcb模拟实现线程；也有人称为轻量级进程。但是Linux下没有为">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-06T16:35:35.141Z">
+<meta property="og:image" content="https://skrskr66.github.io/2019/05/06/Linux多线程/线程1.png">
+<meta property="og:updated_time" content="2019-05-06T05:48:06.776Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初阶C-1124">
-<meta name="twitter:description" content="1.编写函数：  unsigned int reverse_bit(unsigned int value);   这个函数的返回值value的二进制位模式从左到右翻转后的值。    如：  在32位机器上    25这个值包含下列各位：   00000000000000000000000000011001  翻转后：（2550136832）           100110000000000000">
+<meta name="twitter:title" content="Linux多线程">
+<meta name="twitter:description" content="多线程越深入的学习之后，经常能听到这么一个词—-多线程。之前的学习经常会提到多进程，父进程在忙不过来的情况下，会创建子进程进行帮忙，这样就是一个多进程的任务。那么什么是多线程呢？ 线程概念在传统的操作系统中，进程就是一个运行中程序的描述信息—-pcb，控制程序的运行。 在Linux操作系统下，pcb是进程，因为Linux下线程是以进程pcb模拟实现线程；也有人称为轻量级进程。但是Linux下没有为">
+<meta name="twitter:image" content="https://skrskr66.github.io/2019/05/06/Linux多线程/线程1.png">
 
 
 
@@ -139,13 +141,13 @@
 
 
 
-  <link rel="canonical" href="https://skrskr66.github.io/2018/12/06/初阶C-1124/">
+  <link rel="canonical" href="https://skrskr66.github.io/2019/05/06/Linux多线程/">
 
 
 
 
 
-  <title>初阶C-1124 | 程序程</title>
+  <title>Linux多线程 | 程序程</title>
   
 
 
@@ -314,7 +316,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://skrskr66.github.io/2018/12/06/初阶C-1124/">
+    <link itemprop="mainEntityOfPage" href="https://skrskr66.github.io/2019/05/06/Linux多线程/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lyc">
@@ -331,7 +333,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">初阶C-1124</h1>
+          <h1 class="post-title" itemprop="name headline">Linux多线程</h1>
         
 
         <div class="post-meta">
@@ -343,8 +345,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-06T21:59:28+08:00">
-                2018-12-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T08:58:25+08:00">
+                2019-05-06
               </time>
             
 
@@ -380,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.3k
+                  402
                 </span>
               
 
@@ -396,7 +398,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  1
                 </span>
               
             </div>
@@ -417,25 +419,18 @@
       
 
       
-        <p>1.编写函数：  unsigned int reverse_bit(unsigned int value);  </p>
-<p>这个函数的返回值value的二进制位模式从左到右翻转后的值。   </p>
-<p>如：  在32位机器上    25这个值包含下列各位：  </p>
-<p>00000000000000000000000000011001  翻转后：（2550136832）          </p>
-<p>10011000000000000000000000000000  程序结果返回：  2550136832 </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="title">reverse_bit</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> value)</span></span>&#123;</span><br><span class="line">    <span class="comment">//第一种方法</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; <span class="number">32</span>;i++)&#123;</span><br><span class="line">        sum = sum + ((value &gt;&gt; i) &amp; <span class="number">1</span>) * <span class="built_in">pow</span>(<span class="number">2</span>,<span class="number">31</span> - i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">    <span class="comment">//输入任意一个数，进行移位操作并且移位一次还要和1进行一次与操作，这个时候判断最后一个位是1还是0。</span></span><br><span class="line">    <span class="comment">//当判断完之后，进行乘方</span></span><br><span class="line">    <span class="comment">//第一个数 ----&gt; 32位   2^31</span></span><br><span class="line">    <span class="comment">//第二个数 ----&gt; 32位   2^30</span></span><br><span class="line">    <span class="comment">//对每一位的数进行了判断之后(判断是为1还是为0)，乘以它的方就是将其转换放在翻转后的位置</span></span><br><span class="line">    <span class="comment">//全部相加之后，就是每个翻转之后的位置</span></span><br><span class="line">    <span class="comment">//第二种方法</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> temp = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; <span class="number">31</span>;i++)&#123;</span><br><span class="line">        temp = temp &lt;&lt; <span class="number">1</span>;</span><br><span class="line">        temp = temp | ((value &gt;&gt; i) &amp; <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">    <span class="comment">//将每一个最后位都取出来</span></span><br><span class="line">    <span class="comment">//放在新建变量的最后一位</span></span><br><span class="line">    <span class="comment">//左移新建变量temp</span></span><br><span class="line">    <span class="comment">//我们可以这样理解，我们取出一个变量。让这个变量每次向左移动。这样每次左移之后它的位数都在增加，但是增加之后，仅仅只是增加了位数，具体值的判断再由下一步</span></span><br><span class="line">    <span class="comment">//还是依旧判断最后一位是否为1，判断是否为1之后再去与变量进行 或运算。如果是1，那么与完之后的结果为1.否则与完之后的结果为0.并不冲突。位数再增加，但是每次增加的位数还是要进行判断是0还是1.最后将这个变量返回。即为翻转之后的数。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2.不使用（a+b）/2这种方式，求两个数的平均值。  </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">avg</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="keyword">int</span> num;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"enter tow numbers\n"</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;i,&amp;j);</span><br><span class="line">    num = (i &amp; j) + (i ^ j) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,num);</span><br><span class="line">    <span class="comment">//不用最常规的写法，那么就是以二进制的角度来思考。</span></span><br><span class="line">    <span class="comment">//二进制去求平均数。那么就是让每一位都进行一个求其平均</span></span><br><span class="line">    <span class="comment">//&amp; 用来判断相同位的平均值， ^ 用来判断不同位的平均值(不同位进行^运算之后，得的是不同位的值，这时候将其除以2得到的就是不同位的平均值)</span></span><br><span class="line">    <span class="comment">//之后将它们相加之后，得到就是二进制下的平均数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>3.编程实现：  一组数据中只有一个数字出现了一次。其他所有数字都是成对出现的。  请找出这个数字。（使用位运算） </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">find_num</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> arr[<span class="number">9</span>] = &#123; <span class="number">5</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">4</span>, <span class="number">9</span> &#125;;</span><br><span class="line">    <span class="keyword">int</span> len = <span class="keyword">sizeof</span>(arr)/<span class="keyword">sizeof</span>(arr[<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; len;i++)&#123;</span><br><span class="line">        arr[<span class="number">0</span>] = arr[<span class="number">0</span>] ^ arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,arr[<span class="number">0</span>]);</span><br><span class="line">    <span class="comment">//连续异或，偶数位的最后异或还是为0，但是奇数位的异或最后为1</span></span><br><span class="line">    <span class="comment">//所以最后可能出现的只是单独出现的的位数。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>4.有一个字符数组的内容为:”student a am i”,  请你将数组的内容改为”i am a student”.  </p>
-<p>要求：  不能使用库函数。  只能开辟有限个空间（空间个数和字符串的长度无关）。   </p>
-<p>student a am i </p>
-<p> i ma a tneduts </p>
-<p> i am a student  </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mystrlen</span><span class="params">(<span class="keyword">char</span>* str)</span></span>&#123;</span><br><span class="line">    <span class="comment">//判断字符串的长度</span></span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(*str++)&#123;</span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//字符串判定长度，设置的形参为char类型的指针，一个字符串的长度始终都在变化</span></span><br><span class="line"><span class="comment">//在输出时，系统先输出字符指针指向的第一个字符数据，然后使指针加1，使之指向下一个，然后再输出……直至遇到字符'\0‘，结束。所以给while的判断是 *str++，指针一个一个的走判断。</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//逆转指定范围的字符串</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reverse_string</span><span class="params">(<span class="keyword">char</span>* start,<span class="keyword">char</span>* end)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(start &lt; end)&#123;</span><br><span class="line">        <span class="comment">//比如classmate start的字符为‘c’，end的字符则为‘e’</span></span><br><span class="line">        <span class="keyword">char</span> temp = *start;</span><br><span class="line">        *start = *end;</span><br><span class="line">        *end = temp;</span><br><span class="line">        start++;<span class="comment">//字符串指向的位置，从开始不断向后</span></span><br><span class="line">        end--;<span class="comment">//才指定范围的字符串，从结尾不断向前</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">char</span>* str)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len = mystrlen(str);</span><br><span class="line">    <span class="keyword">char</span>* start = str;</span><br><span class="line">    <span class="keyword">char</span>* end = str + len - <span class="number">1</span>;   <span class="comment">//  len-1是不包括‘\0’</span></span><br><span class="line">    <span class="keyword">char</span>* cur = str;</span><br><span class="line">    <span class="comment">//整体逆转一次</span></span><br><span class="line">    reverse_string(start,end);</span><br><span class="line">    <span class="comment">//局部逆转</span></span><br><span class="line">    <span class="keyword">while</span>(*cur != <span class="string">'\0'</span>)&#123;</span><br><span class="line">        <span class="keyword">char</span>* st = cur;</span><br><span class="line">        <span class="comment">//寻找子串的尾点</span></span><br><span class="line">        <span class="keyword">while</span>(*cur != <span class="string">' '</span> &amp;&amp; *cur != <span class="string">'\0'</span>)&#123;</span><br><span class="line">            cur++;<span class="comment">//cur作为一个尾点，我们去寻找cur具体到哪个位置，当为‘ ’和‘\0’之前的一个位置将它作为end，cur最开始的作为st，这样局部的前后就有了，可以交换一次。</span></span><br><span class="line">        &#125;</span><br><span class="line">        reverse_string(st,cur<span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">while</span>(*cur == <span class="string">' '</span>)&#123;</span><br><span class="line">            cur++;<span class="comment">//在指针走的过程中，如果遇到了' '，则使其跳过，因为这样将不用再去将' '逆转一次。否则会有多余的步骤。</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>感觉初阶到了后期难度一下就上来了。考试周结束后，还是得好好敲代码啊。</p>
+        <h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><p>越深入的学习之后，经常能听到这么一个词—-多线程。之前的学习经常会提到多进程，父进程在忙不过来的情况下，会创建子进程进行帮忙，这样就是一个多进程的任务。那么什么是多线程呢？</p>
+<h4 id="线程概念"><a href="#线程概念" class="headerlink" title="线程概念"></a>线程概念</h4><p>在传统的操作系统中，进程就是一个运行中程序的描述信息—-pcb，控制程序的运行。</p>
+<p>在Linux操作系统下，pcb是进程，因为Linux下<strong>线程是以进程pcb模拟实现线程</strong>；也有人称为轻量级进程。但是Linux下没有为线程设计一个pcb来控制线程的运行。</p>
+<p><img src="/2019/05/06/Linux多线程/线程1.png" alt="线程1"></p>
+<p>上图介绍了线程组是个什么组合。</p>
+<h4 id="线程组理解"><a href="#线程组理解" class="headerlink" title="线程组理解"></a>线程组理解</h4><p><strong>进程就是线程组，包含了一个或多个线程</strong></p>
+<p>从上图来看，<strong>Linux线程是PCB，因为CPU调度程序运行是调度pcb，所以线程是CPU调度的基本单位。</strong></p>
+<p><strong>因为进程是线程组，程序运行时，资源是分配给整个线程组的，因此线程是资源分配的基本单位。</strong></p>
+<p>vfork()创建一个子进程共用同一个虚拟地址空间，怕出现调用栈混乱，因此子进程运行完毕或者程序替换后父进程才开始运行。</p>
+<h4 id="多线程和多进程的比较"><a href="#多线程和多进程的比较" class="headerlink" title="多线程和多进程的比较"></a>多线程和多进程的比较</h4><p>多线程和多进程都可以并行多任务，那么哪个执行起来比较好呢</p>
+<p>从线程的角度来看，优点：</p>
+<p>1、一个进程中的线程共用同一个虚拟地址空间</p>
 
       
     </div>
@@ -465,7 +460,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C初阶/" rel="tag"># C初阶</a>
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
           
         </div>
       
@@ -478,8 +473,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/02/数据结构之链表/" rel="next" title="数据结构之链表">
-                <i class="fa fa-chevron-left"></i> 数据结构之链表
+              <a href="/2019/05/01/C-入门/" rel="next" title="C++入门">
+                <i class="fa fa-chevron-left"></i> C++入门
               </a>
             
           </div>
@@ -487,10 +482,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/10/python-对豆瓣的top250的爬取/" rel="prev" title="python-对豆瓣的top250的爬取(利用正则表达式)">
-                python-对豆瓣的top250的爬取(利用正则表达式) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -547,8 +538,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -632,6 +632,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程"><span class="nav-number">1.</span> <span class="nav-text">多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线程概念"><span class="nav-number">1.1.</span> <span class="nav-text">线程概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程组理解"><span class="nav-number">1.2.</span> <span class="nav-text">线程组理解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多线程和多进程的比较"><span class="nav-number">1.3.</span> <span class="nav-text">多线程和多进程的比较</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
