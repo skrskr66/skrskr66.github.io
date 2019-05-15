@@ -107,7 +107,11 @@
 <meta property="og:description" content="多线程越深入的学习之后，经常能听到这么一个词—-多线程。之前的学习经常会提到多进程，父进程在忙不过来的情况下，会创建子进程进行帮忙，这样就是一个多进程的任务。那么什么是多线程呢？ 线程概念在传统的操作系统中，进程就是一个运行中程序的描述信息—-pcb，控制程序的运行。 在Linux操作系统下，pcb是进程，因为Linux下线程是以进程pcb模拟实现线程；也有人称为轻量级进程。但是Linux下没有为">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://skrskr66.github.io/2019/05/06/Linux多线程/线程1.png">
-<meta property="og:updated_time" content="2019-05-06T05:48:06.776Z">
+<meta property="og:image" content="https://skrskr66.github.io/2019/05/06/Linux多线程/线程2.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/05/06/Linux多线程/线程3.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/05/06/Linux多线程/线程4.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/05/06/Linux多线程/线程5.png">
+<meta property="og:updated_time" content="2019-05-15T08:45:09.612Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux多线程">
 <meta name="twitter:description" content="多线程越深入的学习之后，经常能听到这么一个词—-多线程。之前的学习经常会提到多进程，父进程在忙不过来的情况下，会创建子进程进行帮忙，这样就是一个多进程的任务。那么什么是多线程呢？ 线程概念在传统的操作系统中，进程就是一个运行中程序的描述信息—-pcb，控制程序的运行。 在Linux操作系统下，pcb是进程，因为Linux下线程是以进程pcb模拟实现线程；也有人称为轻量级进程。但是Linux下没有为">
@@ -382,7 +386,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  402
+                  2.8k
                 </span>
               
 
@@ -398,7 +402,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  10
                 </span>
               
             </div>
@@ -429,8 +433,85 @@
 <p><strong>因为进程是线程组，程序运行时，资源是分配给整个线程组的，因此线程是资源分配的基本单位。</strong></p>
 <p>vfork()创建一个子进程共用同一个虚拟地址空间，怕出现调用栈混乱，因此子进程运行完毕或者程序替换后父进程才开始运行。</p>
 <h4 id="多线程和多进程的比较"><a href="#多线程和多进程的比较" class="headerlink" title="多线程和多进程的比较"></a>多线程和多进程的比较</h4><p>多线程和多进程都可以并行多任务，那么哪个执行起来比较好呢</p>
-<p>从线程的角度来看，优点：</p>
+<p><strong>从线程的角度来看，优点：</strong></p>
 <p>1、一个进程中的线程共用同一个虚拟地址空间</p>
+<p>2、线程间通信更为方便</p>
+<p>3、线程的创建/销毁成本更低</p>
+<p>4、同一个进程间的线程调度成本要更低</p>
+<p>5、执行力度更加细致</p>
+<p><strong>缺点：</strong></p>
+<p>线程缺乏访问控制—-健壮性低。</p>
+<p>比如exit(),异常针对的是整个进程，进程退出，那么线程也就不存在了。这样的话线程的可控性比较低</p>
+<p><strong>共同优点：都可以并发/并行处理任务，提高处理效率</strong></p>
+<p><strong>多进程/多线程进行多任务处理的优势体现与细节：</strong></p>
+<p>CPU密集型程序：程序中都是大量的运算操作</p>
+<p>IO密集型程序：程序中都是大量的IO操作</p>
+<p><strong>共同缺点：对临界资源操作需要考虑的更多，编码更加复杂</strong></p>
+<h4 id="线程创建，线程终止，线程等待，线程分离"><a href="#线程创建，线程终止，线程等待，线程分离" class="headerlink" title="线程创建，线程终止，线程等待，线程分离"></a>线程创建，线程终止，线程等待，线程分离</h4><p>先回顾一下进程创建。在之前的总结中我们通过fork()函数和vfork()函数创建子进程。</p>
+<ul>
+<li><p>fork 是 创建一个子进程，并把父进程的内存数据copy到子进程中。</p>
+</li>
+<li><p>vfork是 创建一个子进程，并和父进程的内存数据share一起用。</p>
+<p>这两个的区别是，一个是copy，一个是share。</p>
+<p>fork函数是在父进程执行到子进程创建的位置，将内存数据拷贝进入，等待子进程执行，子进程执行完后，退出后父进程在继续执行。</p>
+<p>vfork函数是保证子进程先执行，当子进程调用exit()或exec()后，父进程往下执行</p>
+</li>
+</ul>
+<p>操作系统并没有为用户提供直接创建线程的系统调用接口。但是大佬封装了一套库线程控制</p>
+<p>用户创建的进程是一个用户态线程，在内核中对应了一个轻量级进程实现程序的调度运行</p>
+<h5 id="线程创建"><a href="#线程创建" class="headerlink" title="线程创建"></a>线程创建</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="comment">//注意！！！</span></span><br><span class="line"><span class="comment">//注意！！！</span></span><br><span class="line"><span class="comment">//注意！！！</span></span><br><span class="line">因为是库函数，所以编译链接的时候需要加上-pthread/-lpthread链接线程库</span><br><span class="line">pthread_create(<span class="keyword">pthread_t</span> *thread, <span class="keyword">const</span> <span class="keyword">pthread_attr_t</span> *attr,</span><br><span class="line">                          <span class="keyword">void</span> (start_routine) (<span class="keyword">void</span> *), <span class="keyword">void</span> *arg);</span><br><span class="line"><span class="keyword">pthread_t</span> *thread	<span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">int</span> 输出型参数，获取线程的PID</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">pthread_attr_t</span> *attr,线程属性，大部分时间都设为<span class="literal">NULL</span></span><br><span class="line"><span class="keyword">void</span>(start_routine)(<span class="keyword">void</span>*)	线程入口函数</span><br><span class="line"><span class="keyword">void</span>* arg	通过线程入口函数传递给线程的参数	作为实参传给函数</span><br><span class="line">返回值：成功返回 <span class="number">0</span>，失败返回 errno&gt;<span class="number">0</span></span><br><span class="line">    </span><br><span class="line">pthread_create（）函数在调用过程中启动一个新线程。新线程通过调用start_routine（）开始执行，arg作为start_routine（）的唯一参数传递。</span><br><span class="line"></span><br><span class="line"><span class="keyword">pthread_t</span> pthread_self(<span class="keyword">void</span>);</span><br><span class="line">返回调用线程ID；</span><br></pre></td></tr></table></figure>
+<p>线程创建Demo，最近正好学习了C++，将代码都改成了C++的风格</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;                      </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;             </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;                                               </span></span></span><br><span class="line">                 </span><br><span class="line"><span class="function"><span class="keyword">void</span> * <span class="title">thr_start</span><span class="params">(<span class="keyword">void</span> *arg)</span></span>&#123;</span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt;<span class="string">"I am child thread-----"</span>&lt;&lt;(<span class="keyword">char</span>*)arg&lt;&lt;<span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    sleep(<span class="number">1</span>);   </span><br><span class="line">  &#125;                                  </span><br><span class="line">  <span class="keyword">return</span> <span class="literal">NULL</span>;      </span><br><span class="line">&#125;                                                               </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span>&#123;</span><br><span class="line">  <span class="keyword">pthread_t</span> tid;                                                   </span><br><span class="line">  <span class="keyword">int</span> ret = pthread_create(&amp;tid,<span class="literal">NULL</span>,thr_start,(<span class="keyword">void</span>*)<span class="string">"I am hujun!"</span>);</span><br><span class="line">  <span class="keyword">if</span>(ret != <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt; <span class="string">"thread create error"</span>&lt;&lt;<span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>; </span><br><span class="line">  &#125;</span><br><span class="line">  sleep(<span class="number">5</span>);      </span><br><span class="line">  pthread_cancel(tid);</span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)&#123;    </span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt;<span class="string">"I am main thread "</span>&lt;&lt; tid &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    sleep(<span class="number">1</span>);    </span><br><span class="line">  &#125;                   </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/06/Linux多线程/线程2.png" alt="线程2"></p>
+<p>如图为运行结果</p>
+<p>在新线程创建之后，执行线程函数中的操作。父进程休眠上五秒，此时在这五秒内，线程不断执行操作。在这之后，时间结束后，线程退出，父进程继续执行操作。</p>
+<p>在打印结果中可以看到tid打印的是一串数字，为什么不是地址呢？</p>
+<p>其实打印的<strong>tid是线程地址空间的首地址</strong>，也有其他的说法称为<strong>该线程的真实pid</strong></p>
+<p>通过指令<code>ps -L</code>查看轻量级进程</p>
+<p><img src="/2019/05/06/Linux多线程/线程3.png" alt="线程3"></p>
+<p>可以看到PID和LWP是相同的，这是因为</p>
+<p>此处的PID是线程组ID—-tgid(thread group ID),可以理解为线程组中主线程pid</p>
+<p>此处的LWP显示的就是线程ID，也可以说是tid。</p>
+<p><img src="/2019/05/06/Linux多线程/线程4.png" alt="线程4"></p>
+<h5 id="线程终止"><a href="#线程终止" class="headerlink" title="线程终止"></a>线程终止</h5><p><strong>在线程入口函数中return；main函数中不能return，否则退出的是进程</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pthread_exit</span><span class="params">(<span class="keyword">void</span>* retval)</span></span>;</span><br><span class="line">退出调用线程，retval作为返回值；</span><br><span class="line">主动退出，谁调用谁退出；</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_cancel</span><span class="params">(<span class="keyword">pthread_t</span> thread)</span></span>;</span><br><span class="line">取消一个指定的线程，被动退出；</span><br></pre></td></tr></table></figure>
+<p><strong>主线程退出，进程并不会退出，线程退出也会成为僵尸线程。线程地址空间无法被回收再利用，造成内存泄漏。</strong></p>
+<p>线程退出Demo</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;                          </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;     </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;errno.h&gt;             </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">thr_start</span><span class="params">(<span class="keyword">void</span> *arg)</span></span>&#123;    </span><br><span class="line">  	<span class="keyword">while</span>(<span class="number">1</span>)&#123;      </span><br><span class="line">  		<span class="built_in">printf</span>(<span class="string">"child thread----\n"</span>);    </span><br><span class="line">  		sleep(<span class="number">1</span>);    </span><br><span class="line">  		pthread_exit(<span class="literal">NULL</span>);    </span><br><span class="line">  		&#125;      </span><br><span class="line">  	<span class="keyword">return</span> <span class="literal">NULL</span>;      </span><br><span class="line">  &#125;    </span><br><span class="line">      </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc , <span class="keyword">char</span> *argv[])</span></span>&#123;    </span><br><span class="line">    <span class="keyword">pthread_t</span> tid;    </span><br><span class="line">    <span class="keyword">int</span> ret = pthread_create(&amp;tid, <span class="literal">NULL</span>, thr_start,<span class="literal">NULL</span>);    </span><br><span class="line">    <span class="keyword">if</span>(ret != <span class="number">0</span>)&#123;    </span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">"thread create error\n"</span>);    </span><br><span class="line">      <span class="keyword">return</span> <span class="number">-1</span>;    </span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="comment">//使指定的线程退出tid == thread    </span></span><br><span class="line">    pthread_cancel(tid);    </span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;    </span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">"main thread -------\n"</span>);    </span><br><span class="line">      sleep(<span class="number">1</span>);    </span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;                      </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/06/Linux多线程/线程5.png" alt="线程5"></p>
+<p>打印的结果如上。</p>
+<p>如果根据代码来看，可能会认为线程创建完之后，应该先打印child pthread。但是却不是这样，这是因为对于主函数来说线程创建完成后，它将继续往下走，而重新创建的新线程需要去创建或寻找接口函数等一系列操作。当这些执行完成之后，才打印线程的操作。</p>
+<p>在代码中有pthread_cancel这个函数的使用。<strong>线程取消的方法是向目标线程发Cancel信号（pthread_cancel函数发送Cancel信号），但如何处理Cancel信号则由目标线程自己决定，或者忽略、或者立即终止、或者继续运行至Cancelation-point（取消点），由不同的Cancelation状态（pthread_setcancelstate函数设置状态）决定。</strong> </p>
+<p>所以目标线程选择了退出，之后继续执行主函数的操作</p>
+<h5 id="线程等待"><a href="#线程等待" class="headerlink" title="线程等待"></a>线程等待</h5><p>功能：等待线程退出，获取指定线程的返回值，允许系统回收线程资源</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pthread_join(<span class="keyword">pthread_t</span>, <span class="keyword">void</span> **retval);</span><br><span class="line">要等待的线程id</span><br><span class="line">retval	输出型参数-用于获取退出线程的返回值成功返回<span class="number">0</span>，失败返回一个非<span class="number">0</span>值</span><br><span class="line">返回值：<span class="number">0</span>	失败：!<span class="number">0</span>---errno</span><br></pre></td></tr></table></figure>
+<p><strong>一个线程创建起来，默认有一个属性：joinable。**</strong>关键！！！！**</p>
+<p>说明:</p>
+<ul>
+<li><p>调用线程将一直阻塞, 直到指定的线程调用pthread_exit, 从启动例程返回或被取消.</p>
+</li>
+<li><p>如果线程从它的启动例程返回, rval_ptr包含返回码.</p>
+</li>
+<li><p>如果线程被取消, 由rval_ptr指定的内存单元置为: PTHREAD_CANCELED.</p>
+</li>
+<li><p>如果对返回值不关心, 可把rval_ptr设为NULL.</p>
+</li>
+</ul>
+<h5 id="线程分离"><a href="#线程分离" class="headerlink" title="线程分离"></a>线程分离</h5><p><strong>将线程的一个属性从joinable设置为detach属性</strong></p>
+<p>功能：分离一个线程，线程退出后系统将自动回收资源；被分离的线程无法被等待，若是非要pthread_join则会直接报错</p>
+<p>man手册说明：<strong>将线程标识的线程标记为已分离。当分离的线程终止时，其资源将自动释放回系统，而不需要另一个线程与终止的线程联接。</strong></p>
+<p><strong>处于detach属性的线程，退出后资源直接自动被回收，这类线程不能被等待</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_detach</span><span class="params">(<span class="keyword">pthread_t</span> thread)</span></span>;</span><br><span class="line"><span class="comment">//thread 要被分离的线程ID</span></span><br><span class="line"><span class="comment">//功能：分离一个线程(设置线程的属性从joinable-&gt;detach属性)，线程退出后系统将自动回收资源，被分离的线程无法被等待，若是非要pthread_join则会直接报错返回</span></span><br><span class="line">注意：线程被分离的前提是用户不关心，线程的退出返回值</span><br></pre></td></tr></table></figure>
+<p><strong>线程的分离，对于一个线程来说，任意线程再任意位置调用都可以！！！</strong></p>
+<p><strong>用法：通常如果用户对线程的返回值并不关心，则在创建线程之后直接分离线程或者在线程入口函数中第一时间分离自己</strong></p>
+<p><strong>处于joinable状态的线程退出后不会自动释放资源需要被等待</strong></p>
+<p><strong>处于detach状态的线程退出后系统会自动回收资源并且不需要等待</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一个线程等待和线程分离的Demo</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;errno.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">cout</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">extern</span> <span class="keyword">void</span> *<span class="title">thr_start</span><span class="params">(<span class="keyword">void</span>* arg)</span></span>&#123;</span><br><span class="line">    <span class="comment">//pthread_detach(pthread_self());</span></span><br><span class="line">    <span class="comment">//pthread_exit((void*)"leihou");</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">      <span class="built_in">cout</span>&lt;&lt;<span class="string">"i am thread"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">      sleep(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span>&#123;</span><br><span class="line">    <span class="keyword">pthread_t</span> tid;    </span><br><span class="line">    <span class="keyword">int</span> ret = pthread_create(&amp;tid, <span class="literal">NULL</span>, thr_start, <span class="literal">NULL</span>);    </span><br><span class="line">    <span class="keyword">if</span>(ret != <span class="number">0</span>)&#123;    </span><br><span class="line">      <span class="built_in">cout</span>&lt;&lt;<span class="string">"pthread create error"</span>&lt;&lt;<span class="built_in">endl</span>;    </span><br><span class="line">      <span class="keyword">return</span> <span class="number">-1</span>;    </span><br><span class="line">    &#125;    </span><br><span class="line">    sleep(<span class="number">1</span>);    </span><br><span class="line">   &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span>&#123;</span><br><span class="line">    <span class="keyword">pthread_t</span> tid;</span><br><span class="line">    <span class="keyword">int</span> ret = pthread_create(&amp;tid, <span class="literal">NULL</span>, thr_start, <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">if</span>(ret != <span class="number">0</span>)&#123;</span><br><span class="line">      <span class="built_in">cout</span>&lt;&lt;<span class="string">"pthread create error"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sleep(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">char</span>* retval = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">int</span> err = pthread_join(tid,(<span class="keyword">void</span>**)&amp;retval);</span><br><span class="line">    <span class="keyword">if</span>(err == EINVAL)&#123;</span><br><span class="line">      <span class="built_in">cout</span>&lt;&lt;<span class="string">"thread can not be waited"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//cout&lt;&lt;retval&lt;&lt;endl;</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"retval:%s\n"</span>,retval);</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">      <span class="built_in">cout</span>&lt;&lt;<span class="string">"i am main thread"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">      sleep(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>首先将线程创建函数的两个接口注释掉。</p>
+<p>当线程没有退出时，pthread_join函数没有立即返回，主函数继续执行，而且没有retval返回值。</p>
+<p>当添加pthread_exit()函数后，此时线程等待结束退出后立即返回retval返回值“leihou”</p>
+<p>当添加pthread_detach()函数后，此时线程分离当前线程，此时将不再有线程等待这么一个操作，返回值retval此时为NULL，并且分离后资源交由系统回收，此时主函数继续循环执行。</p>
+<p>下一篇好好分析线程安全和各种锁和消费者与生产者模型</p>
 
       
     </div>
@@ -482,6 +563,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/09/C-类与对象/" rel="prev" title="C++-类与对象">
+                C++-类与对象 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -565,7 +650,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">51</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -642,7 +727,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程"><span class="nav-number">1.</span> <span class="nav-text">多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线程概念"><span class="nav-number">1.1.</span> <span class="nav-text">线程概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程组理解"><span class="nav-number">1.2.</span> <span class="nav-text">线程组理解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多线程和多进程的比较"><span class="nav-number">1.3.</span> <span class="nav-text">多线程和多进程的比较</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程"><span class="nav-number">1.</span> <span class="nav-text">多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线程概念"><span class="nav-number">1.1.</span> <span class="nav-text">线程概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程组理解"><span class="nav-number">1.2.</span> <span class="nav-text">线程组理解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多线程和多进程的比较"><span class="nav-number">1.3.</span> <span class="nav-text">多线程和多进程的比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程创建，线程终止，线程等待，线程分离"><span class="nav-number">1.4.</span> <span class="nav-text">线程创建，线程终止，线程等待，线程分离</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#线程创建"><span class="nav-number">1.4.1.</span> <span class="nav-text">线程创建</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线程终止"><span class="nav-number">1.4.2.</span> <span class="nav-text">线程终止</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线程等待"><span class="nav-number">1.4.3.</span> <span class="nav-text">线程等待</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线程分离"><span class="nav-number">1.4.4.</span> <span class="nav-text">线程分离</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -686,7 +771,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">74.5k</span>
+    <span title="Site words total count">79.1k</span>
   
 </div>
 
