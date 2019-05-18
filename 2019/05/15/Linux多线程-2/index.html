@@ -85,7 +85,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Linux 锁,">
 
 
 
@@ -98,17 +98,22 @@
 
 
 
-<meta name="description" content="Full of adventure,Full of discovery">
+<meta name="description" content="线程的知识点太多，太重要，所以分成三部分进行总结学习 线程安全多个线程并发同一段代码时，不会出现不同的结果。常见对全局变量或者静态变量进行操作，并且没有锁保护的情况下，会出现该问题。 多个线程对临界资源进行竞争操作时若不会造成数据二义性时则线程安全；否则，此时就是不安全的 如何实现线程安全常见的线程安全的情况 每个线程对全局变量或者静态变量只有读取的权限，而没有写入的权限，一般来说这些线程是安全的">
+<meta name="keywords" content="Linux 锁">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux多线程(2)">
 <meta property="og:url" content="https://skrskr66.github.io/2019/05/15/Linux多线程-2/index.html">
 <meta property="og:site_name" content="程序程">
-<meta property="og:description" content="Full of adventure,Full of discovery">
+<meta property="og:description" content="线程的知识点太多，太重要，所以分成三部分进行总结学习 线程安全多个线程并发同一段代码时，不会出现不同的结果。常见对全局变量或者静态变量进行操作，并且没有锁保护的情况下，会出现该问题。 多个线程对临界资源进行竞争操作时若不会造成数据二义性时则线程安全；否则，此时就是不安全的 如何实现线程安全常见的线程安全的情况 每个线程对全局变量或者静态变量只有读取的权限，而没有写入的权限，一般来说这些线程是安全的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-15T08:47:37.500Z">
+<meta property="og:image" content="https://skrskr66.github.io/2019/05/15/Linux多线程-2/线程1.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/05/15/Linux多线程-2/线程2.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/05/15/Linux多线程-2/线程3.png">
+<meta property="og:updated_time" content="2019-05-17T10:24:23.548Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux多线程(2)">
-<meta name="twitter:description" content="Full of adventure,Full of discovery">
+<meta name="twitter:description" content="线程的知识点太多，太重要，所以分成三部分进行总结学习 线程安全多个线程并发同一段代码时，不会出现不同的结果。常见对全局变量或者静态变量进行操作，并且没有锁保护的情况下，会出现该问题。 多个线程对临界资源进行竞争操作时若不会造成数据二义性时则线程安全；否则，此时就是不安全的 如何实现线程安全常见的线程安全的情况 每个线程对全局变量或者静态变量只有读取的权限，而没有写入的权限，一般来说这些线程是安全的">
+<meta name="twitter:image" content="https://skrskr66.github.io/2019/05/15/Linux多线程-2/线程1.png">
 
 
 
@@ -379,7 +384,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  2.9k
                 </span>
               
 
@@ -395,7 +400,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  11
                 </span>
               
             </div>
@@ -416,7 +421,80 @@
       
 
       
-        
+        <p>线程的知识点太多，太重要，所以分成三部分进行总结学习</p>
+<h3 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h3><p>多个线程并发同一段代码时，不会出现不同的结果。常见对全局变量或者静态变量进行操作，并且没有锁保护的情况下，会出现该问题。</p>
+<p>多个线程对临界资源进行竞争操作时若不会造成数据二义性时则线程安全；否则，此时就是不安全的</p>
+<h4 id="如何实现线程安全"><a href="#如何实现线程安全" class="headerlink" title="如何实现线程安全"></a>如何实现线程安全</h4><h5 id="常见的线程安全的情况"><a href="#常见的线程安全的情况" class="headerlink" title="常见的线程安全的情况"></a>常见的线程安全的情况</h5><ul>
+<li>每个线程对全局变量或者静态变量只有读取的权限，而没有写入的权限，一般来说这些线程是安全的</li>
+<li>类或者接口对于线程来说都是原子操作</li>
+<li>多个线程之间的切换不会导致该接口的执行结果存在二义性</li>
+</ul>
+<h5 id="常见的线程不安全的情况"><a href="#常见的线程不安全的情况" class="headerlink" title="常见的线程不安全的情况"></a>常见的线程不安全的情况</h5><ul>
+<li>不保护共享变量的函数</li>
+<li>函数状态随着被调用，状态发生变化的函数</li>
+<li>返回指向静态变量指针的函数</li>
+<li>调用线程不安全函数的函数</li>
+</ul>
+<p>在网上调研过程中看到一个总结：<strong>减少对临界资源的依赖，尽量避免访问全局变量，静态变量或其它共享资源，如果必须要使用共享资源，所有使用到的地方必须要进行互斥锁 (Mutex) 保护</strong> </p>
+<p>所以当对临界资源使用时，尽量在必须的地方使用锁的保护</p>
+<p>对临界资源又有两种访问，分别是同步访问和互斥访问</p>
+<p><strong>同步：临界资源的合理访问</strong></p>
+<p><strong>异步：临界资源同一时间的唯一访问</strong></p>
+<h4 id="互斥锁"><a href="#互斥锁" class="headerlink" title="互斥锁"></a>互斥锁</h4><p>互斥锁的操作就是<code>1/0</code>的操作</p>
+<p>一个0或者1的计数器。1可以表示加锁，加锁就是计数-1；操作完毕之后要解锁，解锁就是计数+1；</p>
+<p>0表示不可以加锁，不能加锁则等待</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//互斥锁的接口</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_mutex_destroy</span><span class="params">(<span class="keyword">pthread_mutex_t</span> *mutex)</span></span>;</span><br><span class="line"><span class="comment">//函数应销毁mutex引用的mutex对象</span></span><br><span class="line"><span class="comment">//注意！！！</span></span><br><span class="line"><span class="comment">//销毁已解锁的已初始化互斥体应是安全的。试图销毁锁定的互斥体会导致未定义的行为。</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_mutex_init</span><span class="params">(<span class="keyword">pthread_mutex_t</span> *<span class="keyword">restrict</span> mutex,<span class="keyword">const</span> <span class="keyword">pthread_mutexattr_t</span> *<span class="keyword">restrict</span> attr)</span></span>;</span><br><span class="line"><span class="comment">//mutex：互斥锁变量</span></span><br><span class="line"><span class="comment">//attr：属性，通常为NULL </span></span><br><span class="line"><span class="comment">//应使用attr指定的属性初始化mutex引用的mutex</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">pthread_mutex_t</span> mutex = PTHREAD_MUTEX_INITIALIZER;</span><br><span class="line"><span class="comment">//宏PTHREAD_MUTEX_INITIALIZER来静态的初始化锁</span></span><br><span class="line"><span class="comment">//互斥锁变量不一定非要全局变量--只要保证要互斥的线程都能访问到就行</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_mutex_lock</span><span class="params">(<span class="keyword">pthread_mutex_t</span> *mutex)</span></span>;</span><br><span class="line"><span class="comment">//锁定mutex引用的mutex对象。如果互斥体已被锁定，则调用线程应阻塞，直到互斥体可用。此操作将返回互斥对象引用的互斥对象处于锁定状态，调用线程作为其所有者。</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_mutex_trylock</span><span class="params">(<span class="keyword">pthread_mutex_t</span> *mutex)</span></span>;</span><br><span class="line"><span class="comment">//函数应等同于pthread_mutex_lock（），但如果mutex引用的mutex对象当前被锁定（由任何线程，包括当前线程），则调用应立即返回。</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_mutex_unlock</span><span class="params">(<span class="keyword">pthread_mutex_t</span> *mutex)</span></span>;</span><br><span class="line"><span class="comment">//函数应释放mutex引用的mutex对象。互斥体的释放方式取决于互斥体的type属性。如果在调用pthread_mutex_unlock（）时，mutex引用的mutex对象上有线程被阻塞，导致mutex可用，调度策略应确定哪个线程应获取mutex。</span></span><br></pre></td></tr></table></figure>
+<p>互斥锁的操作步骤</p>
+<ol>
+<li>定义互斥锁变量</li>
+<li>初始化互斥锁变量</li>
+<li>加锁</li>
+<li>解锁</li>
+<li>销毁互斥锁</li>
+</ol>
+<p>通过一个互斥锁Demo来感受一下锁的使用</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//模拟黄牛抢票，100张票，共有四个黄牛在抢票</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;errno.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ticket = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">pthread_mutex_t</span> mutex = PTHREAD_MUTEX_INITIALIZER;<span class="comment">//定义初始化锁</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span>* <span class="title">thr_start</span><span class="params">(<span class="keyword">void</span>* arg)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">        pthread_mutex_lock(&amp;mutex);</span><br><span class="line">        <span class="keyword">if</span>(ticket &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            usleep(<span class="number">1000</span>);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"yellow bull : %d----get ticket : %d\n"</span>,(<span class="keyword">int</span>)arg,ticket);</span><br><span class="line">            ticket--;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            pthread_mutex_unlock(&amp;mutex);</span><br><span class="line">            pthread_exit(<span class="literal">NULL</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        pthread_mutex_unlock(&amp;mutex);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span>&#123;</span><br><span class="line">    <span class="keyword">pthread_t</span> tid[<span class="number">4</span>];</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>,ret;</span><br><span class="line">    </span><br><span class="line">    pthread_mutex_init(&amp;mutex,<span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">for</span>(;i &lt; <span class="number">4</span>; ++i)&#123;</span><br><span class="line">        ret = pthread_create(&amp;tid[i],<span class="literal">NULL</span>,thr_start,(<span class="keyword">void</span>*)i);</span><br><span class="line">        <span class="keyword">if</span>(ret != <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"yellow bull no exit!"</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; <span class="number">4</span>;++i)&#123;</span><br><span class="line">        pthread_join(tid[i],<span class="literal">NULL</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    pthread_mutex_destroy(&amp;mutex);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/15/Linux多线程-2/线程1.png" alt="线程1"></p>
+<p>这种情况黄牛抢票是比较容易的，一般只有一个黄牛能全抢到票。</p>
+<p>但是如果把锁去掉</p>
+<p><img src="/2019/05/15/Linux多线程-2/线程2.png" alt="线程2"></p>
+<p>这样抢票就很混乱，因为没有了保护。所以锁的使用是在共享资源对它进行保护，换句话说加锁是为了保护资源，所以在这个代码中就将抢票的操作进行加锁保护。这样就只有一个黄牛可以抢到票。</p>
+<h4 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h4><p>在进行加锁的过程中很有可能发生死锁的情况下。</p>
+<p><strong>在一组进程中的各个进程均占有不会释放的资源，但因互相申请被其他的进程所占用不会释放的资源而处于一种永久等待的状态</strong></p>
+<h5 id="死锁的四个条件-重点"><a href="#死锁的四个条件-重点" class="headerlink" title="死锁的四个条件(重点)"></a>死锁的四个条件(重点)</h5><p>1、互斥条件：一个资源一次只能被一个执行流使用</p>
+<p><strong>我操作的时候别人不能操作</strong></p>
+<p>2、请求与保持条件：一个执行流因请求资源而阻塞时，对已获得的资源保持不变</p>
+<p><strong>拿着手里的，但是请求其他的，其他的请求不到，手里拿着的也不放开</strong></p>
+<p>3、不可剥夺条件：一个执行流已获得的资源，在未使用完之前，不能强行剥夺</p>
+<p><strong>我的锁，别人不能释放</strong></p>
+<p>4、循环等待条件：若干执行流之间形成一种头尾相接的循环等待资源的关系</p>
+<p><strong>指在发生死锁时，必然存在一个进程资源的环形链，即进程集合{P0，P1，P2，···，Pn}中的P0正在等待一个P1占用的资源；P1正在等待P2占用的资源，Pn正在等待已被P0占用的资源</strong></p>
+<h5 id="死锁的产生与处理"><a href="#死锁的产生与处理" class="headerlink" title="死锁的产生与处理"></a>死锁的产生与处理</h5><p>当加锁或者解锁顺序不同时会发生死锁的情况；对锁资源的竞争以及进程/线程的加锁的推进顺序b不当</p>
+<p>当以上四种条件被破坏时，可以<strong>预防死锁</strong>的产生</p>
+<p>避免死锁的方法可以通过：死锁检测算法，银行家算法(推荐王道视频学习)</p>
+<h4 id="同步的实现"><a href="#同步的实现" class="headerlink" title="同步的实现"></a>同步的实现</h4><p>条件变量是线程同步的一种手段，条件变量用来自动阻塞一个线程，直到条件满足被触发为止。通常情况下条件变量和互斥锁同时使用</p>
+<p>条件变量使我们可以睡眠等待某种条件出现。条件变量利用线程间共享的全局变量进行同步的一种机制，主要包括两个动作：</p>
+<p>1、一个/多个线程等待“条件变量的条件成立”而挂起；线程1如果操作条件满足，则操作，否则进行等待。</p>
+<p>2、另一个线程使“条件成立”信号；线程2促使条件满足，唤醒等待的线程。</p>
+<p>如果没有资源则等待(死等)，生产资源后唤醒等待。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//条件变量的接口</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_cond_init</span><span class="params">(<span class="keyword">pthread_cond_t</span> *<span class="keyword">restrict</span> cond,<span class="keyword">const</span> <span class="keyword">pthread_condattr_t</span> *<span class="keyword">restrict</span> attr)</span></span>;</span><br><span class="line"><span class="comment">//条件变量初始化，一般attr默认为NULL</span></span><br><span class="line"><span class="comment">//使用attr引用的属性初始化cond引用的条件变量。如果attr为空，则使用默认条件变量属性；效果与传递默认条件变量属性对象的地址相同。初始化成功后，条件变量的状态将被初始化。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">pthread_cond_t</span> cond = PTHREAD_COND_INITIALIZER;</span><br><span class="line"><span class="comment">//静态初始化条件变量</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_cond_destroy</span><span class="params">(<span class="keyword">pthread_cond_t</span> *cond)</span></span>;</span><br><span class="line"><span class="comment">//销毁由cond指定的给定的条件变量</span></span><br><span class="line"><span class="comment">//销毁当前未阻塞线程的初始化条件变量是安全的。</span></span><br><span class="line"><span class="comment">//试图销毁当前阻止其他线程的条件变量会导致未定义的行为。</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_cond_timedwait</span><span class="params">(<span class="keyword">pthread_cond_t</span> *<span class="keyword">restrict</span> cond,<span class="keyword">pthread_mutex_t</span> *<span class="keyword">restrict</span> mutex,</span></span></span><br><span class="line"><span class="function"><span class="params">              <span class="keyword">const</span> struct timespec *<span class="keyword">restrict</span> abstime)</span></span>;</span><br><span class="line"><span class="comment">//abstime：限时等待时长，限时等待时长，超时后则返回</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_cond_wait</span><span class="params">(<span class="keyword">pthread_cond_t</span> *<span class="keyword">restrict</span> cond,<span class="keyword">pthread_mutex_t</span> *<span class="keyword">restrict</span> mutex)</span></span>;</span><br><span class="line"><span class="comment">//解锁后的挂起操作(原子操作)，有可能还没来得及挂起就已经有人唤醒--白唤醒--导致了死锁</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_cond_signal</span><span class="params">(<span class="keyword">pthread_cond_t</span> *cond)</span></span>;</span><br><span class="line"><span class="comment">//唤醒至少一个等待的</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_cond_boardcast</span><span class="params">(<span class="keyword">pthread_cond_t</span> *cond)</span></span>;</span><br><span class="line"><span class="comment">//广播唤醒，唤醒所有等待的人</span></span><br></pre></td></tr></table></figure>
+<p>条件变量的步骤：</p>
+<p>1、定义条件变量</p>
+<p>2、初始化条件变量</p>
+<p>3、等待\唤醒定义的条件变量</p>
+<p>4、销毁条件变量</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//模拟一个skr与cxk使用比赛舞台的Demo                                  </span></span><br><span class="line"> <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;    </span></span></span><br><span class="line"> <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;    </span></span></span><br><span class="line"> <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;    </span></span></span><br><span class="line"> <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;errno.h&gt;    </span></span></span><br><span class="line"> <span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;    </span></span></span><br><span class="line">     </span><br><span class="line"> <span class="keyword">int</span> have_stage = <span class="number">1</span>;    </span><br><span class="line">     </span><br><span class="line"> <span class="keyword">pthread_cond_t</span> skr;    </span><br><span class="line"> <span class="keyword">pthread_cond_t</span> cxk;    </span><br><span class="line"> <span class="keyword">pthread_mutex_t</span> mutex;    </span><br><span class="line">     </span><br><span class="line"> <span class="function"><span class="keyword">void</span>* <span class="title">thr_skr</span><span class="params">(<span class="keyword">void</span>* arg)</span></span>&#123;<span class="comment">//skr此时要上台dancing    </span></span><br><span class="line">   <span class="keyword">while</span>(<span class="number">1</span>)&#123;    </span><br><span class="line">     pthread_mutex_lock(&amp;mutex);    </span><br><span class="line">     <span class="comment">//若此时舞台有人用，那么skr进行等待    </span></span><br><span class="line">     <span class="keyword">while</span>(have_stage == <span class="number">1</span>)&#123;    </span><br><span class="line">       pthread_cond_wait(&amp;skr,&amp;mutex);    </span><br><span class="line">     &#125;    </span><br><span class="line">     <span class="comment">//舞台被人使用了，此时0；因为之前1，代表可以使用    </span></span><br><span class="line">     <span class="built_in">printf</span>(<span class="string">"skr~~ is freestyle!!!\n"</span>);    </span><br><span class="line">     sleep(<span class="number">1</span>);    </span><br><span class="line">     <span class="comment">//跳完舞后舞台空了出来    </span></span><br><span class="line">     have_stage += <span class="number">1</span>;    </span><br><span class="line">     <span class="comment">//有舞台了，叫cxk来使用    </span></span><br><span class="line">     pthread_cond_signal(&amp;cxk);    </span><br><span class="line">     pthread_mutex_unlock(&amp;mutex);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> <span class="function"><span class="keyword">void</span>* <span class="title">thr_cxk</span><span class="params">(<span class="keyword">void</span>* arg)</span></span>&#123;</span><br><span class="line">   <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">     pthread_mutex_lock(&amp;mutex);</span><br><span class="line">     <span class="comment">//没有舞台，那么在这里等待</span></span><br><span class="line">     <span class="keyword">while</span>(have_stage == <span class="number">0</span>)&#123;</span><br><span class="line">       pthread_cond_wait(&amp;cxk,&amp;mutex);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="comment">//有了舞台就是可以唱跳rap篮球了。。</span></span><br><span class="line">     <span class="built_in">printf</span>(<span class="string">"cxk~~ is singing,dancing,playing rapping and basketball!!\n"</span>);</span><br><span class="line">     sleep(<span class="number">1</span>);</span><br><span class="line">     have_stage -= <span class="number">1</span>;</span><br><span class="line">     <span class="comment">//跳完还想跳。。因此叫skr快跳完换他跳。。</span></span><br><span class="line">     pthread_mutex_unlock(&amp;mutex);</span><br><span class="line">     pthread_cond_signal(&amp;skr);<span class="comment">//唤醒skr，</span></span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line"> &#125;                                                                                               <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> * argv[])</span></span>&#123;</span><br><span class="line">   <span class="keyword">pthread_t</span> tid1,tid2;</span><br><span class="line">   <span class="keyword">int</span> ret;</span><br><span class="line">     </span><br><span class="line">   pthread_cond_init(&amp;skr,<span class="literal">NULL</span>);</span><br><span class="line">   pthread_cond_init(&amp;cxk,<span class="literal">NULL</span>);</span><br><span class="line">   pthread_mutex_init(&amp;mutex,<span class="literal">NULL</span>);</span><br><span class="line">   <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">   <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; <span class="number">2</span>;i++)&#123;</span><br><span class="line">     ret = pthread_create(&amp;tid1,<span class="literal">NULL</span>,thr_skr,<span class="literal">NULL</span>);</span><br><span class="line">     <span class="keyword">if</span>(ret != <span class="number">0</span>)&#123;</span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">"skr error"</span>);</span><br><span class="line">       <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; <span class="number">2</span>; i++)&#123;</span><br><span class="line">     ret = pthread_create(&amp;tid2,<span class="literal">NULL</span>,thr_cxk,<span class="literal">NULL</span>);</span><br><span class="line">     <span class="keyword">if</span>(ret != <span class="number">0</span>)&#123;</span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">"cxk error"</span>);</span><br><span class="line">       <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   pthread_join(tid1,<span class="literal">NULL</span>);</span><br><span class="line">   pthread_join(tid2,<span class="literal">NULL</span>);</span><br><span class="line"> </span><br><span class="line">   pthread_cond_destroy(&amp;skr);</span><br><span class="line">   pthread_cond_destroy(&amp;cxk);</span><br><span class="line">   pthread_mutex_destroy(&amp;mutex);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/05/15/Linux多线程-2/线程3.png" alt="线程3"></p>
+<p>运行结果可以看到cxk和skr交替互斥的表演节目。。。</p>
+<p>那么互斥量(mutex)保护的是什么？其实保护的是变量条件(have_stage)，当互斥量被成功lock后我们就可以放心的去读取变量条件，这样就不用在担心在这期间变量条件会被其他线程修改。如果变量条件不满足条件，当前线程阻塞，等待其他线程释放<strong>条件成立信号</strong>，并释放已经lock的mutex。这样一来其他线程就有了修改变量条件的机会。当其他线程释放条件成立信号后，pthread_cond_wait函数返回，并再次lock</p>
+<p><strong>pthread_cond_wait的工作流程可以总结为：unlock mutex，start waiting -&gt; lock mutex。</strong> </p>
+<p><strong>while的作用</strong></p>
+<p>在变量条件处为什么不用<code>if</code>做判断而是用while，这是因为pthread_cond_wait的返回不一定意味着其他线程释放了条件成立信号。也可能意外返回。这种被称为<strong>假唤醒</strong>，在Linux中带阻塞功能的system call都会在进程中收到了一个signal后返回。这就是为什么使用while来检查的原因。<strong>因为不能保证wait函数返回的一定就是条件满足，如果条件不满足，那么我们还需要继续等待</strong></p>
+<p><strong>signal条件变量的考虑</strong></p>
+<p>解锁互斥量mutex和发出唤醒信号是两个单独的操作，所以就存在一个顺序的问题</p>
+<p>(1)    按照 unlock(mutex); condition_signal()顺序，当等待线程被唤醒时，因为mutex已经解锁，因此被唤醒的线程(skr)很容易就锁住了mutex然后从conditon_wait()中返回了。  </p>
+<p>(2)    按照 condition_signal(); unlock(mutex)顺序，当等待线程被唤醒时，它试图锁住mutex,但是如果此时mutex还未解锁，则线程又进入睡眠，mutex成功解锁后，此线程在再次被唤醒并锁住mutex，从而从condition_wait()中返回。  </p>
+
       
     </div>
     
@@ -443,6 +521,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Linux-锁/" rel="tag"># Linux 锁</a>
+          
+        </div>
+      
 
       
       
@@ -461,6 +545,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/17/Linux多线程-3/" rel="prev" title="Linux多线程(3)">
+                Linux多线程(3) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -517,8 +605,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -535,7 +632,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -548,7 +645,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -603,6 +700,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程安全"><span class="nav-number">1.</span> <span class="nav-text">线程安全</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何实现线程安全"><span class="nav-number">1.1.</span> <span class="nav-text">如何实现线程安全</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#常见的线程安全的情况"><span class="nav-number">1.1.1.</span> <span class="nav-text">常见的线程安全的情况</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#常见的线程不安全的情况"><span class="nav-number">1.1.2.</span> <span class="nav-text">常见的线程不安全的情况</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#互斥锁"><span class="nav-number">1.2.</span> <span class="nav-text">互斥锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁"><span class="nav-number">1.3.</span> <span class="nav-text">死锁</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#死锁的四个条件-重点"><span class="nav-number">1.3.1.</span> <span class="nav-text">死锁的四个条件(重点)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#死锁的产生与处理"><span class="nav-number">1.3.2.</span> <span class="nav-text">死锁的产生与处理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同步的实现"><span class="nav-number">1.4.</span> <span class="nav-text">同步的实现</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -640,7 +753,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">79.1k</span>
+    <span title="Site words total count">84.3k</span>
   
 </div>
 
