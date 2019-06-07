@@ -107,7 +107,9 @@
 <meta property="og:description" content="网络编程了解网络名词IP地址：在网络中唯一标识的一台主机 port端口：在一台主机上标识一个进程 协议：通信双方的约定 网络协议：网络通信环境中数据的约定格式 通信协议标准：网络互联的前提 协议分层在以往的了解知道协议具有多层，而分层就是为了协议分装，为了更好的使用。 对服务，接口，协议进行明确的划分；形成标准实现起来就容易了 OSI七层模型物理层，数据链路层，网络层，传输层，会话层，表示层，应用">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://skrskr66.github.io/2019/05/31/Linux网络编程/网络1.png">
-<meta property="og:updated_time" content="2019-05-31T12:47:52.746Z">
+<meta property="og:image" content="https://skrskr66.github.io/2019/05/31/Linux网络编程/网络2.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/05/31/Linux网络编程/网络3.png">
+<meta property="og:updated_time" content="2019-06-04T10:05:50.595Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux网络编程">
 <meta name="twitter:description" content="网络编程了解网络名词IP地址：在网络中唯一标识的一台主机 port端口：在一台主机上标识一个进程 协议：通信双方的约定 网络协议：网络通信环境中数据的约定格式 通信协议标准：网络互联的前提 协议分层在以往的了解知道协议具有多层，而分层就是为了协议分装，为了更好的使用。 对服务，接口，协议进行明确的划分；形成标准实现起来就容易了 OSI七层模型物理层，数据链路层，网络层，传输层，会话层，表示层，应用">
@@ -382,7 +384,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  303
+                  1.4k
                 </span>
               
 
@@ -398,7 +400,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -433,10 +435,42 @@
 <ul>
 <li>物理层：负责光电信号的传输；比如以太网协议</li>
 <li>链路层：负责相邻设备之间的数据帧传输；比如Ethernet以太网协议；</li>
-<li>网络层：</li>
-<li>传输层：</li>
-<li>应用层：</li>
+<li>网络层：负责地址管理和路由选择；IP协议，典型设备(路由器：负责路由选择，选择数据发送到哪里去)</li>
+<li>传输层：负责端与端之间的数据传输；TCP协议，UDP协议</li>
+<li>应用层：负责应用程序之间的数据沟通(一般交由程序员来写)；HTTP协议,FTP,SMTP,DNS,HTML</li>
 </ul>
+<p><img src="/2019/05/31/Linux网络编程/网络2.png" alt="网络2"></p>
+<p>图中是我自己的理解，只能算一个初步的了解，不能算标准。</p>
+<p><strong>不同的协议层对数据包有不同的称谓,在传输层叫做段(segment),在网络层叫做数据报 (datagram),在链路层叫做帧(frame).</strong> </p>
+<p><strong>应用层数据通过协议栈发到网络上时,每层协议都要加上一个数据首部(header),称为封装 (Encapsulation).</strong> </p>
+<p>数据封装的过程如下图：</p>
+<p><img src="/2019/05/31/Linux网络编程/网络3.png" alt="网络3"></p>
+<h4 id="网络编程套接字"><a href="#网络编程套接字" class="headerlink" title="网络编程套接字"></a>网络编程套接字</h4><h5 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h5><p>IP是在网络上唯一标识一个主机</p>
+<p><strong>IPV4(uint32_t)</strong>：对于IPV4来说，IP地址是一个4字节，32位的整数</p>
+<p>通常使用“点分十进制”的字符串标识IP地址，例如：192.168.0.1；用点分割的每一个数字表示一个字节，范围是0-255。</p>
+<p><strong>IPV6(uchar ip[16])</strong>：IPV6目前还没有完全的被使用，可以先了解一下。它的地址长度128位，是IPV4地址长度的4倍。于是IPV4点分十进制不再适用，采用十六进制表示。</p>
+<p><strong>DHCP(Dynamic Host Configuration Protocol)</strong>：动态主机配置协议是一个局域网的网络协议。DHCP服务可以自动给局域网中的主机自动分配一个IP地址。 </p>
+<p><strong>NAT技术</strong>：因为ipv4的IP不够用，而发明的技术，<strong>实现地址转换，多人使用同一地址上网</strong>。但要区分公网IP和私网IP。</p>
+<p>推荐一篇博客，什么是公网什么是私网：<a href="https://blog.csdn.net/gui951753/article/details/79210535" target="_blank" rel="noopener">https://blog.csdn.net/gui951753/article/details/79210535</a> </p>
+<h5 id="port端口"><a href="#port端口" class="headerlink" title="port端口"></a>port端口</h5><p>端口的类型是(uint16，0~65535；0~1024不推荐使用，一般多为系统占用端口)</p>
+<p>端口是再网络上唯一标识一个进程</p>
+<p>网络程序分为了客户端和服务端，主动发起的一方是客户端，被动再指定位置接收的一方是服务端，而且服务端被动的接收地址必须是固定不变的。</p>
+<p><strong>一个端口只能被一个进程占用；一个进程可以使用多个端口</strong></p>
+<p>在发送数据的过程中，每条数据都一定包含了五元组：源IP，源端口，目的IP，目的端口，协议</p>
+<h5 id="网络字节序"><a href="#网络字节序" class="headerlink" title="网络字节序"></a>网络字节序</h5><p>字节序：cpu在内存中对数据存取的顺序</p>
+<p>在以往的学习中，我们了解过大端与小端这两种字节序。</p>
+<p>简单回忆一下。小端是低地址放低位，高地址放高位；大端是低地址放高位，高地址放低位</p>
+<p>在网络中，存在<strong>主机字节序</strong>，它是当前计算机的字节序，大小端这取决于cpu架构</p>
+<p><strong>因此为了传输数据的我们要保证两端主机字节序相同，如果不同，那么就会造成数据二义性。所以保证一个程序的可移植性，通信双方必须使用网络字节序进行通信。在网络通信中，数据的字节序转换主要是针对数据存储大于一个字节类型的数据</strong></p>
+<p>网络字节序，一般使用大端字节序。通过联合体判断。</p>
+<h5 id="传输层协议-简单了解"><a href="#传输层协议-简单了解" class="headerlink" title="传输层协议(简单了解)"></a>传输层协议(简单了解)</h5><p><strong>TCP：</strong>传输控制协议，面向连接，可靠传输，面向字节流</p>
+<p><strong>面向连接</strong>：通信之前先建立连接，确保双方在线。</p>
+<p><strong>可靠传输</strong>：在网络正常的情况下，数据不会丢失</p>
+<p><strong>面向字节流服务</strong>：传输灵活，但是存在tcp粘包问题，没有明显的数据约定</p>
+<p>使用场景多为：传输文件，保证数据安全，对数据安全的要求较高</p>
+<p><strong>UDP：</strong>用户数据协议，无连接，不可靠，面向数据报</p>
+<p><strong>面向数据报</strong>：每条数据有长度标识，数据有明显的间隔，带有报头的整条发/收。传输不灵活。<strong>注意！！！！不存在粘包问题</strong></p>
+<p>使用场景多为：多数据实时要求非常高的，比如看视频。</p>
 
       
     </div>
@@ -575,7 +609,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -652,7 +686,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络编程"><span class="nav-number">1.</span> <span class="nav-text">网络编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#了解网络名词"><span class="nav-number">1.1.</span> <span class="nav-text">了解网络名词</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#协议分层"><span class="nav-number">1.2.</span> <span class="nav-text">协议分层</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#OSI七层模型"><span class="nav-number">1.2.1.</span> <span class="nav-text">OSI七层模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP-IP五层模型"><span class="nav-number">1.2.2.</span> <span class="nav-text">TCP/IP五层模型</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络编程"><span class="nav-number">1.</span> <span class="nav-text">网络编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#了解网络名词"><span class="nav-number">1.1.</span> <span class="nav-text">了解网络名词</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#协议分层"><span class="nav-number">1.2.</span> <span class="nav-text">协议分层</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#OSI七层模型"><span class="nav-number">1.2.1.</span> <span class="nav-text">OSI七层模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP-IP五层模型"><span class="nav-number">1.2.2.</span> <span class="nav-text">TCP/IP五层模型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络编程套接字"><span class="nav-number">1.3.</span> <span class="nav-text">网络编程套接字</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#IP地址"><span class="nav-number">1.3.1.</span> <span class="nav-text">IP地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#port端口"><span class="nav-number">1.3.2.</span> <span class="nav-text">port端口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#网络字节序"><span class="nav-number">1.3.3.</span> <span class="nav-text">网络字节序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#传输层协议-简单了解"><span class="nav-number">1.3.4.</span> <span class="nav-text">传输层协议(简单了解)</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -696,7 +730,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">89.9k</span>
+    <span title="Site words total count">94.3k</span>
   
 </div>
 

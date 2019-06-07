@@ -107,7 +107,7 @@
 <meta property="og:description" content="类与对象(3)再学构造函数构造函数体赋值先构造一个带有全缺省的日期类 1234567891011121314class Date&amp;#123;  public:    Date(int year,int month,int day)    &amp;#123;        _year = year;        _month = month;        _day = day;    &amp;#125;">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://skrskr66.github.io/2019/05/31/C-类与对象-3/类1.png">
-<meta property="og:updated_time" content="2019-06-02T14:17:16.656Z">
+<meta property="og:updated_time" content="2019-06-02T14:30:23.712Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++-类与对象(3)">
 <meta name="twitter:description" content="类与对象(3)再学构造函数构造函数体赋值先构造一个带有全缺省的日期类 1234567891011121314class Date&amp;#123;  public:    Date(int year,int month,int day)    &amp;#123;        _year = year;        _month = month;        _day = day;    &amp;#125;">
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.8k
+                  1.9k
                 </span>
               
 
@@ -475,7 +475,8 @@
 <h4 id="牛客的一道小练习"><a href="#牛客的一道小练习" class="headerlink" title="牛客的一道小练习"></a>牛客的一道小练习</h4><p>求1+2+3+…+n，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。 </p>
 <p><a href="https://www.nowcoder.com/practice/7a0da8fc483247ff8800059e12d7caf1?tpId" target="_blank" rel="noopener">https://www.nowcoder.com/practice/7a0da8fc483247ff8800059e12d7caf1?tpId</a> </p>
 <p>基本上我们能想到的方法都被限制了，那么这时候就可以考虑构造函数每次调用时都会+1</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Sum</span></span></span><br><span class="line"><span class="class">        &#123;</span></span><br><span class="line">            <span class="keyword">public</span> :Sum()</span><br><span class="line">            &#123;</span><br><span class="line">                _sum += _i;</span><br><span class="line">                _i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">Sum_Solution</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        _i = <span class="number">1</span>;</span><br><span class="line">        _sum = <span class="number">0</span>;</span><br><span class="line">        Sum <span class="built_in">array</span>[n];</span><br><span class="line">        <span class="keyword">return</span> _sum;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">size_t</span> _sum;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">size_t</span> _i;</span><br><span class="line">&#125;;</span><br><span class="line">    <span class="keyword">size_t</span> Solution::_sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">size_t</span> Solution::_i = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -526,6 +527,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/04/C-模板初了解/" rel="prev" title="C++-模板初了解">
+                C++-模板初了解 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -609,7 +614,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -730,7 +735,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">89.9k</span>
+    <span title="Site words total count">94.3k</span>
   
 </div>
 

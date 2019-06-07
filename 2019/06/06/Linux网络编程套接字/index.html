@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "56baa094"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linux,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="程序程" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="网络编程套接字udp传输客户端1、创建套接字 socket() 2、为套接字绑定地址 bind() 3、发送数据（如果socket还没有绑定地址，这时候操作系统会选择一个合适的地址端口进行绑定） 4、接收数据 5、关闭套接字 服务端1、创建套接字，通过创建套接字使进程与网卡建立联系，创建struct socket{…} 2、为套接字绑定地址信息 3、接收数据 4、发送数据 5、关闭套接字 创建套接">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux网络编程套接字">
+<meta property="og:url" content="https://skrskr66.github.io/2019/06/06/Linux网络编程套接字/index.html">
+<meta property="og:site_name" content="程序程">
+<meta property="og:description" content="网络编程套接字udp传输客户端1、创建套接字 socket() 2、为套接字绑定地址 bind() 3、发送数据（如果socket还没有绑定地址，这时候操作系统会选择一个合适的地址端口进行绑定） 4、接收数据 5、关闭套接字 服务端1、创建套接字，通过创建套接字使进程与网卡建立联系，创建struct socket{…} 2、为套接字绑定地址信息 3、接收数据 4、发送数据 5、关闭套接字 创建套接">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://skrskr66.github.io/2019/06/06/Linux网络编程套接字/网络1.png">
+<meta property="og:updated_time" content="2019-06-06T07:16:35.616Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux网络编程套接字">
+<meta name="twitter:description" content="网络编程套接字udp传输客户端1、创建套接字 socket() 2、为套接字绑定地址 bind() 3、发送数据（如果socket还没有绑定地址，这时候操作系统会选择一个合适的地址端口进行绑定） 4、接收数据 5、关闭套接字 服务端1、创建套接字，通过创建套接字使进程与网卡建立联系，创建struct socket{…} 2、为套接字绑定地址信息 3、接收数据 4、发送数据 5、关闭套接字 创建套接">
+<meta name="twitter:image" content="https://skrskr66.github.io/2019/06/06/Linux网络编程套接字/网络1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '{GIVP9YDSZB}',
+      apiKey: '9b8dc24c9258728c969059677a4c2b5b',
+      indexName: 'skrskr66',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://skrskr66.github.io/2019/06/06/Linux网络编程套接字/">
+
+
+
+
+
+  <title>Linux网络编程套接字 | 程序程</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">程序程</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">为了梦想的skr</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://skrskr66.github.io/2019/06/06/Linux网络编程套接字/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lyc">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/IMG_4933.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序程">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux网络编程套接字</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-06T11:49:33+08:00">
+                2019-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文阅读数<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="网络编程套接字"><a href="#网络编程套接字" class="headerlink" title="网络编程套接字"></a>网络编程套接字</h3><h4 id="udp传输"><a href="#udp传输" class="headerlink" title="udp传输"></a>udp传输</h4><h5 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h5><p>1、创建套接字 socket()</p>
+<p>2、为套接字绑定地址 bind()</p>
+<p>3、发送数据（如果socket还没有绑定地址，这时候操作系统会选择一个合适的地址端口进行绑定）</p>
+<p>4、接收数据</p>
+<p>5、关闭套接字</p>
+<h5 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h5><p>1、创建套接字，通过创建套接字使进程与网卡建立联系，创建struct socket{…}</p>
+<p>2、为套接字绑定地址信息</p>
+<p>3、接收数据</p>
+<p>4、发送数据</p>
+<p>5、关闭套接字</p>
+<h4 id="创建套接字"><a href="#创建套接字" class="headerlink" title="创建套接字"></a>创建套接字</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">socket</span><span class="params">(<span class="keyword">int</span> domain, <span class="keyword">int</span> type, <span class="keyword">int</span> protocol)</span></span>;</span><br><span class="line">domin: 地址域</span><br><span class="line">	<span class="function">AF_INET             IPv4 Internet protocols          <span class="title">ip</span><span class="params">(<span class="number">7</span>)</span></span></span><br><span class="line"><span class="function">	AF_INET6            IPv6 Internet protocols          <span class="title">ipv6</span><span class="params">(<span class="number">7</span>)</span></span></span><br><span class="line">type：套接字类型</span><br><span class="line">	SOCK_STREAM	流式套接字，默认协议TCP，不支持UDP</span><br><span class="line">	SOCK_DGRAM	数据报套接字，默认协议UDP，不支持TCP</span><br><span class="line">protocol:协议类型</span><br><span class="line">	<span class="number">0</span>：使用默认套接字协议</span><br><span class="line">	<span class="number">6</span>/IPPOTO_TCP	TCP协议</span><br><span class="line">	<span class="number">17</span>/IPPOTO_UDP	UDP协议</span><br><span class="line">返回值：套接字操作句柄-文件描述符	失败返回<span class="number">-1</span></span><br></pre></td></tr></table></figure>
+<h4 id="为套接字绑定地址"><a href="#为套接字绑定地址" class="headerlink" title="为套接字绑定地址"></a>为套接字绑定地址</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bind</span><span class="params">(<span class="keyword">int</span> socket, <span class="keyword">const</span> struct sockaddr *address,<span class="keyword">socklen_t</span> address_len)</span></span>;</span><br><span class="line">bind（）函数应将本地套接字地址地址分配给由描述符套接字标识的套接字，该套接字没有分配本地套接字地址.使用socket（）函数创建的套接字最初是未命名的;它们仅由其地址族标识。</span><br><span class="line"></span><br><span class="line">socket:套接字文件描述符</span><br><span class="line">sockaddr：地址信息</span><br><span class="line">addrlen：地址信息长度</span><br><span class="line"></span><br><span class="line">返回值：<span class="number">0</span>	失败返回<span class="number">-1</span></span><br></pre></td></tr></table></figure>
+<h5 id="详细了解地址家族"><a href="#详细了解地址家族" class="headerlink" title="详细了解地址家族"></a>详细了解地址家族</h5><p>在bind函数中我们看到了sockaddr这个关键的地址家族。通过man手册只能找到少量的描述。通过查找资料找到了一些，再此做出总结</p>
+<p>一般我们使用<strong>struct sockaddr</strong>和<strong>struct sockaddr_in</strong>这两个结构体用来处理网络通信的地址。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sockaddr</span></span></span><br><span class="line"><span class="class">&#123;</span>  </span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">short</span> sa_family;    <span class="comment">//2 </span></span><br><span class="line">    <span class="keyword">char</span> sa_data[<span class="number">14</span>];     <span class="comment">//14</span></span><br><span class="line">&#125;;  </span><br><span class="line">该结构体的缺陷为sa_data[]把目标地址和端口信息混在一起了</span><br><span class="line">上面是通用的socket地址，具体到Internet socket，用下面的结构，二者可以进行类型转换</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">sa_family_t</span>		sin_family;<span class="comment">//地址族</span></span><br><span class="line">    <span class="keyword">uint16_t</span>		sin_port;<span class="comment">//16位TCP/UCP端口号</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">in_addr</span>	<span class="title">sin_addr</span>;</span><span class="comment">//32位IP地址</span></span><br><span class="line">    <span class="keyword">char</span>			sin_zero[<span class="number">8</span>];<span class="comment">//不使用</span></span><br><span class="line">&#125;</span><br><span class="line">在这个结构体中存在另一个结构体，该结构体一般用来存放<span class="number">32</span>位IP地址</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">in_addr</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    In_addr_t		s_addr;<span class="comment">//32位IPV4地址</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>sin_port和sin_addr都必须是网络字节序（NBO），一般可视化的数字都是主机字节序（HBO）。 </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">一般用法</span><br><span class="line"><span class="keyword">int</span> sockfd;  </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span>   <span class="title">my_addr</span>;</span>  <span class="comment">//赋值时用这个结构</span></span><br><span class="line">sockfd = socket(AF_INET,   SOCK_STREAM,   <span class="number">0</span>);      </span><br><span class="line">my_addr.sin_family   =   AF_INET;     </span><br><span class="line">my_addr.sin_port   =   htons(MYPORT);     </span><br><span class="line">my_addr.sin_addr.s_addr   =   inet_addr(<span class="string">"192.168.0.1"</span>);     </span><br><span class="line">bzero(&amp;(my_addr.sin_zero),   <span class="number">8</span>);         </span><br><span class="line">bind(sockfd,   (struct   sockaddr   *)&amp;my_addr,   <span class="keyword">sizeof</span>(struct   sockaddr));</span><br><span class="line"><span class="comment">//用(struct   sockaddr   *)转换即满足要求</span></span><br></pre></td></tr></table></figure>
+<p>还有网络上另一个其他解释</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">struct sockaddr 是一个通用地址结构，这是为了统一地址结构的表示方法，统一接口函数，使不同的地址结构可以被bind() , connect() 等函数调用；struct sockaddr<span class="emphasis">_in中的in 表示internet，就是网络地址，这只是我们比较常用的地址结构，属于AF_</span>INET地址族，他非常的常用，以至于我们都开始讨论它与 struct sockaddr通用地址结构的区别。</span><br></pre></td></tr></table></figure>
+<h4 id="接收数据"><a href="#接收数据" class="headerlink" title="接收数据"></a>接收数据</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ssize_t</span> recvfrom(<span class="keyword">int</span> sockfd, <span class="keyword">void</span> *buf, <span class="keyword">size_t</span> len, <span class="keyword">int</span> flags,</span><br><span class="line">                        struct sockaddr *src_addr, <span class="keyword">socklen_t</span> *addrlen);</span><br><span class="line"></span><br><span class="line">sockfd:套接字文件描述符</span><br><span class="line">buf:用buf存储接收的数据</span><br><span class="line">len:想要接收的数据长度</span><br><span class="line">flags：<span class="number">0</span>---默认阻塞接收</span><br><span class="line">src_addr：发送端地址信息</span><br><span class="line">addrlen：地址信息长度，不但要指定想接收多长，还要保存实际接受了多长</span><br><span class="line">返回值：实际接收的长度	失败返回<span class="number">-1</span></span><br></pre></td></tr></table></figure>
+<h4 id="发送数据"><a href="#发送数据" class="headerlink" title="发送数据"></a>发送数据</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ssize_t</span> sendto(<span class="keyword">int</span> sockfd, <span class="keyword">const</span> <span class="keyword">void</span> *buf, <span class="keyword">size_t</span> len, <span class="keyword">int</span> flags,</span><br><span class="line">                      <span class="keyword">const</span> struct sockaddr *dest_addr, <span class="keyword">socklen_t</span> addrlen);</span><br><span class="line">sockfd:套接字文件描述符</span><br><span class="line">buf:要发送的数据</span><br><span class="line">len:要发送的数据长度</span><br><span class="line">flags:<span class="number">0</span>---默认阻塞发送</span><br><span class="line">dest_addr:目的段地址信息--标识数据要发送到哪里去</span><br><span class="line">addrlen:地址信息长度</span><br><span class="line">返回值：实际发送的长度	失败返回<span class="number">-1</span></span><br></pre></td></tr></table></figure>
+<h4 id="关闭套接字"><a href="#关闭套接字" class="headerlink" title="关闭套接字"></a>关闭套接字</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">close</span><span class="params">(<span class="keyword">int</span> fd)</span></span>;</span><br><span class="line">这个在Linux文件操作符中已经了解到了，文件描述符用完之后需要被关闭</span><br></pre></td></tr></table></figure>
+<h4 id="UDP传输Demo"><a href="#UDP传输Demo" class="headerlink" title="UDP传输Demo"></a>UDP传输Demo</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//UdpSocket.hpp</span></span><br><span class="line"><span class="comment">//实现以UdpSocket类封装udp常用操作 </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;errno.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;netinet/in.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;arpa/inet.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UdpSocket</span>&#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        UdpSocket():_sock(<span class="number">-1</span>)&#123;&#125;</span><br><span class="line">        ~UdpSocket()&#123;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">bool</span> <span class="title">Socket</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            _sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);</span><br><span class="line">            <span class="keyword">if</span> (_sock &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                perror(<span class="string">"socket error"</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">bool</span> <span class="title">Bind</span><span class="params">(<span class="built_in">string</span> &amp;ip, <span class="keyword">uint16_t</span> port)</span> </span>&#123;</span><br><span class="line">            <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">addr</span>;</span><span class="comment">//定义一个结构体名称为addr，是socket地址</span></span><br><span class="line">            <span class="comment">//in 表示internet，就是网络地址</span></span><br><span class="line">            <span class="comment">//sin_family指代协议族，在socket编程中只能是AF_INET</span></span><br><span class="line">            <span class="comment">//sin_port存储端口号（使用网络字节顺序）</span></span><br><span class="line">            <span class="comment">//sin_addr存储IP地址，使用in_addr这个数据结构</span></span><br><span class="line">            </span><br><span class="line">            addr.sin_family = AF_INET;<span class="comment">//ipv4</span></span><br><span class="line">            <span class="comment">//uint16_t htons(uint16_t hostshort);</span></span><br><span class="line">            </span><br><span class="line">            addr.sin_port = htons(port);<span class="comment">//htons是将整型变量从主机字节顺序转变成网络字节顺序， </span></span><br><span class="line">                                <span class="comment">//就是整数在地址空间存储方式变为高位字节存放在内存的低地址处。</span></span><br><span class="line">            <span class="comment">//in_addr_t inet_addr(const char *cp);</span></span><br><span class="line">            </span><br><span class="line">            addr.sin_addr.s_addr = inet_addr(ip.c_str());<span class="comment">//inet_addr是一个计算机函数，</span></span><br><span class="line">            <span class="comment">//addr.sin_addr.s_addr = INADDR_ANY;</span></span><br><span class="line">            <span class="comment">//      功能是将一个点分十进制的IP转换成一个长整数型数（u_long类型）等同于inet_addr()。</span></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">socklen_t</span> len = <span class="keyword">sizeof</span>(struct sockaddr_in);</span><br><span class="line">            <span class="comment">//int bind(int sockfd, struct sockaddr *addr, </span></span><br><span class="line">            <span class="comment">//  socklen_t addrlen);</span></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">int</span> ret = bind(_sock, (struct sockaddr*)&amp;addr, len);</span><br><span class="line">            <span class="keyword">if</span> (ret &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                perror(<span class="string">"bind error"</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">bool</span> <span class="title">Recv</span><span class="params">(<span class="built_in">string</span> &amp;buf, struct sockaddr_in *saddr)</span> </span>&#123;</span><br><span class="line">            <span class="comment">//ssize_t recvfrom(int sockfd, void *buf, size_t len, </span></span><br><span class="line">            <span class="comment">//int flags, struct sockaddr *src_addr, socklen_t *addrlen);</span></span><br><span class="line">            <span class="keyword">char</span> tmp[<span class="number">1500</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">            <span class="keyword">socklen_t</span> len = <span class="keyword">sizeof</span>(struct sockaddr_in);</span><br><span class="line">            <span class="keyword">int</span> ret = recvfrom(_sock, tmp, <span class="number">1500</span>, <span class="number">0</span>, </span><br><span class="line">                    (struct sockaddr*)saddr, &amp;len);</span><br><span class="line">            <span class="keyword">if</span> (ret &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                perror(<span class="string">"recvfrom error"</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            buf.assign(tmp, ret);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">bool</span> <span class="title">Send</span><span class="params">(<span class="built_in">string</span> &amp;buf, struct sockaddr_in *daddr)</span></span>&#123;</span><br><span class="line">            <span class="keyword">socklen_t</span> len = <span class="keyword">sizeof</span>(struct  sockaddr_in);</span><br><span class="line">            <span class="keyword">int</span> ret = sendto(_sock, buf.c_str(), buf.size(), <span class="number">0</span>, </span><br><span class="line">                    (struct sockaddr*)daddr, len);</span><br><span class="line">            <span class="keyword">if</span> (ret &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                perror(<span class="string">"sendto error"</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">bool</span> <span class="title">Close</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            close(_sock);</span><br><span class="line">            _sock = <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">int</span> _sock;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>在这之外，上面的头文件中还有几个其他接口函数，需要了解</p>
+<p><strong>htons()作用是将端口号由主机字节序转换为网络字节序的整数值。(host to net)</strong> </p>
+<p><strong>inet_addr()作用是将一个IP字符串转化为一个网络字节序的整数值，用于sockaddr_in.sin_addr.s_addr。</strong> </p>
+<p>数字的字节序转换：</p>
+<p>​    主机字节序转换为网络字节序</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">uint32_t</span>	htonl(<span class="keyword">uint32_t</span>	hostlong)</span><br><span class="line"><span class="keyword">uint16_t</span>	htons(<span class="keyword">uint16_t</span>	hostshort)</span><br></pre></td></tr></table></figure>
+<p>​    网络字节序转换为主机字节序</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">uint32_t</span>	ntohl(<span class="keyword">uint32_t</span>	hostlong)</span><br><span class="line"><span class="keyword">uint16_t</span>	ntohs(<span class="keyword">uint16_t</span>	hostshort)</span><br></pre></td></tr></table></figure>
+<p>将点分十进制ip地址转换为网络字节序ip地址：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">in_addr <span class="title">inet_addr</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *cp)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">inet_pton</span><span class="params">(<span class="keyword">int</span> af,<span class="keyword">const</span> <span class="keyword">char</span> *src,<span class="keyword">void</span> *dst)</span></span></span><br></pre></td></tr></table></figure>
+<p>将网络字节序IP地址转换为点分十进制IP地址：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">const</span> <span class="keyword">char</span> *<span class="title">inet_ntop</span><span class="params">(<span class="keyword">int</span> af,<span class="keyword">const</span> <span class="keyword">void</span>* src,<span class="keyword">char</span> *dst,<span class="keyword">socklen_t</span> size)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">inet_ntoa</span><span class="params">(struct in_addr in)</span></span>;</span><br></pre></td></tr></table></figure>
+<h5 id="udp服务端"><a href="#udp服务端" class="headerlink" title="udp服务端"></a>udp服务端</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"udpsocket.hpp"</span>    </span></span><br><span class="line">    </span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CHECK_RET(q) <span class="meta-keyword">if</span>((q) == false)&#123;return -1;&#125;    </span></span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span>    </span></span><br><span class="line"><span class="function"></span>&#123;    </span><br><span class="line">  <span class="keyword">if</span>(argc != <span class="number">3</span>)    </span><br><span class="line">  &#123;    </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"./udp_server ip port:"</span>&lt;&lt;<span class="built_in">endl</span>;                                                                                </span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;    </span><br><span class="line">  &#125;    </span><br><span class="line">  <span class="built_in">string</span> ip = argv[<span class="number">1</span>];    </span><br><span class="line">  <span class="keyword">uint16_t</span> port = atoi(argv[<span class="number">2</span>]);    </span><br><span class="line">    </span><br><span class="line">  UdpSocket sock;    </span><br><span class="line">  CHECK_RET(sock.Socket());    </span><br><span class="line">  CHECK_RET(sock.Bind(ip,port));    </span><br><span class="line">    </span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)    </span><br><span class="line">  &#123;    </span><br><span class="line">    <span class="built_in">string</span> buf;    </span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">cli_addr</span>;</span>    </span><br><span class="line">    CHECK_RET(sock.Recv(buf,&amp;cli_addr));    </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"client say:"</span>&lt;&lt;buf&lt;&lt;<span class="built_in">endl</span>;    </span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"server say:"</span>;    </span><br><span class="line">    fflush(<span class="built_in">stdout</span>);    </span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;buf;                               </span><br><span class="line">    CHECK_RET(sock.Send(buf,&amp;cli_addr));</span><br><span class="line">  &#125; </span><br><span class="line">  sock.Close();             </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="udp客户端"><a href="#udp客户端" class="headerlink" title="udp客户端"></a>udp客户端</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"udpsocket.hpp"</span>    </span></span><br><span class="line">    </span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CHECK_RET(q) <span class="meta-keyword">if</span>((q) == false)&#123;return -1;&#125;    </span></span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span>    </span></span><br><span class="line"><span class="function"></span>&#123;    </span><br><span class="line">  <span class="keyword">if</span>(argc != <span class="number">3</span>)    </span><br><span class="line">  &#123;    </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"./udp_client ip port"</span>&lt;&lt;<span class="built_in">endl</span>;                                                                                 </span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;    </span><br><span class="line">  &#125;    </span><br><span class="line">  <span class="built_in">string</span> ip = argv[<span class="number">1</span>];    </span><br><span class="line">  <span class="keyword">uint16_t</span> port = atoi(argv[<span class="number">2</span>]);    </span><br><span class="line">    </span><br><span class="line">  UdpSocket sock;    </span><br><span class="line">  CHECK_RET(sock.Socket());    </span><br><span class="line">    </span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">srv_addr</span>;</span>    </span><br><span class="line">  srv_addr.sin_family = AF_INET;    </span><br><span class="line">  srv_addr.sin_port = htons(port);    </span><br><span class="line">  srv_addr.sin_addr.s_addr = inet_addr(ip.c_str());    </span><br><span class="line">    </span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)    </span><br><span class="line">  &#123;    </span><br><span class="line">    <span class="built_in">string</span> buf;    </span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"client say:"</span>;    </span><br><span class="line">    fflush(<span class="built_in">stdout</span>);    </span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;buf;                         </span><br><span class="line">    CHECK_RET(sock.Send(buf,&amp;srv_addr));               </span><br><span class="line">    CHECK_RET(sock.Recv(buf,&amp;srv_addr));</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"server say"</span>&lt;&lt;buf&lt;&lt;<span class="built_in">endl</span>;    </span><br><span class="line">  &#125;                </span><br><span class="line">  sock.Close();             </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/06/06/Linux网络编程套接字/网络1.png" alt="网络1"></p>
+<p>两边聊天如上图</p>
+<p>udp的传输速度快，无连接，不可靠，面向数据报这个必须牢牢记住了。</p>
+<p>但是在代码中有个bug存在，发送的数据如果有空格，那么数据就会产生截断，分成两次发送</p>
+
+      
+    </div>
+    
+    
+    
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #555;font-size:14px;">-------------The End-------------</div>
+    
+</div>
+
+  
+</div>
+
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/04/C-模板初了解/" rel="next" title="C++-模板初了解">
+                <i class="fa fa-chevron-left"></i> C++-模板初了解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/06/Linux网络套接字编程-2/" rel="prev" title="Linux网络套接字编程(2)">
+                Linux网络套接字编程(2) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MDc5Mi8xNzMxNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/IMG_4933.JPG" alt="Lyc">
+            
+              <p class="site-author-name" itemprop="name">Lyc</p>
+              <p class="site-description motion-element" itemprop="description">Full of adventure,Full of discovery</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/skrskr66" target="_blank" title="Github">
+                      
+                        <i class="fa fa-fw fa-github"></i>Github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/skrskr66" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-cuttlefish"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.douban.com/people/168638038/" target="_blank" title="Douban">
+                      
+                        <i class="fa fa-fw fa-film"></i>Douban</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=560738533&auto=1&height=66"></iframe>
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络编程套接字"><span class="nav-number">1.</span> <span class="nav-text">网络编程套接字</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#udp传输"><span class="nav-number">1.1.</span> <span class="nav-text">udp传输</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#客户端"><span class="nav-number">1.1.1.</span> <span class="nav-text">客户端</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#服务端"><span class="nav-number">1.1.2.</span> <span class="nav-text">服务端</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建套接字"><span class="nav-number">1.2.</span> <span class="nav-text">创建套接字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为套接字绑定地址"><span class="nav-number">1.3.</span> <span class="nav-text">为套接字绑定地址</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#详细了解地址家族"><span class="nav-number">1.3.1.</span> <span class="nav-text">详细了解地址家族</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接收数据"><span class="nav-number">1.4.</span> <span class="nav-text">接收数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#发送数据"><span class="nav-number">1.5.</span> <span class="nav-text">发送数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关闭套接字"><span class="nav-number">1.6.</span> <span class="nav-text">关闭套接字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UDP传输Demo"><span class="nav-number">1.7.</span> <span class="nav-text">UDP传输Demo</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#udp服务端"><span class="nav-number">1.7.1.</span> <span class="nav-text">udp服务端</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#udp客户端"><span class="nav-number">1.7.2.</span> <span class="nav-text">udp客户端</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lyc</span>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:   <span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">94.3k</span>
+  
+</div>
+
+
+  <div class="powered-by">Full of adventure</div>
+
+
+
+  <span class="post-meta-divider">||</span>
+
+
+
+  <div class="theme-info"> Full of discovery </div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+    <span class="site-pv">
+      本站总访问量<i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="300" alpha="0.6" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
