@@ -376,7 +376,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  8
+                  1.7k
                 </span>
               
 
@@ -392,7 +392,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  8
                 </span>
               
             </div>
@@ -416,7 +416,34 @@
         
           
           TCP传输TCP的三次握手
-          
+图解为TCP协议的传输过程。
+
+
+
+客户端操作
+服务端操作
+
+
+
+
+1、创建套接字
+1、创建套接字
+
+
+2、向服务端发起连接
+2、绑定地址信息
+
+
+3、发送数据
+3、监听(若有新的客户端，新建socket)
+
+
+4、接收数据
+4、接收已经连接成功的socket
+
+
+5、关
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/06/06/Linux网络套接字编程-2/#more" rel="contents">
@@ -2100,7 +2127,7 @@ port端口：在一台主机上标识一个进程
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">94.3k</span>
+    <span title="Site words total count">96k</span>
   
 </div>
 
