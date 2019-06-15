@@ -85,7 +85,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Linux,">
 
 
 
@@ -98,16 +98,20 @@
 
 
 
-<meta name="description" content="Full of adventure,Full of discovery">
-<meta property="og:type" content="website">
-<meta property="og:title" content="程序程">
-<meta property="og:url" content="https://skrskr66.github.io/archives/2018/index.html">
+<meta name="description" content="TCP的三次握手与四次挥手关于题目的这个问题，在网络中有着非常重要的地位。因为客户端与服务端之间通过TCP协议，为了进行数据的传输会进行一系列的操作，这中间的操作就是TCP的三次握手与四次挥手。 重新回顾TCP协议TCP协议称为数据传输协议，是可靠传输，面向连接的，并且面向字节流的。 面向连接：通信之前先建立连接，确保双方在线。 可靠传输：在网络正常的情况下，数据不会丢失。 面向字节流：传输灵活，">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TCP的三次握手与四次挥手">
+<meta property="og:url" content="https://skrskr66.github.io/2019/06/13/TCP的三次握手与四次挥手/index.html">
 <meta property="og:site_name" content="程序程">
-<meta property="og:description" content="Full of adventure,Full of discovery">
+<meta property="og:description" content="TCP的三次握手与四次挥手关于题目的这个问题，在网络中有着非常重要的地位。因为客户端与服务端之间通过TCP协议，为了进行数据的传输会进行一系列的操作，这中间的操作就是TCP的三次握手与四次挥手。 重新回顾TCP协议TCP协议称为数据传输协议，是可靠传输，面向连接的，并且面向字节流的。 面向连接：通信之前先建立连接，确保双方在线。 可靠传输：在网络正常的情况下，数据不会丢失。 面向字节流：传输灵活，">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://skrskr66.github.io/2019/06/13/TCP的三次握手与四次挥手/网络-三次握手-四次挥手.png">
+<meta property="og:updated_time" content="2019-06-15T15:06:28.801Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="程序程">
-<meta name="twitter:description" content="Full of adventure,Full of discovery">
+<meta name="twitter:title" content="TCP的三次握手与四次挥手">
+<meta name="twitter:description" content="TCP的三次握手与四次挥手关于题目的这个问题，在网络中有着非常重要的地位。因为客户端与服务端之间通过TCP协议，为了进行数据的传输会进行一系列的操作，这中间的操作就是TCP的三次握手与四次挥手。 重新回顾TCP协议TCP协议称为数据传输协议，是可靠传输，面向连接的，并且面向字节流的。 面向连接：通信之前先建立连接，确保双方在线。 可靠传输：在网络正常的情况下，数据不会丢失。 面向字节流：传输灵活，">
+<meta name="twitter:image" content="https://skrskr66.github.io/2019/06/13/TCP的三次握手与四次挥手/网络-三次握手-四次挥手.png">
 
 
 
@@ -137,13 +141,13 @@
 
 
 
-  <link rel="canonical" href="https://skrskr66.github.io/archives/2018/">
+  <link rel="canonical" href="https://skrskr66.github.io/2019/06/13/TCP的三次握手与四次挥手/">
 
 
 
 
 
-  <title>归档 | 程序程</title>
+  <title>TCP的三次握手与四次挥手 | 程序程</title>
   
 
 
@@ -162,7 +166,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -298,215 +302,251 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://skrskr66.github.io/2019/06/13/TCP的三次握手与四次挥手/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lyc">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/IMG_4933.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序程">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
-         
+          <h1 class="post-title" itemprop="name headline">TCP的三次握手与四次挥手</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-13T18:54:49+08:00">
+                2019-06-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        好! 目前共计 58 篇日志。 继续努力。
-      </span>
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
+            
+          
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文阅读数<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/10/python-对豆瓣的top250的爬取/" itemprop="url">
+          
+            <div class="post-wordcount">
               
-                <span itemprop="name">python-对豆瓣的top250的爬取(利用正则表达式)</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.1k
+                </span>
               
-            </a>
-        
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-10T22:22:36+08:00" content="2018-12-10">
-          12-10
-        </time>
-      </div>
+              
+                <span class="post-meta-divider">|</span>
+              
 
-    </header>
-  </article>
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
 
+          
 
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/06/初阶C-1124/" itemprop="url">
-              
-                <span itemprop="name">初阶C-1124</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-06T21:59:28+08:00" content="2018-12-06">
-          12-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/02/数据结构之链表/" itemprop="url">
-              
-                <span itemprop="name">数据结构之链表</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-02T22:52:42+08:00" content="2018-12-02">
-          12-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h3 id="TCP的三次握手与四次挥手"><a href="#TCP的三次握手与四次挥手" class="headerlink" title="TCP的三次握手与四次挥手"></a>TCP的三次握手与四次挥手</h3><p>关于题目的这个问题，在网络中有着非常重要的地位。因为客户端与服务端之间通过TCP协议，为了进行数据的传输会进行一系列的操作，这中间的操作就是TCP的三次握手与四次挥手。</p>
+<h4 id="重新回顾TCP协议"><a href="#重新回顾TCP协议" class="headerlink" title="重新回顾TCP协议"></a>重新回顾TCP协议</h4><p>TCP协议称为数据传输协议，是可靠传输，面向连接的，并且面向字节流的。</p>
+<p><strong>面向连接</strong>：通信之前先建立连接，确保双方在线。</p>
+<p><strong>可靠传输</strong>：在网络正常的情况下，数据不会丢失。</p>
+<p><strong>面向字节流</strong>：传输灵活，但是TCP的传输存在粘包问题，没有明显的数据约定。</p>
+<h4 id="TCP协议的传输过程"><a href="#TCP协议的传输过程" class="headerlink" title="TCP协议的传输过程"></a>TCP协议的传输过程</h4><p><strong>先通过总体图来总的给一个传输过程印象。</strong></p>
+<p><img src="/2019/06/13/TCP的三次握手与四次挥手/网络-三次握手-四次挥手.png" alt="网络-三次握手-四次挥手"></p>
+<h5 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h5><p>我们已客户端先发送连接请求为前提进行连接。</p>
+<p>SYN：同步序列编号（<strong>Synchronize Sequence Numbers</strong>），是TCP/IP建立连接时使用的握手信号 </p>
+<p>ACK：确认字符，在数据通信中，接收站发给发送站的一种传输类控制字符。表示发来的数据已确认接收无误。 </p>
+<p>首先客户端进行<strong>套接字编程操作</strong>创建套接字，再进行绑定地址操作，然后开始向服务端进行连接请求。</p>
+<p>与此同时，服务端也创建套接字，也进行绑定地址，然后开始进行监听套接字操作。</p>
+<p><strong>握手过程：</strong></p>
+<p>客户端先向服务端发送一个<strong>SYN</strong>消息，此时客户端处于<strong>SYN_SEND</strong>状态。服务端此时接收到了该消息，这时服务端会发送<strong>SYN+ACK，进行消息回复确认。</strong>回复完之后，此时服务端处于<strong>SYN_RCVD</strong>状态，等待客户端进行最后一次确认。这个时候客户端接收到了SYN+ACK包之后，再给服务端发送一个<strong>ACK</strong>包，此时客户端将处于<strong>ESTABLISH</strong>状态(就绪状态)，代表了客户端此时可以进行收发数据。服务端接受了ACK包之后，此时连接建立成功，服务端也处于<strong>ESTABLISH</strong>状态，也可以进行收发消息了。</p>
+<p>此时客户端与服务端的连接建立完成。它们之间可以进行数据的发送与接收….</p>
+<p>但是<strong>人有悲欢离合，月有阴晴圆缺，网络迟早断开连接！！！</strong></p>
+<p>发送了一段时间后，它们之间要断开连接…</p>
+<h5 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h5><p>我们再次已客户端先发送断开请求为前提。</p>
+<p>FIN：表示断开连接</p>
+<p>RST：表示复位，用来异常的关闭连接 </p>
+<p><strong>挥手过程：</strong></p>
+<p>客户端发送完数据之后，关闭了网络套接字，此时客户端向服务端发送了一个<strong>FIN包</strong>，发送完毕之后，客户端处于<strong>FIN_WAIT_1状态</strong>。服务端接收到了之后，处于<strong>CLOSE_WAIT状态</strong>。服务端这时会向客户端发送一个<strong>ACK包</strong>，发送完了进入<strong>LAST_ACK状态</strong>，<strong>进行最后一次等待确认状态，此时伴随着close()关闭套接字</strong>。因为服务端还要再确认一次是否断开连接，此时服务端向客户端再发送一个<strong>FIN包</strong>。客户端接收到了该FIN包之后，再给服务端发送<strong>ACK包</strong>，代表确认关闭，执行完该操作之后，客户端并没有直接<strong>CLOSED并且回收资源</strong>，此时客户端处于<strong>TIME_WAIT状态，等待时间为两个MSL(最大报文段生存周期，一个大约30s)。</strong>服务端此时接收到了该ACK包，进入了CLOSED状态并且回收资源。客户端等待了两个MSL时间之后，也进入了CLOSED状态并且回收资源。</p>
+<p>这时客户端与服务端之间断开连接。</p>
+<p><strong>TIME_WAIT状态：</strong></p>
+<p>在断开的过程中有一个TIME_WAIT状态，为什么会有该状态？</p>
+<p>假设没有TIME_WAIT会有什么情况：最后一个ACK丢失，被动关闭方重发FIN包，没有等待直接关闭。若直接启动的客户端此时使用了相同的端口信息，有可能收到FIN包，此时就对新连接造成影响。</p>
+<p>若新启动客户端使用了相同的端口信息，向服务器发送了SYN请求，但是服务端因为没有受到最后一个ACK包而一直处于LAST_ACK状态，受到SYN后判定状态错误，回复<strong>RST报文重置连接</strong>，也对新连接造成了影响。</p>
+<p>所以主动关闭方发送最后一个ACK之后需要等待一段时间：两个MSL时间(最大报文等待时间)</p>
+<p>1、处理ACK丢失，导致对端重发FIN包</p>
+<p>2、等待双方延迟的报文全部消失在网络中，不会对后续连接造成影响。</p>
+<h4 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h4><h5 id="为什么握手是三次，挥手是四次？"><a href="#为什么握手是三次，挥手是四次？" class="headerlink" title="为什么握手是三次，挥手是四次？"></a>为什么握手是三次，挥手是四次？</h5><p><strong>在握手过程中，为了防止已失效的连接请求报文段突然又传送到了服务端，因而产生错误。</strong></p>
+<p>当客户端发出的第一个连接请求报文段并没有丢失，而是在网络结点长时间的滞留了，以致延误到连接释放以后的某个时间才到达服务端。本来这是一个早已失效的报文段。但是服务端收到此失效的连接请求报文段之后，就误认为是客户端再次发出的一个新的连接请求。于是就向客户端发出确认报文段，同意建立连接。假设我们不采用“三次握手”，那么服务端发出确认，新的连接就建立成功了。由于现在client并没有发出建立连接的请求，因此不会理睬服务端的确认，也不会像服务端发送数据。但是服务端却以为新的建立已经完成，一直等待消息发送到来。这样，服务端的数据很多数据被白白浪费了。采用“三次握手”可以有效的避免这种情况。客户端不会向服务端的确认发出确认，服务端由于收不到确认，就认为客户端没有建立连接。</p>
+<p>所以，三次握手也可以看作为了防止服务端的一直等待而浪费资源。</p>
+<p>挥手过程是一个相互的确认过程，首先我们都已知TCP的连接是全双工的，既可以发送也可以接收。那么当双方都确认自己没有数据可以发送，并且都互相表示双方知道对方没有数据之后，那么连接也就断开了。</p>
+<p>假设挥手在第三次结束。客户端发送了一个FIN就打算断开连接。那么客户端又如何知道服务端想要断开连接？有可能客户端刚发送完了数据，但是服务端并没有。服务端打算发完了剩下的数据在跟客户端”拜拜“。</p>
+<p>此时就出现了矛盾。所以挥手有第四次来进行双发的确认。确认双方的工作都做完了。</p>
+<h5 id="SYN泛洪攻击"><a href="#SYN泛洪攻击" class="headerlink" title="SYN泛洪攻击"></a>SYN泛洪攻击</h5><p>SYN泛洪攻击利用TCP三次握手协议的缺陷，向目标主机发送大量的伪造源地址的SYN连接请求，使得被攻击方资源耗尽，从而不能够为正常用户提供服务。 </p>
+<p>在TCP协议中被称为三次握手（Three-way Handshake）的连接过程中，如果一个用户向服务器发送了SYN报文，服务器又发出 SYN+ACK 应答报文后<strong>未收到客户端的 ACK 报文</strong>，这种情况下服务器端会再次发送SYN+ACK给客户端，并等待一段时间后丢弃这个未完成的连接，这段时间的长度称为<strong>SYN Timeout</strong>，一般来说这个时间是分钟的数量级。</p>
+<p>SYN 泛洪攻击所做的就是利用这个SYN Timeout和TCP/IP协议族中的另一个漏洞: 报文传输过程中对报文的源 IP 地址完全信任进行攻击。SYN 泛洪攻击通过发送大量的伪造 TCP 链接报文而造成大量的 TCP 半连接,服务器端将为了维护这样一个庞大的半连接列表而消耗非常多的资源。这样服务器端将忙于处理攻击者伪造的TCP连接请求而无法处理正常连接请求,甚至会导致堆栈的溢出崩溃 </p>
+<p>造成SYN洪泛攻击最主要的原因是TCP/IP协议的脆弱性。TCP/IP是一个开放的协议平台，它将越来越多的网络连接在一起，它基于的对象是可信用户群，所以缺少一些必要的安全机制，带来很大的安全威胁。例如常见的IP欺骗、TCP连接的建立、ICMP数据包的发送都存在巨大的安全隐患，给SYN洪泛攻击带来可乘之机。 </p>
+<h6 id="防范方法"><a href="#防范方法" class="headerlink" title="防范方法"></a>防范方法</h6><p>1、<strong>缩短SYN Timeout时间</strong>，短时间内收不到客户端的ACK回复报文直接丢弃，防止被攻击</p>
+<p>2、<strong>设置SYN cookie</strong>，给每一个请求连接的IP地址分配一个cookie，如果短时间内连续受到某个IP的重复SYN文，认定是受到了攻击，以后从这个IP地址来的包会被丢弃。 </p>
+<p>3、<strong>设置SYN可疑队列</strong>  </p>
+<p>4、<strong>使用防火墙</strong>  </p>
+<p>推荐博客链接：<a href="https://blog.csdn.net/justenjoyitpy/article/details/78151239" target="_blank" rel="noopener">https://blog.csdn.net/justenjoyitpy/article/details/78151239</a> </p>
+<h5 id="若服务端出现了大量的TIME-WAIT连接，为什么？如何解决？"><a href="#若服务端出现了大量的TIME-WAIT连接，为什么？如何解决？" class="headerlink" title="若服务端出现了大量的TIME_WAIT连接，为什么？如何解决？"></a>若服务端出现了大量的TIME_WAIT连接，为什么？如何解决？</h5><p>这种情况比较常见，一些爬虫服务器或者WEB服务器（如果网管在安装的时候没有做内核参数优化的话）上经常会遇到这个问题，在四次的挥手过程中我们已经可以了解TIME_WAIT状态的出现情况。</p>
+<p>1、防止上一次连接的包迷路后重新出现，影响新连接，所以等待被动方发来的FIN包</p>
+<p>2、可靠的关闭TCP连接。在主动方发送的最后一个ACK，有可能丢失，这时被动方会重新发FIN包，如果这时主动方处于CLOSED状态，就会响应RST而不是ACK。所以主动方要处于TIME_WAIT，而不能是CLOSED。</p>
+<p><strong>解决的方案就是让服务器能够快速回收和重用那些TIME_WAIT资源</strong></p>
+<p>这里推荐一篇博客链接：<a href="https://www.cnblogs.com/whx7762/p/9413787.html" target="_blank" rel="noopener">https://www.cnblogs.com/whx7762/p/9413787.html</a> </p>
+<p><strong>下面是一篇文章中提到的/etc/sysctl.conf文件的修改</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对于一个新建连接，内核要发送多少个 SYN 连接请求才决定放弃,不应该大于255，默认值是5，对应于180秒左右时间</span></span><br><span class="line">net.ipv4.tcp_syn_retries=<span class="number">2</span></span><br><span class="line">net.ipv4.tcp_synack_retries=<span class="number">2</span></span><br><span class="line"><span class="comment">//表示当keepalive起用的时候，TCP发送keepalive消息的频度。缺省是2小时，改为300秒</span></span><br><span class="line">net.ipv4.tcp_keepalive_time=<span class="number">1200</span></span><br><span class="line">net.ipv4.tcp_orphan_retries=<span class="number">3</span></span><br><span class="line"><span class="comment">//表示如果套接字由本端要求关闭，这个参数决定了它保持在FIN-WAIT-2状态的时间</span></span><br><span class="line">net.ipv4.tcp_fin_timeout=<span class="number">30</span></span><br><span class="line"><span class="comment">//表示SYN队列的长度，默认为1024，加大队列长度为8192，可以容纳更多等待连接的网络连接数</span></span><br><span class="line">net.ipv4.tcp_max_syn_backlog = <span class="number">4096</span></span><br><span class="line"><span class="comment">//表示开启SYN Cookies。当出现SYN等待队列溢出时，启用cookies来处理，可防范少量SYN攻击，默认为0，表示关闭 </span></span><br><span class="line">net.ipv4.tcp_syncookies = <span class="number">1</span></span><br><span class="line"><span class="comment">//表示开启重用。允许将TIME-WAIT sockets重新用于新的TCP连接，默认为0，表示关闭 </span></span><br><span class="line">net.ipv4.tcp_tw_reuse = <span class="number">1</span></span><br><span class="line"><span class="comment">//表示开启TCP连接中TIME-WAIT sockets的快速回收，默认为0，表示关 </span></span><br><span class="line">net.ipv4.tcp_tw_recycle = <span class="number">1</span></span><br><span class="line"><span class="comment">//减少超时前的探测次数</span></span><br><span class="line">net.ipv4.tcp_keepalive_probes=<span class="number">5</span></span><br><span class="line"><span class="comment">//优化网络设备接收队列</span></span><br><span class="line">net.core.netdev_max_backlog=<span class="number">3000</span></span><br></pre></td></tr></table></figure>
+<p>修改完之后执行/sbin/sysctl -p让参数生效。</p>
+<p>net.ipv4.tcp_tw_reuse和net.ipv4.tcp_tw_recycle的开启都是为了回收处于TIME_WAIT状态的资源。</p>
+<p>net.ipv4.tcp_fin_timeout这个时间可以减少在异常情况下服务器从FIN-WAIT-2转到TIME_WAIT的时间。</p>
+<p>net.ipv4.tcp_keepalive_*一系列参数，是用来设置服务器检测连接存活的相关配置。</p>
+<p> 在TCP的传输过程中最重要的就是三次握手与四次挥手，但是TCP的传输过程是面向可信任群体的，安全性相对较弱，会受到一些攻击，不过有方法可以解决。都是根据传输过程进行范围内的防御措施。</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/27/初阶C-1121/" itemprop="url">
-              
-                <span itemprop="name">初阶C-1121</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-27T20:17:13+08:00" content="2018-11-27">
-          11-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/26/python-对猫眼网的top100的爬取/" itemprop="url">
-              
-                <span itemprop="name">python-对猫眼网的top100的爬取</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-26T16:33:42+08:00" content="2018-11-26">
-          11-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #555;font-size:14px;">-------------The End-------------</div>
+    
+</div>
+
+  
+</div>
+
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/06/Linux网络套接字编程-2/" rel="next" title="Linux网络套接字编程(2)">
+                <i class="fa fa-chevron-left"></i> Linux网络套接字编程(2)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2018/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2018/page/4/">4</a><a class="extend next" rel="next" href="/archives/2018/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -514,6 +554,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MDc5Mi8xNzMxNw=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -534,8 +583,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -619,6 +677,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP的三次握手与四次挥手"><span class="nav-number">1.</span> <span class="nav-text">TCP的三次握手与四次挥手</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#重新回顾TCP协议"><span class="nav-number">1.1.</span> <span class="nav-text">重新回顾TCP协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP协议的传输过程"><span class="nav-number">1.2.</span> <span class="nav-text">TCP协议的传输过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#三次握手"><span class="nav-number">1.2.1.</span> <span class="nav-text">三次握手</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#四次挥手"><span class="nav-number">1.2.2.</span> <span class="nav-text">四次挥手</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见问题"><span class="nav-number">1.3.</span> <span class="nav-text">常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么握手是三次，挥手是四次？"><span class="nav-number">1.3.1.</span> <span class="nav-text">为什么握手是三次，挥手是四次？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SYN泛洪攻击"><span class="nav-number">1.3.2.</span> <span class="nav-text">SYN泛洪攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#防范方法"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">防范方法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#若服务端出现了大量的TIME-WAIT连接，为什么？如何解决？"><span class="nav-number">1.3.3.</span> <span class="nav-text">若服务端出现了大量的TIME_WAIT连接，为什么？如何解决？</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -806,6 +880,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -834,6 +912,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
