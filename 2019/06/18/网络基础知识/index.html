@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "56baa094"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="网络,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="程序程" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="在了解网络整体模型之前学习了套接字编程和一些简单的网络知识。但是网络编程的理论基础是建立在多方面上的，比如数据在每一层是经过了怎么样的封装，每一层使用了哪些协议，每一层的协议又有哪些用途。只有掌握好这些基础知识，才能更好的成为一个服务器开发人员。 应用层程序员写的一个个解决我们实际问题，满足我们日常需求的网络程序，都是在应用层完成的。 那么应用层使用了哪些协议呢？ 自定制协议socket编程中，收">
+<meta name="keywords" content="网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络基础知识">
+<meta property="og:url" content="https://skrskr66.github.io/2019/06/18/网络基础知识/index.html">
+<meta property="og:site_name" content="程序程">
+<meta property="og:description" content="在了解网络整体模型之前学习了套接字编程和一些简单的网络知识。但是网络编程的理论基础是建立在多方面上的，比如数据在每一层是经过了怎么样的封装，每一层使用了哪些协议，每一层的协议又有哪些用途。只有掌握好这些基础知识，才能更好的成为一个服务器开发人员。 应用层程序员写的一个个解决我们实际问题，满足我们日常需求的网络程序，都是在应用层完成的。 那么应用层使用了哪些协议呢？ 自定制协议socket编程中，收">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://skrskr66.github.io/2019/06/18/网络基础知识/网络1.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/06/18/网络基础知识/网络2.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/06/18/网络基础知识/网络3.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/06/18/网络基础知识/网络4.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/06/18/网络基础知识/网络5.png">
+<meta property="og:updated_time" content="2019-06-18T08:07:28.049Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络基础知识">
+<meta name="twitter:description" content="在了解网络整体模型之前学习了套接字编程和一些简单的网络知识。但是网络编程的理论基础是建立在多方面上的，比如数据在每一层是经过了怎么样的封装，每一层使用了哪些协议，每一层的协议又有哪些用途。只有掌握好这些基础知识，才能更好的成为一个服务器开发人员。 应用层程序员写的一个个解决我们实际问题，满足我们日常需求的网络程序，都是在应用层完成的。 那么应用层使用了哪些协议呢？ 自定制协议socket编程中，收">
+<meta name="twitter:image" content="https://skrskr66.github.io/2019/06/18/网络基础知识/网络1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '{GIVP9YDSZB}',
+      apiKey: '9b8dc24c9258728c969059677a4c2b5b',
+      indexName: 'skrskr66',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://skrskr66.github.io/2019/06/18/网络基础知识/">
+
+
+
+
+
+  <title>网络基础知识 | 程序程</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">程序程</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">为了梦想的skr</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://skrskr66.github.io/2019/06/18/网络基础知识/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lyc">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/IMG_4933.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序程">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">网络基础知识</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-18T11:11:33+08:00">
+                2019-06-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文阅读数<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在了解网络整体模型之前学习了套接字编程和一些简单的网络知识。但是网络编程的理论基础是建立在多方面上的，比如数据在每一层是经过了怎么样的封装，每一层使用了哪些协议，每一层的协议又有哪些用途。只有掌握好这些基础知识，才能更好的成为一个服务器开发人员。</p>
+<h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><p>程序员写的一个个解决我们实际问题，满足我们日常需求的网络程序，都是在应用层完成的。</p>
+<p>那么应用层使用了哪些协议呢？</p>
+<h4 id="自定制协议"><a href="#自定制协议" class="headerlink" title="自定制协议"></a>自定制协议</h4><p>socket编程中，收发数据我们通过的是字符串的形式，假如我们想传输“结构化的数据”怎么办？</p>
+<p>假定此时我们被分发了一个任务，需要自制一个网络计算器。此时有两种方案。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">约定方案一:</span><br><span class="line">客户端发送一个形如"1+1"的字符串;</span><br><span class="line">这个字符串中有两个操作数, 都是整形;</span><br><span class="line">两个数字之间会有一个字符是运算符, 运算符只能是 + ;</span><br><span class="line">数字和运算符之间没有空格;</span><br><span class="line"></span><br><span class="line">约定方案二:</span><br><span class="line">定义结构体来表示我们需要交互的信息;</span><br><span class="line">发送数据时将这个结构体按照一个规则转换成字符串, 接收到数据的时候再按照相同的规则把字符串转化回结构体;</span><br><span class="line">这个过程叫做 "序列化" 和 "反序列化"</span><br></pre></td></tr></table></figure>
+<p><strong>序列化：</strong> 将数据按照持久化存储或网络数据传输的格式进行排布</p>
+<p><strong>反序列化：</strong> 将数据按照指定的协议进行解析</p>
+<p>我们将这个计算的传输数据保存到一个结构体中</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cal</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> num1;			<span class="comment">//cal.num1 = 1 , cal.num2 = 2 , cal.op = '+'</span></span><br><span class="line">    <span class="keyword">int</span> num2;			<span class="comment">//send(cal)		----	recv(char buf[9])</span></span><br><span class="line">    <span class="keyword">char</span> op;			<span class="comment">//						char *a = buf;</span></span><br><span class="line">&#125;cal;</span><br></pre></td></tr></table></figure>
+<p>通过代码实现一下，将之前的TCP.h文件和服务端和客户端进行一个改变即可</p>
+<p>之前博客可查看：<a href="https://blog.csdn.net/skrskr66/article/details/91452452" target="_blank" rel="noopener">https://blog.csdn.net/skrskr66/article/details/91452452</a> </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//tcpSocket.hpp</span></span><br><span class="line">类外添加</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">cal_t</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> num1;</span><br><span class="line">    <span class="keyword">int</span> num2;</span><br><span class="line">    <span class="keyword">char</span> op;</span><br><span class="line">&#125;cal;</span><br><span class="line">类内添加</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetSockFd</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> _sock;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//tcp_cli.cpp</span></span><br><span class="line">include <span class="string">"tcpsocket.hpp"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(argc != <span class="number">3</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"./tcp_client ip port"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">string</span> ip = argv[<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">uint16_t</span> port = atoi(argv[<span class="number">2</span>]);</span><br><span class="line">  <span class="comment">//字符串转换成整型数的一个函数</span></span><br><span class="line">  TcpSocket sock;</span><br><span class="line">  CHECK_RET(sock.Socket());</span><br><span class="line">  CHECK_RET(sock.Connect(ip,port));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    cal info;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;info.num1&gt;&gt;info.op&gt;&gt;info.num2;</span><br><span class="line">    <span class="keyword">int</span> fd = sock.GetSockFd();</span><br><span class="line">    send(fd,&amp;info,<span class="keyword">sizeof</span>(cal),<span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  sock.Close();</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//tcp_ser.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"tcpsocket.hpp"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(argc != <span class="number">3</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"./tcp_server ip port"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">string</span> ip = argv[<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">uint16_t</span> port = atoi(argv[<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">  TcpSocket sock;</span><br><span class="line">  CHECK_RET(sock.Socket());</span><br><span class="line">  CHECK_RET(sock.Bind(ip,port));</span><br><span class="line">  CHECK_RET(sock.Listen());</span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    TcpSocket clisock;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">cliaddr</span>;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(sock.Accept(clisock,&amp;cliaddr) == <span class="literal">false</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"new connect client:"</span>&lt;&lt;inet_ntoa(cliaddr.sin_addr)&lt;&lt;<span class="string">":"</span>&lt;&lt;ntohs(cliaddr.sin_port)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> fd = clisock.GetSockFd();</span><br><span class="line">    cal info;</span><br><span class="line"></span><br><span class="line">    recv(fd,&amp;info,<span class="keyword">sizeof</span>(cal),<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">switch</span>(info.op)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'+'</span>:</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"num1: ["</span>&lt;&lt;info.num1&lt;&lt;<span class="string">"]"</span>&lt;&lt;info.op&lt;&lt;<span class="string">"num2: ["</span>&lt;&lt;info.num2&lt;&lt;<span class="string">"]"</span>&lt;&lt;<span class="string">"= ["</span>&lt;&lt;info.num1 + info.num2&lt;&lt;<span class="string">"]"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'-'</span>:</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"num1: ["</span>&lt;&lt;info.num1&lt;&lt;<span class="string">"]"</span>&lt;&lt;info.op&lt;&lt;<span class="string">"num2: ["</span>&lt;&lt;info.num2&lt;&lt;<span class="string">"]"</span>&lt;&lt;<span class="string">"= ["</span>&lt;&lt;info.num1 - info.num2&lt;&lt;<span class="string">"]"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'*'</span>:</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"num1: ["</span>&lt;&lt;info.num1&lt;&lt;<span class="string">"]"</span>&lt;&lt;info.op&lt;&lt;<span class="string">"num2: ["</span>&lt;&lt;info.num2&lt;&lt;<span class="string">"]= ["</span>&lt;&lt;info.num1 * info.num2&lt;&lt;<span class="string">"]"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'/'</span>:</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"num1:["</span>&lt;&lt;info.num1&lt;&lt;<span class="string">"]"</span>&lt;&lt;info.op&lt;&lt;<span class="string">"num2: ["</span>&lt;&lt;info.num2&lt;&lt;<span class="string">"]= ["</span>&lt;&lt;info.num1 / info.num2&lt;&lt;<span class="string">"]"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  sock.Close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/06/18/网络基础知识/网络1.png" alt="网络1"></p>
+<p>客户端输入计算值，服务端即可返回计算结果。传输了结构化数据</p>
+<h4 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h4><p>虽然HTTP协议早已耳熟能详。但是它也是由大佬定义的协议，我个人认为也算在自定制协议中。</p>
+<p>HTTP协议又称为超文本传输协议。是一个基于请求与响应模式的、无状态的、应用层的协议，常基于TCP的连接方式 。</p>
+<h5 id="认识url"><a href="#认识url" class="headerlink" title="认识url"></a>认识url</h5><p>url简单的理解就是我们常说的网址。它的专业名称是：统一资源定位符</p>
+<p><img src="/2019/06/18/网络基础知识/网络2.png" alt="网络2"></p>
+<p>上面就是一个url各个部分的意义</p>
+<h5 id="url的编码urlencode与解码urldecode"><a href="#url的编码urlencode与解码urldecode" class="headerlink" title="url的编码urlencode与解码urldecode"></a>url的编码urlencode与解码urldecode</h5><p><img src="/2019/06/18/网络基础知识/网络3.png" alt="网络3"></p>
+<p>当我们进行一些查找的操作时，比如百度搜索C++,但是上面的url却变成了c%2B%2B，这是怎么回事？</p>
+<p>像这样的字符，已经被url当作特殊意义理解了。因此这些字符不能随意出现。</p>
+<p>比如，某个参数中需要带又这些特殊字符，就必须先对这些字符进行编码操作。</p>
+<p>urlencode：将特殊字符转换为16进制字符串，并且在前方使用%表明两个字符是经过了编码的</p>
+<p>urldecode：当查询字符串出现%则认为，后续两个字符是需要进行url解码的</p>
+<h5 id="HTTP协议格式"><a href="#HTTP协议格式" class="headerlink" title="HTTP协议格式"></a>HTTP协议格式</h5><p>通过使用fiddler进行抓包，查看HTTP的协议格式</p>
+<p>域名中的xx是我个人隐藏。。。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">GET http://123.207.58.xx/ HTTP/1.1</span><br><span class="line">Host: 123.207.58.xx</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,<span class="emphasis">*/*</span>;q=0.8,application/signed-exchange;v=b3</span><br><span class="line">Referer: http://123.207.58.25/homework/userHomework</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Cookie: PHPSESSID=1vgu9tcfei5t4erlc9sq9gj8o3; loginStatus=yes</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: nginx/1.12.2</span><br><span class="line">Date: Tue, 18 Jun 2019 06:46:49 GMT</span><br><span class="line">Content-Type: text/html; charset=UTF-8</span><br><span class="line">Transfer-Encoding: chunked</span><br><span class="line">Connection: keep-alive</span><br><span class="line">X-Powered-By: PHP/5.4.16</span><br><span class="line">Expires: Thu, 19 Nov 1981 08:52:00 GMT</span><br><span class="line">Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0</span><br><span class="line">Pragma: no-cache</span><br></pre></td></tr></table></figure>
+<p>上面分别为http协议请求和http协议响应</p>
+<p><strong>请求首行：[请求方法] + [url] + [版本]</strong></p>
+<p><strong>Header(请求头部)：请求的属性，由一个个键值对组成，每个键值对都有对其含义和功能 key:val\r\nkay:val\r\n，每组属性之间使用\n分隔；遇到空行表示Header部分结束</strong></p>
+<p><strong>响应首行：[版本号] + [状态码] + [状态码解释]</strong></p>
+<p>Body：空行后面的内容都是Body. Body允许为空字符串. 如果Body存在, 则在Header中会有一个键值对Content-Length属性来标识Body的长度; 如果服务器返回了一个html页面, 那么html页面内容就是在body中.</p>
+<h5 id="HTTP的方法"><a href="#HTTP的方法" class="headerlink" title="HTTP的方法"></a>HTTP的方法</h5><p>请求方法有很多，依次罗列，不过所有方法名均为大写</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">GET</th>
+<th style="text-align:center">请求获取request-url所标识的资源</th>
+<th style="text-align:center">1.0/1.1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">POST</td>
+<td style="text-align:center">在request-url所标识的资源后附加新的数据</td>
+<td style="text-align:center">1.0/1.1</td>
+</tr>
+<tr>
+<td style="text-align:center">HEAD</td>
+<td style="text-align:center">请求获取由request-url所标识的资源的响应消息报头</td>
+<td style="text-align:center">1.0/1.1</td>
+</tr>
+<tr>
+<td style="text-align:center">PUT</td>
+<td style="text-align:center">请求服务器存储一个资源，并用request-url作为其标识</td>
+<td style="text-align:center">1.0/1.1</td>
+</tr>
+<tr>
+<td style="text-align:center">DELETE</td>
+<td style="text-align:center">请求删除request-url所标识的资源</td>
+<td style="text-align:center">1.0/1.1</td>
+</tr>
+<tr>
+<td style="text-align:center">TRACE</td>
+<td style="text-align:center">请求服务器回送收到的请求信息，主要用于测试或诊断</td>
+<td style="text-align:center">1.1</td>
+</tr>
+<tr>
+<td style="text-align:center">CONNECT</td>
+<td style="text-align:center">保留将来使用</td>
+<td style="text-align:center">1.1</td>
+</tr>
+<tr>
+<td style="text-align:center">OPTIONS</td>
+<td style="text-align:center">请求查询服务器的性能，或者查询与资源相关的选项和需求</td>
+<td style="text-align:center">1.1</td>
+</tr>
+<tr>
+<td style="text-align:center">LINK</td>
+<td style="text-align:center">建立和资源之间的联系</td>
+<td style="text-align:center">1.0</td>
+</tr>
+<tr>
+<td style="text-align:center">UNLINE</td>
+<td style="text-align:center">断开连接关系</td>
+<td style="text-align:center">1.0</td>
+</tr>
+</tbody>
+</table>
+<p>其中最常用的就是GET和POST</p>
+<p>GET方法：在浏览器的地址栏中输入网址的方式访问网页时，浏览器采用GET方法向服务器获取资源</p>
+<p>POST方法要求被请求服务器接受附在请求后面的数据，常用于提交表单。</p>
+<h5 id="HTTP的状态码"><a href="#HTTP的状态码" class="headerlink" title="HTTP的状态码"></a>HTTP的状态码</h5><table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">类别</th>
+<th style="text-align:center">原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1xx</td>
+<td style="text-align:center">Informational（信息性状态码）</td>
+<td style="text-align:center">表示请求已被接收，正在被处理</td>
+</tr>
+<tr>
+<td style="text-align:center">2xx</td>
+<td style="text-align:center">Success（成功状态码）</td>
+<td style="text-align:center">请求正常处理完毕</td>
+</tr>
+<tr>
+<td style="text-align:center">3xx</td>
+<td style="text-align:center">Redirection（重定向状态码）</td>
+<td style="text-align:center">需要进行附加操作以完成请求</td>
+</tr>
+<tr>
+<td style="text-align:center">4xx</td>
+<td style="text-align:center">Client Error(客户端错误状态码)</td>
+<td style="text-align:center">服务器不能处理该请求</td>
+</tr>
+<tr>
+<td style="text-align:center">5xx</td>
+<td style="text-align:center">Server Error（服务端错误状态码）</td>
+<td style="text-align:center">服务器处理请求出错</td>
+</tr>
+</tbody>
+</table>
+<p>常见状态码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">200</span> OK      <span class="comment">//客户端请求成功</span></span><br><span class="line">    </span><br><span class="line"><span class="number">302</span> Redirect	<span class="comment">//重定向</span></span><br><span class="line"></span><br><span class="line"><span class="number">400</span> Bad Request  <span class="comment">//客户端请求有语法错误，不能被服务器所理解</span></span><br><span class="line"></span><br><span class="line"><span class="number">401</span> Unauthorized <span class="comment">//请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用 </span></span><br><span class="line"></span><br><span class="line"><span class="number">403</span> Forbidden  <span class="comment">//服务器收到请求，但是拒绝提供服务</span></span><br><span class="line"></span><br><span class="line"><span class="number">404</span> Not Found  <span class="comment">//请求资源不存在，eg：输入了错误的URL</span></span><br><span class="line"></span><br><span class="line"><span class="number">500</span> Internal Server Error <span class="comment">//服务器发生不可预期的错误</span></span><br><span class="line"></span><br><span class="line"><span class="number">503</span> Server Unavailable  <span class="comment">//服务器当前不能处理客户端的请求，一段时间后可能恢复正常</span></span><br></pre></td></tr></table></figure>
+<h5 id="HTTP常见的头部信息"><a href="#HTTP常见的头部信息" class="headerlink" title="HTTP常见的头部信息"></a>HTTP常见的头部信息</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Content-Type: 数据类型(text/html等);</span><br><span class="line">    </span><br><span class="line">Content-Length: Body的长度;</span><br><span class="line"></span><br><span class="line">Host: 客户端告知服务器, 所请求的资源是在哪个主机的哪个端口上;</span><br><span class="line"></span><br><span class="line">User-Agent: 声明用户的操作系统和浏览器版本信息;</span><br><span class="line"></span><br><span class="line">referer: 当前页面是从哪个页面跳转过来的;</span><br><span class="line"></span><br><span class="line">location: 搭配<span class="number">3</span>xx状态码使用, 告诉客户端接下来要去哪里访问;</span><br><span class="line"></span><br><span class="line">Cookie: 用于在客户端存储少量信息. 通常用于实现会话(session)的功能;</span><br></pre></td></tr></table></figure>
+<h4 id="实现一个简单HTTP服务器"><a href="#实现一个简单HTTP服务器" class="headerlink" title="实现一个简单HTTP服务器"></a>实现一个简单HTTP服务器</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"tcpsocket.hpp"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(argc != <span class="number">3</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"./httpserver ip port\n"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">string</span> ip = argv[<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">uint16_t</span> port = atoi(argv[<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">  TcpSocket sock;</span><br><span class="line">  CHECK_RET(sock.Socket());</span><br><span class="line">  CHECK_RET(sock.Bind(ip,port));</span><br><span class="line">  CHECK_RET(sock.Listen());</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    TcpSocket clisock;</span><br><span class="line">    <span class="keyword">if</span>(sock.Accept(clisock) == <span class="literal">false</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">string</span> buf;</span><br><span class="line">    clisock.Recv(buf);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"req:["</span>&lt;&lt;buf&lt;&lt;<span class="string">"]"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">string</span> body;</span><br><span class="line">    body = <span class="string">"&lt;html&gt;&lt;body&gt;&lt;h1&gt;Hello Donkey&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;"</span>;</span><br><span class="line">    <span class="built_in">stringstream</span> ss;</span><br><span class="line"></span><br><span class="line">    ss &lt;&lt; <span class="string">"HTTP/1.1 502 Bad GateWay\r\n"</span>;</span><br><span class="line">    ss &lt;&lt; <span class="string">"Content-Length: "</span> &lt;&lt; body.size() &lt;&lt;<span class="string">"\r\n"</span>;</span><br><span class="line">    ss &lt;&lt; <span class="string">"Content-Type: text/html\r\n"</span>;</span><br><span class="line">    ss &lt;&lt; <span class="string">"Location: http://www.baidu.com\r\n"</span>;</span><br><span class="line">    ss &lt;&lt; <span class="string">"\r\n"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">string</span> header = ss.str();</span><br><span class="line"></span><br><span class="line">    clisock.Send(header);</span><br><span class="line">    clisock.Send(body);</span><br><span class="line">    clisock.Close();</span><br><span class="line">  &#125;</span><br><span class="line">  sock.Close();</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/06/18/网络基础知识/网络4.png" alt="网络4"></p>
+<p><img src="/2019/06/18/网络基础知识/网络5.png" alt="网络5"></p>
+<p>运行如图~，感觉还不错~。</p>
+<h5 id="个人小结"><a href="#个人小结" class="headerlink" title="个人小结"></a>个人小结</h5><p>应用层中最关键的是HTTP协议。而在HTTP协议中，首先是了解url，url又叫做统一资源定位符。</p>
+<p>url在查找过程中当遇到特殊的字符存在时还有编码与解码的操作。将特殊字符转换为16进制。</p>
+<p>HTTP的协议格式分为请求和响应。它们又分别具有请求首行，请求报头；响应首行，响应报头</p>
+<p>HTTP的方法有多种，我们常用的为GET和POST这两种</p>
+<p>HTTP的状态码有五种分别为1xx,2xx,3xx,4xx,5xx。它们分别对应了信息性状态码，成功状态码，重定向状态码，客户端错误状态码，服务端错误状态码</p>
+<p>HTTP的常见头部信息有：</p>
+<p>Content-Type: 数据类型(text/html等) </p>
+<p>Content-Length: Body的长度 </p>
+<p>Host: 客户端告知服务器, 所请求的资源是在哪个主机的哪个端口上; </p>
+<p>User-Agent: 声明用户的操作系统和浏览器版本信息; </p>
+<p>referer: 当前页面是从哪个页面跳转过来的; </p>
+<p>location: 搭配3xx状态码使用, 告诉客户端接下来要去哪里访问; </p>
+<p>Cookie: 用于在客户端存储少量信息. 通常用于实现会话(session)的功能; </p>
+<p>HTTP协议的知识点比较多，还是多看才能记住</p>
+
+      
+    </div>
+    
+    
+    
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #555;font-size:14px;">-------------The End-------------</div>
+    
+</div>
+
+  
+</div>
+
+    
+
+    
+
+    
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/网络/" rel="tag"># 网络</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/17/C-内存管理/" rel="next" title="C++-内存管理">
+                <i class="fa fa-chevron-left"></i> C++-内存管理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MDc5Mi8xNzMxNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/IMG_4933.JPG" alt="Lyc">
+            
+              <p class="site-author-name" itemprop="name">Lyc</p>
+              <p class="site-description motion-element" itemprop="description">Full of adventure,Full of discovery</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/skrskr66" target="_blank" title="Github">
+                      
+                        <i class="fa fa-fw fa-github"></i>Github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/skrskr66" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-cuttlefish"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.douban.com/people/168638038/" target="_blank" title="Douban">
+                      
+                        <i class="fa fa-fw fa-film"></i>Douban</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=560738533&auto=1&height=66"></iframe>
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#应用层"><span class="nav-number">1.</span> <span class="nav-text">应用层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自定制协议"><span class="nav-number">1.1.</span> <span class="nav-text">自定制协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP协议"><span class="nav-number">1.2.</span> <span class="nav-text">HTTP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#认识url"><span class="nav-number">1.2.1.</span> <span class="nav-text">认识url</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#url的编码urlencode与解码urldecode"><span class="nav-number">1.2.2.</span> <span class="nav-text">url的编码urlencode与解码urldecode</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP协议格式"><span class="nav-number">1.2.3.</span> <span class="nav-text">HTTP协议格式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP的方法"><span class="nav-number">1.2.4.</span> <span class="nav-text">HTTP的方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP的状态码"><span class="nav-number">1.2.5.</span> <span class="nav-text">HTTP的状态码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP常见的头部信息"><span class="nav-number">1.2.6.</span> <span class="nav-text">HTTP常见的头部信息</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现一个简单HTTP服务器"><span class="nav-number">1.3.</span> <span class="nav-text">实现一个简单HTTP服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#个人小结"><span class="nav-number">1.3.1.</span> <span class="nav-text">个人小结</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lyc</span>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:   <span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">105k</span>
+  
+</div>
+
+
+  <div class="powered-by">Full of adventure</div>
+
+
+
+  <span class="post-meta-divider">||</span>
+
+
+
+  <div class="theme-info"> Full of discovery </div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+    <span class="site-pv">
+      本站总访问量<i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script id="ribbon" type="text/javascript" size="300" alpha="0.6" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
