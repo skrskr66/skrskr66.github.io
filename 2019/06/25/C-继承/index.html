@@ -85,7 +85,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="C++,">
 
 
 
@@ -98,17 +98,23 @@
 
 
 
-<meta name="description" content="Full of adventure,Full of discovery">
+<meta name="description" content="C++继承继承的概念及定义继承的概念继承机制是面向对象程序设计使代码可以复用的常用手段，它允许程序员保持原有类特性的基础上进行扩展，增加功能，这样产生新的类，称派生类。继承呈现了面向对象程序设计的层次结构，体现了由简单到复杂的认知过程。以前我们接触的复用是函数复用，继承是类设计层次的复用。 最普通的继承例子 123456789101112131415161718192021222324252627">
+<meta name="keywords" content="C++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++-String类">
-<meta property="og:url" content="https://skrskr66.github.io/2019/06/16/C-String类/index.html">
+<meta property="og:title" content="C++-继承">
+<meta property="og:url" content="https://skrskr66.github.io/2019/06/25/C-继承/index.html">
 <meta property="og:site_name" content="程序程">
-<meta property="og:description" content="Full of adventure,Full of discovery">
+<meta property="og:description" content="C++继承继承的概念及定义继承的概念继承机制是面向对象程序设计使代码可以复用的常用手段，它允许程序员保持原有类特性的基础上进行扩展，增加功能，这样产生新的类，称派生类。继承呈现了面向对象程序设计的层次结构，体现了由简单到复杂的认知过程。以前我们接触的复用是函数复用，继承是类设计层次的复用。 最普通的继承例子 123456789101112131415161718192021222324252627">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-16T06:16:16.457Z">
+<meta property="og:image" content="https://skrskr66.github.io/2019/06/25/C-继承/继承.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/06/25/C-继承/继承2.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/06/25/C-继承/继承3.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/06/25/C-继承/继承4.png">
+<meta property="og:updated_time" content="2019-06-26T10:44:24.293Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++-String类">
-<meta name="twitter:description" content="Full of adventure,Full of discovery">
+<meta name="twitter:title" content="C++-继承">
+<meta name="twitter:description" content="C++继承继承的概念及定义继承的概念继承机制是面向对象程序设计使代码可以复用的常用手段，它允许程序员保持原有类特性的基础上进行扩展，增加功能，这样产生新的类，称派生类。继承呈现了面向对象程序设计的层次结构，体现了由简单到复杂的认知过程。以前我们接触的复用是函数复用，继承是类设计层次的复用。 最普通的继承例子 123456789101112131415161718192021222324252627">
+<meta name="twitter:image" content="https://skrskr66.github.io/2019/06/25/C-继承/继承.png">
 
 
 
@@ -138,13 +144,13 @@
 
 
 
-  <link rel="canonical" href="https://skrskr66.github.io/2019/06/16/C-String类/">
+  <link rel="canonical" href="https://skrskr66.github.io/2019/06/25/C-继承/">
 
 
 
 
 
-  <title>C++-String类 | 程序程</title>
+  <title>C++-继承 | 程序程</title>
   
 
 
@@ -313,7 +319,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://skrskr66.github.io/2019/06/16/C-String类/">
+    <link itemprop="mainEntityOfPage" href="https://skrskr66.github.io/2019/06/25/C-继承/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lyc">
@@ -330,7 +336,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C++-String类</h1>
+          <h1 class="post-title" itemprop="name headline">C++-继承</h1>
         
 
         <div class="post-meta">
@@ -342,8 +348,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-16T14:16:16+08:00">
-                2019-06-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-25T12:18:07+08:00">
+                2019-06-25
               </time>
             
 
@@ -379,7 +385,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1.6k
                 </span>
               
 
@@ -395,7 +401,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  6
                 </span>
               
             </div>
@@ -416,7 +422,69 @@
       
 
       
-        
+        <h2 id="C-继承"><a href="#C-继承" class="headerlink" title="C++继承"></a>C++继承</h2><h3 id="继承的概念及定义"><a href="#继承的概念及定义" class="headerlink" title="继承的概念及定义"></a>继承的概念及定义</h3><h4 id="继承的概念"><a href="#继承的概念" class="headerlink" title="继承的概念"></a>继承的概念</h4><p>继承机制是<strong>面向对象程序设计使代码可以复用</strong>的常用手段，它允许<strong>程序员保持原有类特性的基础上进行扩展</strong>，增加功能，这样产生新的类，称派生类。<strong>继承呈现了面向对象程序设计的层次结构</strong>，体现了由简单到复杂的认知过程。以前我们接触的复用是函数复用，<strong>继承是类设计层次的复用。</strong></p>
+<p>最普通的继承例子</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Print</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"name"</span>&lt;&lt;_name&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"age"</span>&lt;&lt;_age&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">  <span class="built_in">string</span> _name = <span class="string">"peter"</span>;</span><br><span class="line">  <span class="keyword">int</span> _age = <span class="number">18</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> :</span><span class="keyword">public</span> Person</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">  <span class="keyword">int</span> _stuid;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Teacher</span>:</span> <span class="keyword">public</span> Person </span><br><span class="line">&#123;                                    </span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">  <span class="keyword">int</span> _jobid;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  Student s;</span><br><span class="line">  Teacher t;</span><br><span class="line">  s.Print();</span><br><span class="line">  t.Print();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="继承的定义"><a href="#继承的定义" class="headerlink" title="继承的定义"></a>继承的定义</h4><p>定义格式如图</p>
+<p><img src="/2019/06/25/C-继承/继承.png" alt="继承"></p>
+<h5 id="继承基类成员访问方式的变化"><a href="#继承基类成员访问方式的变化" class="headerlink" title="继承基类成员访问方式的变化"></a>继承基类成员访问方式的变化</h5><table>
+<thead>
+<tr>
+<th style="text-align:center">类成员(列)/继承方式（行）</th>
+<th style="text-align:center">public继承</th>
+<th style="text-align:center">protected继承</th>
+<th style="text-align:center">private继承</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>基类的public成员</strong></td>
+<td style="text-align:center">派生类的public成员</td>
+<td style="text-align:center">派生类的protected成员</td>
+<td style="text-align:center">派生类的private成员</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>基类的protected成员</strong></td>
+<td style="text-align:center">派生类的protected成员</td>
+<td style="text-align:center">派生类的protected成员</td>
+<td style="text-align:center">派生类的private成员</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>基类的private成员</strong></td>
+<td style="text-align:center">派生类中不可见</td>
+<td style="text-align:center">派生类中不可见</td>
+<td style="text-align:center">派生类中不可见</td>
+</tr>
+</tbody>
+</table>
+<h5 id="继承小结"><a href="#继承小结" class="headerlink" title="继承小结"></a>继承小结</h5><p>1.基类private成员在派生类中无论以什么方式继承都不可见。这里的<strong>不可见是指在基类的私有成员还是被继承到了派生类对象中，但是语法上限制派生类对象不管在类的里面还是类的外面都不能去访问它。</strong>可以概括的理解不可见那么派生类就完全不能访问基类的所有成员。</p>
+<p>2.基类private成员在派生类中是无法被访问的，如果基类成员不想在类外直接被访问，但需要在派生类能访问，就定义为protected。可以看出保护成员限定符是因继承才出现。</p>
+<p>3.根据表格可以看到，基类的私有成员在子类都是不可见。基<strong>类的其他成员在子类的访问==min（成员在基类的访问限定符，继承方式）。</strong></p>
+<p>4.使用关键字class时默认的继承方式是private，使用struct时的默认继承方式是public，不过最好显示的写出继承方式。</p>
+<p>5.在实际运用中一般都是用public继承，protected/private继承一般很少用。也不提倡使用这两种继承，实际中的扩展与维护不强。</p>
+<h3 id="基类和派生类对象赋值转换"><a href="#基类和派生类对象赋值转换" class="headerlink" title="基类和派生类对象赋值转换"></a>基类和派生类对象赋值转换</h3><p>派生类对象可以赋值给<strong>基类的对象/基类的指针/基类的引用</strong>。这里有个形象的说法叫做切片(其实我个人认为与python中的切片意思差不多)。把派生类中父类那部分切下赋值过去。</p>
+<p><strong>基类对象不能赋值给派生类对象</strong></p>
+<p>基类的指针可以通过强制类型转换赋值给派生类的指针。但是必须了解</p>
+<p><img src="/2019/06/25/C-继承/继承2.png" alt="继承2"></p>
+<p>上图为切片的模型</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Print</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">      <span class="built_in">cout</span>&lt;&lt;<span class="string">"---"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="keyword">protected</span> :</span><br><span class="line">    <span class="built_in">string</span> _name; <span class="comment">// 姓名</span></span><br><span class="line">    <span class="built_in">string</span> _sex; <span class="comment">// 性别</span></span><br><span class="line">    <span class="keyword">int</span> _age; <span class="comment">// 年龄</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> :</span> <span class="keyword">public</span> Person</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">public</span> :</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Print</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">      <span class="built_in">cout</span>&lt;&lt;<span class="string">"_No"</span>&lt;&lt;_No&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> _No ; <span class="comment">// 学号                                        </span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  Student A;</span><br><span class="line">  <span class="comment">//1.子类对象可以赋值给父类对象/指针/引用</span></span><br><span class="line">  Person B;</span><br><span class="line">  Person* bb = &amp;A;</span><br><span class="line">  Person&amp; aa = A;</span><br><span class="line">  bb-&gt;Print();</span><br><span class="line">  aa.Print();</span><br><span class="line">  </span><br><span class="line">  A = B;<span class="comment">//这是错误的赋值方式，2.基类的对象不能赋值给派生类对象</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//3.基类的指针可以通过强制类型转换赋值给派生类的指针</span></span><br><span class="line">  bb = &amp;A;</span><br><span class="line">  Student* pp1 = (Student*)bb;</span><br><span class="line">  pp1-&gt;_No = <span class="number">10</span>;</span><br><span class="line">  pp1-&gt;Print();</span><br><span class="line"></span><br><span class="line">  bb = &amp;B;                                   </span><br><span class="line">  Student* pp2 = (Student*)bb;<span class="comment">//这相当于将基类强转成派生类，在赋值给派生类,这种转换虽然可以，但会是存在越界访问的情况</span></span><br><span class="line">  pp2-&gt;_No = <span class="number">1000</span>;</span><br><span class="line">  pp2-&gt;Print();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="继承中的作用域"><a href="#继承中的作用域" class="headerlink" title="继承中的作用域"></a>继承中的作用域</h3><p>在继承体系中<strong>基类和派生类</strong>都有<strong>独立的作用域</strong></p>
+<p><strong>关键！！！</strong></p>
+<p><strong>关键！！！</strong></p>
+<p><strong>关键！！！</strong></p>
+<p><strong>子类和父类中有同名函数，子类成员将屏蔽父类对成员函数的直接访问，这种情况叫隐藏，也叫重定义。在子类成员函数中，可以使用<code>基类::基类成员</code>显示访问。</strong></p>
+<p>如果是成员函数的隐藏，只要函数名相同就构成隐藏。所以在实际中在继承体系里面最好不要定义同名的成员。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">protected</span> :</span><br><span class="line"> <span class="built_in">string</span> _name = <span class="string">"skr"</span>; <span class="comment">// 姓名</span></span><br><span class="line"> <span class="keyword">int</span> _num = <span class="number">666</span>; <span class="comment">// 身份证号</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> :</span> <span class="keyword">public</span> Person</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"> <span class="function"><span class="keyword">void</span> <span class="title">Print</span><span class="params">()</span></span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line"> <span class="built_in">cout</span>&lt;&lt;<span class="string">" 姓名:"</span>&lt;&lt;_name&lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"> <span class="built_in">cout</span>&lt;&lt;<span class="string">" 身份证号:"</span>&lt;&lt;Person::_num&lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"> <span class="built_in">cout</span>&lt;&lt;<span class="string">" 学号:"</span>&lt;&lt;_num&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line"> <span class="keyword">int</span> _num = <span class="number">12138</span>; <span class="comment">// 学号</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>虽然这样编译可以编译过也能运行，但是太容易让人混淆了，都是_num，当程序复杂起来这就一定会成为一个BUG的大坑等着自己去跳。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">skr</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"> <span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span></span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line"> <span class="built_in">cout</span> &lt;&lt; <span class="string">"Do you have freestyle?"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">cxk</span> :</span> <span class="keyword">public</span> skr</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"> <span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line"> skr::fun();</span><br><span class="line"> <span class="built_in">cout</span> &lt;&lt;<span class="string">"I like singsing dance rap and basketball "</span>&lt;&lt;i&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Test</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> cxk b;</span><br><span class="line"> b.fun(<span class="number">10</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>当skr::fun()调用时的情况完全不同</p>
+<p>当没有skr::fun()直接调用时</p>
+<p><img src="/2019/06/25/C-继承/继承3.png" alt="继承3"></p>
+<p>当具有skr::fun()直接调用时</p>
+<p><img src="/2019/06/25/C-继承/继承4.png" alt="继承4"></p>
+<p>skr类和cxk类中的fun函数不是构成重载，因为它们不是同一个作用域。它们构成了隐藏。这就印证了当子类与父类同时具有同名函数时，子类函数将屏蔽父类对成员函数的访问。其实就是它们都不能在随便的互相访问了，父类对象只能访问父类自己的成员函数，子类可以访问双方的成员函数，但是子类如果想要访问父类的成员函数需要使用固定的格式<code>基类::成员函数</code>，才可以进行访问。</p>
+<h3 id="派生类的默认成员函数"><a href="#派生类的默认成员函数" class="headerlink" title="派生类的默认成员函数"></a>派生类的默认成员函数</h3><p>在基类中我们一般新写了一个类之后，如果不是必须的话，我们由系统操作完成对默认成员函数的创建，但是派生类中是继承基类，又是如何？</p>
+
       
     </div>
     
@@ -443,6 +511,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+        </div>
+      
 
       
       
@@ -452,8 +526,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/13/TCP的三次握手与四次挥手/" rel="next" title="TCP的三次握手与四次挥手">
-                <i class="fa fa-chevron-left"></i> TCP的三次握手与四次挥手
+              <a href="/2019/06/18/网络基础知识/" rel="next" title="网络基础知识">
+                <i class="fa fa-chevron-left"></i> 网络基础知识
               </a>
             
           </div>
@@ -461,10 +535,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/17/C-内存管理/" rel="prev" title="C++-内存管理">
-                C++-内存管理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -521,8 +591,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -606,6 +685,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-继承"><span class="nav-number">1.</span> <span class="nav-text">C++继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#继承的概念及定义"><span class="nav-number">1.1.</span> <span class="nav-text">继承的概念及定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#继承的概念"><span class="nav-number">1.1.1.</span> <span class="nav-text">继承的概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承的定义"><span class="nav-number">1.1.2.</span> <span class="nav-text">继承的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#继承基类成员访问方式的变化"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">继承基类成员访问方式的变化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#继承小结"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">继承小结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基类和派生类对象赋值转换"><span class="nav-number">1.2.</span> <span class="nav-text">基类和派生类对象赋值转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承中的作用域"><span class="nav-number">1.3.</span> <span class="nav-text">继承中的作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#派生类的默认成员函数"><span class="nav-number">1.4.</span> <span class="nav-text">派生类的默认成员函数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
