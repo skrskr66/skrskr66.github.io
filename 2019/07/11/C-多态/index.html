@@ -98,18 +98,23 @@
 
 
 
-<meta name="description" content="多态多态的概念通俗的来讲，就是多种形态。具体点就是去完成某个行为，当不同的对象去完成时会产生不同的状态。 比如：买票这个行为，当普通人买票时，是全价买票；学生买票时，是半价买票；军人买票时是优  先买票。">
+<meta name="description" content="多态多态的概念通俗的来讲，就是多种形态。具体点就是去完成某个行为，当不同的对象去完成时会产生不同的状态。 比如：买票这个行为，当普通人买票时，是全价买票；学生买票时，是半价买票；军人买票时是优  先买票。 多态的定义及实现多态的构成条件多态是在不同继承关系的类对象，去调用同一个函数，产生了不同的行为。比如Student继承了Person。Person对象买票全价，Student对象买票半价。 所以">
 <meta name="keywords" content="C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++-多态">
 <meta property="og:url" content="https://skrskr66.github.io/2019/07/11/C-多态/index.html">
 <meta property="og:site_name" content="程序程">
-<meta property="og:description" content="多态多态的概念通俗的来讲，就是多种形态。具体点就是去完成某个行为，当不同的对象去完成时会产生不同的状态。 比如：买票这个行为，当普通人买票时，是全价买票；学生买票时，是半价买票；军人买票时是优  先买票。">
+<meta property="og:description" content="多态多态的概念通俗的来讲，就是多种形态。具体点就是去完成某个行为，当不同的对象去完成时会产生不同的状态。 比如：买票这个行为，当普通人买票时，是全价买票；学生买票时，是半价买票；军人买票时是优  先买票。 多态的定义及实现多态的构成条件多态是在不同继承关系的类对象，去调用同一个函数，产生了不同的行为。比如Student继承了Person。Person对象买票全价，Student对象买票半价。 所以">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-11T06:54:15.661Z">
+<meta property="og:image" content="https://skrskr66.github.io/2019/07/11/C-多态/多态1.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/07/11/C-多态/多态2.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/07/11/C-多态/多态3.png">
+<meta property="og:image" content="https://skrskr66.github.io/2019/07/11/C-多态/多态4.png">
+<meta property="og:updated_time" content="2019-07-29T07:46:13.382Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++-多态">
-<meta name="twitter:description" content="多态多态的概念通俗的来讲，就是多种形态。具体点就是去完成某个行为，当不同的对象去完成时会产生不同的状态。 比如：买票这个行为，当普通人买票时，是全价买票；学生买票时，是半价买票；军人买票时是优  先买票。">
+<meta name="twitter:description" content="多态多态的概念通俗的来讲，就是多种形态。具体点就是去完成某个行为，当不同的对象去完成时会产生不同的状态。 比如：买票这个行为，当普通人买票时，是全价买票；学生买票时，是半价买票；军人买票时是优  先买票。 多态的定义及实现多态的构成条件多态是在不同继承关系的类对象，去调用同一个函数，产生了不同的行为。比如Student继承了Person。Person对象买票全价，Student对象买票半价。 所以">
+<meta name="twitter:image" content="https://skrskr66.github.io/2019/07/11/C-多态/多态1.png">
 
 
 
@@ -380,7 +385,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  88
+                  2.4k
                 </span>
               
 
@@ -396,7 +401,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  8
                 </span>
               
             </div>
@@ -420,6 +425,85 @@
         <h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><h3 id="多态的概念"><a href="#多态的概念" class="headerlink" title="多态的概念"></a>多态的概念</h3><p>通俗的来讲，就是多种形态。具体点就是<strong>去完成某个行为，当不同的对象去完成时会产生不同的状态。</strong></p>
 <p>比如：买票这个行为，当<strong>普通人</strong>买票时，是<strong>全价</strong>买票；<strong>学生</strong>买票时，是<strong>半价</strong>买票；<strong>军人</strong>买票时是<strong>优</strong> </p>
 <p><strong>先</strong>买票。</p>
+<h3 id="多态的定义及实现"><a href="#多态的定义及实现" class="headerlink" title="多态的定义及实现"></a>多态的定义及实现</h3><h4 id="多态的构成条件"><a href="#多态的构成条件" class="headerlink" title="多态的构成条件"></a>多态的构成条件</h4><p>多态是在不同继承关系的类对象，去调用同一个函数，产生了不同的行为。比如Student继承了Person。Person对象买票全价，Student对象买票半价。</p>
+<p>所以在多态的继承中要构成多态还有<strong>两个条件</strong>：</p>
+<p>1、<strong>必须通过基类的指针或者引用调用虚函数</strong></p>
+<p>2、<strong>被调用的函数必须是虚函数，且派生类必须对基类的虚函数进行重写</strong></p>
+<p><img src="/2019/07/11/C-多态/多态1.png" alt="多态1"></p>
+<h4 id="虚函数"><a href="#虚函数" class="headerlink" title="虚函数"></a>虚函数</h4><p>被virtual修饰的类成员函数称为虚函数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">BuyTicket</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"全价买票"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="虚函数的重写"><a href="#虚函数的重写" class="headerlink" title="虚函数的重写"></a>虚函数的重写</h4><p><strong>在派生类中有一个跟基类完全相同的虚函数(即派生类虚函数与基类虚函数的返回值类型，参数列表，函数名字完全相同)，称子类的虚函数重写了基类的虚函数。</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">BuyTicket</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"买票-全价"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> :</span> <span class="keyword">public</span> Person &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">BuyTicket</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"买票-半价"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="虚函数重写有两个例外"><a href="#虚函数重写有两个例外" class="headerlink" title="虚函数重写有两个例外"></a>虚函数重写有两个例外</h5><p>1、协变：基类与派生类的返回值类型不同</p>
+<p>派生类重写基类函数时，与基类虚函数返回值不同。即<strong>基类虚函数返回基类对象的指针或者引用</strong>，<strong>派生类虚函数返回派生类对象的指针或者引用</strong></p>
+<p>2、析构函数的重写：基类与派生类的命名不同</p>
+<p>如果基类的析构函数为虚函数，此时派生类析构函数只要定义，无论是否加virtual关键字，都与基类的析构函数构成重写，虽然名字不同，但是在编译过程中，编译器做了特殊的处理，编译后析构函数的名称统一处理成destructor。</p>
+<h5 id="C-11中的override和final"><a href="#C-11中的override和final" class="headerlink" title="C++11中的override和final"></a>C++11中的override和final</h5><p>C++对函数重写比较严格，但是如果函数名中的个别单词写反，编译器是无法识别出来的，通过override和final来帮助用户检测是否重写</p>
+<p><strong>final：修饰虚函数，该虚函数不能再被继承</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Drive</span><span class="params">()</span> final </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>override：检查派生类是否重写了基类的某个虚函数，如果没有则报错</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Drive</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Benz</span> :</span><span class="keyword">public</span> Car &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Drive</span><span class="params">()</span> override </span>&#123;<span class="built_in">cout</span> &lt;&lt; <span class="string">"Benz-舒适"</span> &lt;&lt; <span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="重载、覆盖-重写-、隐藏-重定义-的区别"><a href="#重载、覆盖-重写-、隐藏-重定义-的区别" class="headerlink" title="重载、覆盖(重写)、隐藏(重定义)的区别"></a>重载、覆盖(重写)、隐藏(重定义)的区别</h4><p>重载：在同一作用域中，可以有一组具有相同函数名，不同参数列表的函数，这组函数被称为重载函数。重载函数通常用来命名一组功能近似的h函数，这样减少了函数的命名冲突，避免了命名空间的污染。</p>
+<p>覆盖(重写)：在派生类中有一个完全跟基类相同的虚函数。函数名，参数列表，返回值什么都完全相同，称子类的虚函数重写了父类的虚函数。</p>
+<p>隐藏(重定义)：子类和父类中有同名函数，子类成员将屏蔽父类对成员函数的直接访问，这种情况叫隐藏，也叫重定义。在子类成员函数中，可以使用<code>基类::基类成员</code>显式访问。</p>
+<h4 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h4><p>在虚函数的后面写上=0，则这个函数为纯虚函数。包含纯虚函数的类叫做抽象类。抽象类不能实例化出对象，派生类继承后也不能实例化出对象，只有重写纯虚函数。纯虚函数规范了派生类必须重写。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="title">Drive</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="接口继承和实现继承"><a href="#接口继承和实现继承" class="headerlink" title="接口继承和实现继承"></a>接口继承和实现继承</h5><p>普通函数的继承是一种实现继承，派生类继承了基类函数，可以使用函数，继承的是函数的实现。虚函数的继承是一种接口继承，派生类继承的是基类虚函数的接口，目的是重写，为了达成多态，继承的是接口。所以如果不实现多态，不要把函数定义成虚函数。</p>
+<h3 id="多态的原理"><a href="#多态的原理" class="headerlink" title="多态的原理"></a>多态的原理</h3><h4 id="虚函数表"><a href="#虚函数表" class="headerlink" title="虚函数表"></a>虚函数表</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="title">fun1</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"fun1()"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> _b = <span class="number">1</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>有上面这么一个类，那么它的sizeof()是多大？根据之前的经验，我们会认为是4bytes，但是因为有虚函数的存在，答案为8bytes。这是因为有虚函数表存在。</p>
+<p><strong>虚函数的地址存放在虚函数表中，类的对象内部会有指向类内部的虚表地址的指针。通过这个指针调用虚表。虚函数的调用会被编译器转换为对虚函数表的访问。</strong></p>
+<p><img src="/2019/07/11/C-多态/多态2.png" alt="多态2"></p>
+<p>对象中的这个指针_vfptr就是虚函数指针。</p>
+<p><strong>注意！！</strong></p>
+<p><strong>注意！！</strong></p>
+<p><strong>注意！！</strong></p>
+<p>虚函数表中存的是虚函数指针，不是虚函数。虚函数指针指向虚函数存放的地址。虚函数和普通函数一样都是存在代码段的。虚表也同样存在代码段。</p>
+<p><strong>虚函数小结：</strong></p>
+<p><strong>1、先将基类中的虚表内容拷贝一份到派生类虚表中</strong></p>
+<p><strong>2、如果派生类中重写了基类中的某个虚函数，用派生类自己的虚函数覆盖虚函数表中基类的虚函数</strong></p>
+<p><strong>3、派生类自己新增的虚函数按其在派生类中的声明次序将其放在派生类虚函数表中的最后</strong></p>
+<p><strong>4、 虚函数表本质是一个存虚函数指针的指针数组，这个数组最后面放了一个nullptr。</strong> </p>
+<h4 id="多态的原理-1"><a href="#多态的原理-1" class="headerlink" title="多态的原理"></a>多态的原理</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">BuyTicket</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"买票-全价"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> :</span> <span class="keyword">public</span> Person &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">BuyTicket</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"买票-半价"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Func</span><span class="params">(Person&amp; p)</span> </span>&#123;</span><br><span class="line">	p.BuyTicket();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Person Mike;</span><br><span class="line">	Func(Mike);</span><br><span class="line">	Student Johnson;</span><br><span class="line">	Func(Johnson);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/07/11/C-多态/多态3.png" alt="多态3"></p>
+<p>这就表明出了不同对象去完成同一操作时，是不同的形态。</p>
+<p><strong>也就是说想要达到多态，那么就得必须达到两个条件，一个是虚函数覆盖，一个是对象的指针或者引用调用虚函数</strong></p>
+<h5 id="动态绑定与静态绑定"><a href="#动态绑定与静态绑定" class="headerlink" title="动态绑定与静态绑定"></a>动态绑定与静态绑定</h5><p>1.静态绑定又称为前期绑定(早绑定 )，在程序编译期间确定了程序的行为，也称为静态多态，比如：函数重载 </p>
+<p>2.动态绑定又称后期绑定(晚绑定)，是在程序运行期间，根据具体拿到的类型确定程序的具体行为，调用具体的函数，也称为动态多态。</p>
+<h4 id="单继承"><a href="#单继承" class="headerlink" title="单继承"></a>单继承</h4><p>在单继承中，派生类中仅有一个虚函数表，这个表和基类中的虚函数表不是同一个表，无论派生类中有没有重写这个虚函数。如果没有重写的话，基类与派生类指向的虚函数表是相同的。</p>
+<p><img src="/2019/07/11/C-多态/多态4.png" alt="多态4"></p>
+<p>如果派生类重写了一些其他新的虚函数，那么将会排在父类虚函数表的后面</p>
+<h4 id="多继承"><a href="#多继承" class="headerlink" title="多继承"></a>多继承</h4><p>对于多继承而言，这在C++中是个非常坑的地方，一般不轻易使用。只需知道，<strong>在多继承派生类的未重写的虚函数放在第一个继承基类部分的虚函数表中</strong></p>
+<p> 多态常见的面试问题 </p>
+<ol>
+<li><p>什么是多态？</p>
+<p>多态通俗来说就是多种形态，同一件事，但是不同的人来执行就会有不同的结果。</p>
+</li>
+<li><p>什么是重载、重写(覆盖)、重定义(隐藏)？</p>
+</li>
+<li><p>多态的实现原理？</p>
+</li>
+<li><p>inline函数可以是虚函数吗？</p>
+<p>答：不能，因为inline函数没有地址，无法把地址放到虚函数表中。 </p>
+</li>
+<li><p>静态成员可以是虚函数吗？</p>
+<p>答：不能，因为静态成员函数没有this指针，使用类型::成员函数的调用方式无法访问虚函数表，所以静态成员函数无法放进虚函数表。 </p>
+</li>
+<li><p>构造函数可以是虚函数吗？</p>
+<p>答：不能，因为对象中的虚函数表指针是在构造函数初始化列表阶段才初始化的。 </p>
+</li>
+<li><p>析构函数可以是虚函数吗？什么场景下析构函数是虚函数？</p>
+<p>答：可以，并且最好把基类的析构函数定义 成虚函数。参考本节课件内容 </p>
+</li>
+<li><p>对象访问普通函数快还是虚函数更快？</p>
+<p>答：首先如果是普通对象，是一样快的。如果是指针对象或者是引用对象，则调用的普通函数快，因为构成多态，运行时调用虚函数需要到虚函数表中去查找。 </p>
+</li>
+<li><p>虚函数表是在什么阶段生成的，存在哪的？</p>
+<p>答：虚函数是在编译阶段就生成的，一般情况下存在代码段(常量区)的。 </p>
+</li>
+<li><p>什么是抽象类？抽象类的作用？</p>
+<p>答：包含纯虚函数的类叫做抽象类。抽象类强制重写了虚函数，另外抽象类体现出了接口继承关系。</p>
+</li>
+</ol>
 
       
     </div>
@@ -471,6 +555,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/26/网络基础知识-3/" rel="prev" title="网络基础知识(3)">
+                网络基础知识(3) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -554,7 +642,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -631,7 +719,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#多态"><span class="nav-number">1.</span> <span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多态的概念"><span class="nav-number">1.1.</span> <span class="nav-text">多态的概念</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#多态"><span class="nav-number">1.</span> <span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多态的概念"><span class="nav-number">1.1.</span> <span class="nav-text">多态的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态的定义及实现"><span class="nav-number">1.2.</span> <span class="nav-text">多态的定义及实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多态的构成条件"><span class="nav-number">1.2.1.</span> <span class="nav-text">多态的构成条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚函数"><span class="nav-number">1.2.2.</span> <span class="nav-text">虚函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚函数的重写"><span class="nav-number">1.2.3.</span> <span class="nav-text">虚函数的重写</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#虚函数重写有两个例外"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">虚函数重写有两个例外</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#C-11中的override和final"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">C++11中的override和final</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重载、覆盖-重写-、隐藏-重定义-的区别"><span class="nav-number">1.2.4.</span> <span class="nav-text">重载、覆盖(重写)、隐藏(重定义)的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抽象类"><span class="nav-number">1.2.5.</span> <span class="nav-text">抽象类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#接口继承和实现继承"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">接口继承和实现继承</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态的原理"><span class="nav-number">1.3.</span> <span class="nav-text">多态的原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#虚函数表"><span class="nav-number">1.3.1.</span> <span class="nav-text">虚函数表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多态的原理-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">多态的原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#动态绑定与静态绑定"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">动态绑定与静态绑定</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单继承"><span class="nav-number">1.3.3.</span> <span class="nav-text">单继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多继承"><span class="nav-number">1.3.4.</span> <span class="nav-text">多继承</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -675,7 +763,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">112k</span>
+    <span title="Site words total count">114.8k</span>
   
 </div>
 

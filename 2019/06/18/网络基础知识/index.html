@@ -111,7 +111,7 @@
 <meta property="og:image" content="https://skrskr66.github.io/2019/06/18/网络基础知识/网络3.png">
 <meta property="og:image" content="https://skrskr66.github.io/2019/06/18/网络基础知识/网络4.png">
 <meta property="og:image" content="https://skrskr66.github.io/2019/06/18/网络基础知识/网络5.png">
-<meta property="og:updated_time" content="2019-06-18T08:07:28.049Z">
+<meta property="og:updated_time" content="2019-07-28T02:45:55.295Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络基础知识">
 <meta name="twitter:description" content="在了解网络整体模型之前学习了套接字编程和一些简单的网络知识。但是网络编程的理论基础是建立在多方面上的，比如数据在每一层是经过了怎么样的封装，每一层使用了哪些协议，每一层的协议又有哪些用途。只有掌握好这些基础知识，才能更好的成为一个服务器开发人员。 应用层程序员写的一个个解决我们实际问题，满足我们日常需求的网络程序，都是在应用层完成的。 那么应用层使用了哪些协议呢？ 自定制协议socket编程中，收">
@@ -447,8 +447,8 @@
 <p>当我们进行一些查找的操作时，比如百度搜索C++,但是上面的url却变成了c%2B%2B，这是怎么回事？</p>
 <p>像这样的字符，已经被url当作特殊意义理解了。因此这些字符不能随意出现。</p>
 <p>比如，某个参数中需要带又这些特殊字符，就必须先对这些字符进行编码操作。</p>
-<p>urlencode：将特殊字符转换为16进制字符串，并且在前方使用%表明两个字符是经过了编码的</p>
-<p>urldecode：当查询字符串出现%则认为，后续两个字符是需要进行url解码的</p>
+<p><strong>urlencode：将特殊字符转换为16进制字符串，并且在前方使用%表明两个字符是经过了编码的</strong></p>
+<p><strong>urldecode：当查询字符串出现%则认为，后续两个字符是需要进行url解码的</strong></p>
 <h5 id="HTTP协议格式"><a href="#HTTP协议格式" class="headerlink" title="HTTP协议格式"></a>HTTP协议格式</h5><p>通过使用fiddler进行抓包，查看HTTP的协议格式</p>
 <p>域名中的xx是我个人隐藏。。。</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">GET http://123.207.58.xx/ HTTP/1.1</span><br><span class="line">Host: 123.207.58.xx</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,<span class="emphasis">*/*</span>;q=0.8,application/signed-exchange;v=b3</span><br><span class="line">Referer: http://123.207.58.25/homework/userHomework</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Cookie: PHPSESSID=1vgu9tcfei5t4erlc9sq9gj8o3; loginStatus=yes</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: nginx/1.12.2</span><br><span class="line">Date: Tue, 18 Jun 2019 06:46:49 GMT</span><br><span class="line">Content-Type: text/html; charset=UTF-8</span><br><span class="line">Transfer-Encoding: chunked</span><br><span class="line">Connection: keep-alive</span><br><span class="line">X-Powered-By: PHP/5.4.16</span><br><span class="line">Expires: Thu, 19 Nov 1981 08:52:00 GMT</span><br><span class="line">Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0</span><br><span class="line">Pragma: no-cache</span><br></pre></td></tr></table></figure>
@@ -712,7 +712,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -833,7 +833,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">112k</span>
+    <span title="Site words total count">114.8k</span>
   
 </div>
 
